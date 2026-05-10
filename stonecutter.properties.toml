@@ -1,0 +1,29 @@
+# Mod metadata — shared across all versions
+mod.id      = "template"
+mod.name    = "Template"
+mod.version = "0.1.0"
+mod.group   = "com.example"
+
+# deps. is used dependency resolving,
+# build. is used build jar resource prosessing
+deps.fabric_loader  = "0.19.2"
+build.fabric_loader = ">=0.19.2"
+
+build.fabric_api    = "*"
+
+publish.modrinth   = "XXXXXXXX"
+publish.curseforge = "XXXXXXXX"
+
+# Per-version properties
+["1.21.11"]
+deps.fabric_api = "0.141.3+1.21.11"
+mod.mc_dep      = "1.21.11"
+mod.mc_title    = "1.21.11"
+mod.mc_targets  = "1.21.11"
+# build.fabric_api = "0.141.3+1.21.11"     # additional if needed
+
+["26.1.2"]
+deps.fabric_api = "0.145.4+26.1.2"
+mod.mc_dep      = "26.1.2"
+mod.mc_title    = "26.1.2"
+mod.mc_targets  = "26.1.2"
