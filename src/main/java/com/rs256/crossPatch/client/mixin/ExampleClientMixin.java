@@ -1,4 +1,4 @@
-package com.example.client.mixin;
+package com.rs256.crossPatch.client.mixin;
 
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import org.spongepowered.asm.mixin.Mixin;

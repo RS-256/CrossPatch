@@ -12,20 +12,20 @@
     "sources": "https://codeberg.org/stonecutter/template-fabric"
   },
   "license": "CC0-1.0",
-  "icon": "assets/template/icon.png",
+  "icon": "assets/crossPatch/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.example.TemplateMod"
+      "com.rs256.crossPatch.CrossPatch"
     ],
     "client": [
-      "com.example.client.TemplateModClient"
+      "com.rs256.crossPatch.client.CrossPatchModClient"
     ]
   },
   "mixins": [
-    "template.mixins.json",
+    "crossPatch.mixins.json",
     {
-      "config": "templateClient.mixins.json",
+      "config": "crossPatchClient.mixins.json",
       "environment": "client"
     }
   ],
@@ -33,6 +33,11 @@
   "depends": {
     "fabricloader": "${fabricLoader}",
     "minecraft": "${minecraft}",
-    "${fabricApiKey}": "${fabricAPI}"
+    "${fabricApiKey}": "${fabricAPI}",
+    "malilib": "${malilib}"
+  },
+  "suggests": {
+    "modmenu": "${modmenu}",
+    "litematica": "${litematica}"
   }
 }

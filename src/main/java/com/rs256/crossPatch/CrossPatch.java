@@ -1,9 +1,10 @@
-package com.example;
+package com.rs256.crossPatch;
 
-import com.example.command.TemplateModCommand;
+import com.rs256.crossPatch.command.TemplateModCommand;
+import fi.dy.masa.litematica.InitHandler;
+import fi.dy.masa.malilib.event.InitializationHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.resources.Identifier;
 //? if <=1.18.2 {
 /*import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,10 +13,10 @@ import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 //?}
 
-public class TemplateMod implements ModInitializer {
-    public static final String MOD_ID = "template";
+public class CrossPatch implements ModInitializer {
+    public static final String MOD_ID = "crosspatch";
     public static final String VERSION = /*$ mod_version*/ "0.1.0";
-    public static final String MINECRAFT = /*$ minecraft*/ "26.1";
+    public static final String MINECRAFT = /*$ minecraft*/ "26.1.2";
 
     // This logger is used to write text to the console and the log file.
     // It is considered best practice to use your mod id as the logger's name.
@@ -32,26 +33,11 @@ public class TemplateMod implements ModInitializer {
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
 
-        LOGGER.info("Hello Fabric world!");
+        LOGGER.info("Hello people of the past!");
 
-        //? if !release
-        LOGGER.warn("I'm still a template!");
-
-        //? if fapi: <0.100
-        /*LOGGER.info("Fabric API is old on this version");*/
+        InitializationHandler.getInstance().registerInitializationHandler(new InitHandler());
 
         registerCommands();
-    }
-
-    /**
-     * Adapts to the ResourceLocation -> Identifier changes introduced in 1.21.
-     */
-    public static Identifier id(String namespace, String path) {
-        //? if <1.21 {
-        /*return new ResourceLocation(namespace, path);
-        *///?} else {
-        return Identifier.fromNamespaceAndPath(namespace, path);
-        //?}
     }
 
     public void registerCommands() {

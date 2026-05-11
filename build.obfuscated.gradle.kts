@@ -28,6 +28,28 @@ repositories {
     }
     strictMaven("https://www.cursemaven.com",     "CurseForge", "curse.maven")
     strictMaven("https://api.modrinth.com/maven", "Modrinth",   "maven.modrinth")
+    strictMaven("https://masa.dy.fi/maven/salura-ryoko", "sakura-ryoko", "fi.dy.masa")
+    maven {
+        url = uri("https://masa.dy.fi/maven/sakura-ryoko")
+        content {
+            includeGroupAndSubgroups("fi.dy.masa")
+        }
+    }
+
+    maven {
+        url = uri("https://maven.fallenbreath.me/releases")
+        content {
+            includeGroupAndSubgroups("me.fallenbreath")
+        }
+    }
+
+    maven {
+        url = uri("https://maven.terraformersmc.com/releases/")
+        content {
+            includeGroupAndSubgroups("com.terraformersmc")
+        }
+    }
+    maven("https://jitpack.io")
 }
 
 // ---------------------------------------------------------------
@@ -49,14 +71,17 @@ dependencies {
     mappings(loom.officialMojangMappings())
     modImplementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
+    modImplementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    modImplementation("com.github.sakura-ryoko:malilib:${sc.current.version}-${property("deps.malilib")}")
+    modImplementation("com.github.sakura-ryoko:litematica:${sc.current.version}-${property("deps.litematica")}")
 }
 
 // ---------------------------------------------------------------
 // Loom configuration
 // ---------------------------------------------------------------
 val accesswidener = when {
-    sc.current.parsed >= "26.1" -> "template.unobfuscated.accesswidener"
-    else                        -> "template.obfuscated.accesswidener"
+    sc.current.parsed >= "26.1" -> "crossPatch.unobfuscated.accesswidener"
+    else                        -> "crossPatch.obfuscated.accesswidener"
 }
 
 loom {
@@ -99,6 +124,8 @@ tasks {
             "minecraft"     to project.property("mod.mc_dep"),
             "fabricLoader"  to project.property("build.fabric_loader"),
             "fabricAPI"     to project.property("build.fabric_api"),
+            "malilib"       to project.property("build.malilib"),
+            "litematica"    to project.property("build.litematica"),
             "fabricApiKey"  to fabricApiKey,
             "accesswidener" to accesswidener
         )

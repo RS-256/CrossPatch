@@ -28,6 +28,27 @@ repositories {
     }
     strictMaven("https://www.cursemaven.com",     "CurseForge", "curse.maven")
     strictMaven("https://api.modrinth.com/maven", "Modrinth",   "maven.modrinth")
+    maven {
+        url = uri("https://masa.dy.fi/maven/sakura-ryoko")
+        content {
+            includeGroupAndSubgroups("fi.dy.masa")
+        }
+    }
+
+    maven {
+        url = uri("https://maven.fallenbreath.me/releases")
+        content {
+            includeGroupAndSubgroups("me.fallenbreath")
+        }
+    }
+
+    maven {
+        url = uri("https://maven.terraformersmc.com/releases/")
+        content {
+            includeGroupAndSubgroups("com.terraformersmc")
+        }
+    }
+    maven("https://jitpack.io")
 }
 
 // ---------------------------------------------------------------
@@ -49,14 +70,17 @@ dependencies {
 
     implementation("net.fabricmc:fabric-loader:${property("deps.fabric_loader")}")
     implementation("net.fabricmc.fabric-api:fabric-api:${property("deps.fabric_api")}")
+    implementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
+    implementation("com.github.sakura-ryoko:malilib:${sc.current.version}-${property("deps.malilib")}")
+    implementation("com.github.sakura-ryoko:litematica:${sc.current.version}-${property("deps.litematica")}")
 }
 
 // ---------------------------------------------------------------
 // Loom configuration
 // ---------------------------------------------------------------
 val accesswidener = when {
-    sc.current.parsed >= "26.1" -> "template.unobfuscated.accesswidener"
-    else                        -> "template.obfuscated.accesswidener"
+    sc.current.parsed >= "26.1" -> "crossPatch.unobfuscated.accesswidener"
+    else                        -> "crossPatch.obfuscated.accesswidener"
 }
 
 loom {
@@ -99,6 +123,9 @@ tasks {
             "minecraft"     to project.property("mod.mc_dep"),
             "fabricLoader"  to project.property("build.fabric_loader"),
             "fabricAPI"     to project.property("build.fabric_api"),
+            "modmenu"       to project.property("build.modmenu"),
+            "malilib"       to project.property("build.malilib"),
+            "litematica"    to project.property("build.litematica"),
             "fabricApiKey"  to fabricApiKey,
             "accesswidener" to accesswidener
         )

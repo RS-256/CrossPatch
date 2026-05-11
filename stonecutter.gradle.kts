@@ -45,7 +45,6 @@ tasks.register("runServerCurrentVersion") {
 // Each entry maps to one Modrinth upload (or CurseForge).
 // ---------------------------------------------------------------
 val releaseVersions = listOf(
-    "1.21.11",
     "26.1.2"
 )
 

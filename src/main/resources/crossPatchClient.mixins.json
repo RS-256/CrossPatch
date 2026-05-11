@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.example.client.mixin",
+  "package": "com.rs256.crossPatch.client.mixin",
   "compatibilityLevel": "${java}",
   "client": [
     "ExampleClientMixin"

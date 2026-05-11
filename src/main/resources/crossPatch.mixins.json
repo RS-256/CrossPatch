@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.example.mixin",
+  "package": "com.rs256.crossPatch.mixin",
   "compatibilityLevel": "${java}",
   "mixins": [
     "ExampleMixin"
