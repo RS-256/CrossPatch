@@ -1,6 +1,5 @@
 package com.rs256.crossPatch;
 
-import com.rs256.crossPatch.command.TemplateModCommand;
 import fi.dy.masa.litematica.InitHandler;
 import fi.dy.masa.malilib.event.InitializationHandler;
 import net.fabricmc.api.ModInitializer;
@@ -36,11 +35,5 @@ public class CrossPatch implements ModInitializer {
         LOGGER.info("Hello people of the past!");
 
         InitializationHandler.getInstance().registerInitializationHandler(new InitHandler());
-
-        registerCommands();
-    }
-
-    public void registerCommands() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> TemplateModCommand.register(dispatcher, registryAccess));
     }
 }

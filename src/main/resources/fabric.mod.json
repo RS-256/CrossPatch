@@ -23,7 +23,6 @@
     ]
   },
   "mixins": [
-    "crossPatch.mixins.json",
     {
       "config": "crossPatchClient.mixins.json",
       "environment": "client"
