@@ -1,0 +1,28 @@
+{
+  "crosspatch.gui.title.configs": "CrossPatch Configs",
+
+  "crosspatch.config.generic.name.boxLayerEnabled": "Box Layer Filter",
+  "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "Use Litematica Layer Hotkeys",
+
+  "crosspatch.gui.title.litematica_box_layer": "Litematica Box Layer Filter",
+
+  "crosspatch.gui.button.open_litematica_box_layer": "Open Litematica Box Layer GUI",
+
+  "crosspatch.gui.label.hotkey": "Hotkey",
+
+  "crosspatch.gui.button.set_here": "Set Selected Here",
+
+  "crosspatch.gui.warning.invalid_range": "Invalid range: no schematic blocks will be rendered.",
+
+  "crosspatch.gui.label.max_layer": "Max layer",
+  "crosspatch.gui.label.min_layer": "Min layer",
+  "crosspatch.gui.label.enable": "Enable",
+
+  "crosspatch.gui.hover.enable": "Use this bound as a schematic render limit.",
+  "crosspatch.gui.hover.hotkey": "Move this bound with layer hotkeys.",
+
+  "crosspatch.gui.label.axis": "%s Axis",
+
+  "crosspatch.gui.button.tab.all": "All",
+  "crosspatch.gui.button.tab.litematica": "Litematica"
+}

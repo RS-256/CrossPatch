@@ -1,0 +1,47 @@
+package com.rs256.crossPatch.client.event;
+
+import com.rs256.crossPatch.client.config.Hotkeys;
+import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
+import fi.dy.masa.malilib.hotkeys.IHotkeyCallback;
+import fi.dy.masa.malilib.hotkeys.IKeybind;
+import fi.dy.masa.malilib.hotkeys.KeyAction;
+import net.minecraft.client.Minecraft;
+
+public final class KeyCallbacks {
+    private KeyCallbacks() {
+    }
+
+    public static void init(Minecraft mc) {
+        IHotkeyCallback callback = new BoxLayerHotkeyCallback(mc);
+
+        Hotkeys.BOX_LAYER_NEXT.getKeybind().setCallback(callback);
+        Hotkeys.BOX_LAYER_PREVIOUS.getKeybind().setCallback(callback);
+        Hotkeys.BOX_LAYER_SET_HERE.getKeybind().setCallback(callback);
+    }
+
+    private record BoxLayerHotkeyCallback(Minecraft mc) implements IHotkeyCallback {
+        @Override
+        public boolean onKeyAction(KeyAction action, IKeybind key) {
+            if (this.mc.player == null || this.mc.level == null) {
+                return false;
+            }
+
+            if (key == Hotkeys.BOX_LAYER_NEXT.getKeybind()) {
+                BoxLayerController.next();
+                return true;
+            }
+
+            if (key == Hotkeys.BOX_LAYER_PREVIOUS.getKeybind()) {
+                BoxLayerController.previous();
+                return true;
+            }
+
+            if (key == Hotkeys.BOX_LAYER_SET_HERE.getKeybind()) {
+                BoxLayerController.setHere(this.mc);
+                return true;
+            }
+
+            return false;
+        }
+    }
+}
