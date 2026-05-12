@@ -12,14 +12,14 @@
     "sources": "https://codeberg.org/stonecutter/template-fabric"
   },
   "license": "CC0-1.0",
-  "icon": "assets/crossPatch/icon.png",
+  "icon": "assets/crosspatch/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "com.rs256.crossPatch.CrossPatch"
-    ],
     "client": [
-      "com.rs256.crossPatch.client.CrossPatchModClient"
+      "com.rs256.crossPatch.client.CrossPatchClient"
+    ],
+    "modmenu": [
+      "com.rs256.crossPatch.client.compat.modmenu.ModMenuIntegration"
     ]
   },
   "mixins": [
