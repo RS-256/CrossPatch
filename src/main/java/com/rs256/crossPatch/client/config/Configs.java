@@ -90,7 +90,11 @@ public class Configs implements IConfigHandler {
     }
 
     public static void loadFromFile() {
+        //? if <=1.21.11 {
+        /*Path configFile = FileUtils.getConfigDirectoryAsPath().resolve(CONFIG_FILE_NAME);
+         *///?} else {
         Path configFile = FileUtils.getConfigDirectory().resolve(CONFIG_FILE_NAME);
+        //?}
 
         if (!Files.exists(configFile)) {
             saveToFile();
@@ -119,7 +123,11 @@ public class Configs implements IConfigHandler {
     }
 
     public static void saveToFile() {
+        //? if <=1.21.11 {
+        /*Path dir = FileUtils.getConfigDirectoryAsPath();
+         *///?} else {
         Path dir = FileUtils.getConfigDirectory();
+        //?}
 
         if (!Files.exists(dir)) {
             FileUtils.createDirectoriesIfMissing(dir);

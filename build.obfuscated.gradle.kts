@@ -124,6 +124,7 @@ tasks {
             "minecraft"     to project.property("mod.mc_dep"),
             "fabricLoader"  to project.property("build.fabric_loader"),
             "fabricAPI"     to project.property("build.fabric_api"),
+            "modmenu"       to project.property("build.modmenu"),
             "malilib"       to project.property("build.malilib"),
             "litematica"    to project.property("build.litematica"),
             "fabricApiKey"  to fabricApiKey,
