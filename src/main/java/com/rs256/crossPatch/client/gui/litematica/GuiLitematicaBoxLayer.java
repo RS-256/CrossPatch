@@ -107,13 +107,13 @@ public class GuiLitematicaBoxLayer extends GuiBase {
         this.addLabel(x, y + 5, labelWidth, 12, 0xFFFFFFFF, label);
 
         x += labelWidth + 10;
-        GuiTextFieldGeneric textField = TextFields.integerField(this, this.font, x, y, 90, value, this::updateTextFieldValues);
+        GuiTextFieldGeneric textField = TextFields.integerField(this, this.font, x, y, 90, value, this::refreshGui);
 
         x += textField.getWidth() + 3;
-        ButtonGeneric adjustButton = Buttons.valueAdjustButton(this, x, y, value, this::updateTextFieldValues);
+        ButtonGeneric adjustButton = Buttons.valueAdjustButton(this, x, y, value, this::refreshGui);
 
         x += adjustButton.getWidth() + 4;
-        ButtonGeneric setHereButton = Buttons.setHereButton(this, x, y, axis, value, this::updateTextFieldValues);
+        ButtonGeneric setHereButton = Buttons.setHereButton(this, x, y, axis, value, this::refreshGui);
 
         x += setHereButton.getWidth() + 8;
         CheckBoxes.enableCheckBox(this, x, y + 4, enabled, this::refreshGui);
