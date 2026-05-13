@@ -130,6 +130,12 @@ public final class ConfigRegistry {
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
+                    Configs.Generic.FORCE_LITEMATICA_LAYER_ALL,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
                     Hotkeys.BOX_LAYER_NEXT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,

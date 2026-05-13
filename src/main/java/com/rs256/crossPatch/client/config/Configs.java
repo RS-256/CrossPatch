@@ -27,6 +27,9 @@ public class Configs implements IConfigHandler {
         public static final ConfigBoolean USE_LITEMATICA_LAYER_HOTKEYS =
                 new ConfigBoolean("useLitematicaLayerHotkeys", true)
                         .apply(TRANSLATION_PREFIX);
+        public static final ConfigBoolean FORCE_LITEMATICA_LAYER_ALL =
+                new ConfigBoolean("forceLitematicaLayerAll", false)
+                        .apply(TRANSLATION_PREFIX);
 
         public static final ConfigBoolean BOX_LAYER_X_MIN_ENABLED =
                 new ConfigBoolean("boxLayerXMinEnabled", false)

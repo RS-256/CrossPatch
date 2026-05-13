@@ -1,7 +1,10 @@
 package com.rs256.crossPatch.client.litematica.layer;
 
 import com.rs256.crossPatch.client.config.Configs;
+import fi.dy.masa.litematica.data.DataManager;
 import fi.dy.masa.litematica.util.SchematicWorldRefresher;
+import fi.dy.masa.malilib.util.LayerMode;
+import fi.dy.masa.malilib.util.LayerRange;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -123,6 +126,20 @@ public final class BoxLayerController {
     }
 
     public static void refreshSchematic() {
+        if (shouldForceLitematicaLayerAll()) {
+            forceLitematicaLayerAll();
+        }
+
         SchematicWorldRefresher.INSTANCE.updateAll();
+    }
+
+    public static boolean shouldForceLitematicaLayerAll() {
+        return Configs.Generic.BOX_LAYER_ENABLED.getBooleanValue()
+                && Configs.Generic.FORCE_LITEMATICA_LAYER_ALL.getBooleanValue();
+    }
+
+    public static void forceLitematicaLayerAll(){
+        LayerRange layerRange = DataManager.getRenderLayerRange();
+        layerRange.setLayerMode(LayerMode.ALL);
     }
 }

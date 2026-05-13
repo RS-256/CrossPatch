@@ -5,13 +5,16 @@
   "plugin": "com.rs256.crossPatch.client.mixin.CrossPatchMixinPlugin",
   "client": [
     "litematica.ChunkCacheSchematicMixin",
-    "litematica.KeyCallbacksMixin",
-    "litematica.GuiRenderLayerMixin"
+    "litematica.GuiRenderLayerMixin",
+    "litematica.KeyCallbacksMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "overwrites": {
     "requireAnnotations": true
-  }
+  },
+  "mixins": [
+    "litematica.GuiRenderLayerEditBaseMixin"
+  ]
 }
