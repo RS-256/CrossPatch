@@ -10,7 +10,7 @@
 
   "crosspatch.gui.label.hotkey": "Hotkey",
 
-  "crosspatch.gui.button.set_here": "Set Selected Here",
+  "crosspatch.gui.button.set_here": "Set Here",
 
   "crosspatch.gui.warning.invalid_range": "Invalid range: no schematic blocks will be rendered.",
 
@@ -24,5 +24,7 @@
   "crosspatch.gui.label.axis": "%s Axis",
 
   "crosspatch.gui.button.tab.all": "All",
-  "crosspatch.gui.button.tab.litematica": "Litematica"
+  "crosspatch.gui.button.tab.litematica": "Litematica",
+
+  "crosspatch.gui.button.open_litematica_box_layer_short": "Box Layer GUI"
 }

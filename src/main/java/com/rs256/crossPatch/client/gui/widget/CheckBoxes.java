@@ -85,9 +85,6 @@ public final class CheckBoxes {
             if (entry instanceof WidgetCheckBox checkBox) {
                 this.config.setBooleanValue(checkBox.isChecked());
 
-                Configs.saveToFile();
-                BoxLayerController.refreshSchematic();
-
                 if (this.afterChange != null) {
                     this.afterChange.run();
                 }

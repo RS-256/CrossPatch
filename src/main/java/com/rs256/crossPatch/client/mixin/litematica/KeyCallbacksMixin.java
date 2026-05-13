@@ -1,4 +1,4 @@
-package com.rs256.crossPatch.client.mixin;
+package com.rs256.crossPatch.client.mixin.litematica;
 
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
 import fi.dy.masa.litematica.config.Hotkeys;

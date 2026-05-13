@@ -4,9 +4,9 @@
   "compatibilityLevel": "${java}",
   "plugin": "com.rs256.crossPatch.client.mixin.CrossPatchMixinPlugin",
   "client": [
-    "ExampleClientMixin",
-    "ChunkCacheSchematicMixin",
-    "KeyCallbacksMixin"
+    "litematica.ChunkCacheSchematicMixin",
+    "litematica.KeyCallbacksMixin",
+    "litematica.GuiRenderLayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

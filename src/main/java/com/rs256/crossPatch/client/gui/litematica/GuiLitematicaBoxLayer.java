@@ -6,6 +6,7 @@ import com.rs256.crossPatch.client.gui.widget.AxisType;
 import com.rs256.crossPatch.client.gui.widget.Buttons;
 import com.rs256.crossPatch.client.gui.widget.CheckBoxes;
 import com.rs256.crossPatch.client.gui.widget.TextFields;
+import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
 import fi.dy.masa.malilib.config.options.ConfigBoolean;
 import fi.dy.masa.malilib.config.options.ConfigInteger;
 import fi.dy.masa.malilib.gui.GuiBase;
@@ -107,17 +108,17 @@ public class GuiLitematicaBoxLayer extends GuiBase {
         this.addLabel(x, y + 5, labelWidth, 12, 0xFFFFFFFF, label);
 
         x += labelWidth + 10;
-        GuiTextFieldGeneric textField = TextFields.integerField(this, this.font, x, y, 90, value, this::refreshGui);
+        GuiTextFieldGeneric textField = TextFields.integerField(this, this.font, x, y, 90, value, this::onConfigChanged);
 
         x += textField.getWidth() + 3;
-        ButtonGeneric adjustButton = Buttons.valueAdjustButton(this, x, y, value, this::refreshGui);
+        ButtonGeneric adjustButton = Buttons.valueAdjustButton(this, x, y, value, this::onConfigChangedAndRefreshGui);
 
         x += adjustButton.getWidth() + 4;
-        ButtonGeneric setHereButton = Buttons.setHereButton(this, x, y, axis, value, this::refreshGui);
+        ButtonGeneric setHereButton = Buttons.setHereButton(this, x, y, axis, value, this::onConfigChangedAndRefreshGui);
 
         x += setHereButton.getWidth() + 8;
-        CheckBoxes.enableCheckBox(this, x, y + 4, enabled, this::refreshGui);
-        CheckBoxes.hotkeyCheckBox(this, x + 60, y + 3, hotkey, this::refreshGui);
+        CheckBoxes.enableCheckBox(this, x, y + 4, enabled, this::onConfigChangedAndRefreshGui);
+        CheckBoxes.hotkeyCheckBox(this, x + 60, y + 4, hotkey, this::onConfigChangedAndRefreshGui);
     }
 
     private void updateTextFieldValues() {
@@ -140,8 +141,17 @@ public class GuiLitematicaBoxLayer extends GuiBase {
     }
 
     private void refreshGui() {
-        Configs.saveToFile();
         this.initGui();
+    }
+
+    private void onConfigChanged() {
+        Configs.saveToFile();
+        BoxLayerController.refreshSchematic();
+    }
+
+    private void onConfigChangedAndRefreshGui() {
+        this.onConfigChanged();
+        this.refreshGui();
     }
 
     @Override

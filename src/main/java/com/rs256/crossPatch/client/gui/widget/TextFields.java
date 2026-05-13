@@ -59,9 +59,6 @@ public final class TextFields {
 
             this.config.setIntegerValue(parsed);
 
-            Configs.saveToFile();
-            BoxLayerController.refreshSchematic();
-
             if (this.afterChange != null) {
                 this.afterChange.run();
             }

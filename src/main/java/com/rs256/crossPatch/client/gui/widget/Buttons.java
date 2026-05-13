@@ -120,9 +120,6 @@ public final class Buttons {
 
             this.value.setIntegerValue(this.axis.get(pos));
 
-            Configs.saveToFile();
-            BoxLayerController.refreshSchematic();
-
             if (this.afterChange != null) {
                 this.afterChange.run();
             }
@@ -146,9 +143,6 @@ public final class Buttons {
             }
 
             this.value.setIntegerValue(this.value.getIntegerValue() + change);
-
-            Configs.saveToFile();
-            BoxLayerController.refreshSchematic();
 
             if (this.afterChange != null) {
                 this.afterChange.run();
