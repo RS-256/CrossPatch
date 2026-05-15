@@ -6,7 +6,9 @@
   "client": [
     "litematica.ChunkCacheSchematicMixin",
     "litematica.GuiRenderLayerMixin",
-    "litematica.KeyCallbacksMixin"
+    "litematica.KeyCallbacksMixin",
+    "litematica.RayTraceUtilsMixin",
+    "litematica.TaskCountBlocksBaseMixin"
   ],
   "injectors": {
     "defaultRequire": 1

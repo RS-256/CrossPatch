@@ -40,7 +40,7 @@ public abstract class GuiRenderLayerMixin {
             remap = false
     )
     private int crosspatch$moveLayerControlsDown(int original) {
-        return original + 26;
+        return BOX_LAYER_ENABLED.getBooleanValue() ? original + 26 : original;
     }
 
     @Inject(method = "initGui", at = @At("RETURN"), remap = false)
