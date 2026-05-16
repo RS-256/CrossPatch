@@ -1,7 +1,9 @@
 package com.rs256.crossPatch.client.event;
 
 import com.rs256.crossPatch.client.config.Hotkeys;
+import com.rs256.crossPatch.client.gui.GuiConfigs;
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
+import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.hotkeys.IHotkeyCallback;
 import fi.dy.masa.malilib.hotkeys.IKeybind;
 import fi.dy.masa.malilib.hotkeys.KeyAction;
@@ -18,6 +20,7 @@ public final class KeyCallbacks {
         Hotkeys.BOX_LAYER_PREVIOUS.getKeybind().setCallback(callback);
         Hotkeys.BOX_LAYER_SET_HERE.getKeybind().setCallback(callback);
         Hotkeys.LAYER_AXIS_CYCLE.getKeybind().setCallback(callback);
+        Hotkeys.OPEN_CONFIG_GUI.getKeybind().setCallback(callback);
     }
 
     private record BoxLayerHotkeyCallback(Minecraft mc) implements IHotkeyCallback {
@@ -44,6 +47,11 @@ public final class KeyCallbacks {
 
             if (key == Hotkeys.LAYER_AXIS_CYCLE.getKeybind()) {
                 BoxLayerController.cycleAxis();
+                return true;
+            }
+
+            if (key == Hotkeys.OPEN_CONFIG_GUI.getKeybind()) {
+                GuiBase.openGui(new GuiConfigs(null));
                 return true;
             }
 

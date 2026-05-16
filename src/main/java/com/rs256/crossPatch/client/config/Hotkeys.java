@@ -25,10 +25,15 @@ public class Hotkeys {
             new ConfigHotkey("layerAxisCycle", "")
                     .apply(TRANSLATION_PREFIX);
 
+    public static final ConfigHotkey OPEN_CONFIG_GUI =
+            new ConfigHotkey("openConfigGui", "")
+                    .apply(TRANSLATION_PREFIX);
+
     public static final List<ConfigHotkey> HOTKEY_LIST = ImmutableList.of(
             BOX_LAYER_NEXT,
             BOX_LAYER_PREVIOUS,
             BOX_LAYER_SET_HERE,
-            LAYER_AXIS_CYCLE
+            LAYER_AXIS_CYCLE,
+            OPEN_CONFIG_GUI
     );
 }

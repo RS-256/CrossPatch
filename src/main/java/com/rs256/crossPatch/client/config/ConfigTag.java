@@ -23,6 +23,11 @@ public enum ConfigTag {
     LITEMATICA,
 
     /**
+     * Generic CrossPatch settings.
+     */
+    GENERIC,
+
+    /**
      * Reserved for future Tweakeroo patches.
      */
     //TWEAKEROO,

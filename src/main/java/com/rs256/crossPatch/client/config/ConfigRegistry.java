@@ -10,6 +10,16 @@ public final class ConfigRegistry {
 
     public static final List<TaggedConfig> ENTRIES = ImmutableList.of(
             /*
+             * Generic CrossPatch hotkeys.
+             */
+            new TaggedConfig(
+                    Hotkeys.OPEN_CONFIG_GUI,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.GENERIC,
+                    ConfigTag.HOTKEY
+            ),
+
+            /*
              * Litematica - Box Layer options
              *
              * These are saved to the config file, but not shown in the normal config list.

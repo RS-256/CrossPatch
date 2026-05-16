@@ -4,6 +4,7 @@
   "crosspatch.config.generic.name.boxLayerEnabled": "Box Layer Filter",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "Use Litematica Layer Hotkeys",
   "crosspatch.config.hotkeys.name.layerAxisCycle": "Cycle Render Layer Axis",
+  "crosspatch.config.hotkeys.name.openConfigGui": "Open Config GUI",
 
   "crosspatch.gui.title.litematica_box_layer": "Litematica Box Layer Filter",
 
@@ -25,6 +26,7 @@
   "crosspatch.gui.label.axis": "%s Axis",
 
   "crosspatch.gui.button.tab.all": "All",
+  "crosspatch.gui.button.tab.generic": "Generic",
   "crosspatch.gui.button.tab.litematica": "Litematica",
 
   "crosspatch.config.generic.name.forceLitematicaLayerAll": "Force Litematica Layer Mode to All",
