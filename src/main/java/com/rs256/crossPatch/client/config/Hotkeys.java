@@ -21,9 +21,14 @@ public class Hotkeys {
             new ConfigHotkey("boxLayerSetHere", "")
                     .apply(TRANSLATION_PREFIX);
 
+    public static final ConfigHotkey LAYER_AXIS_CYCLE =
+            new ConfigHotkey("layerAxisCycle", "")
+                    .apply(TRANSLATION_PREFIX);
+
     public static final List<ConfigHotkey> HOTKEY_LIST = ImmutableList.of(
             BOX_LAYER_NEXT,
             BOX_LAYER_PREVIOUS,
-            BOX_LAYER_SET_HERE
+            BOX_LAYER_SET_HERE,
+            LAYER_AXIS_CYCLE
     );
 }

@@ -3,6 +3,7 @@
 
   "crosspatch.config.generic.name.boxLayerEnabled": "Box Layer Filter",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "Use Litematica Layer Hotkeys",
+  "crosspatch.config.hotkeys.name.layerAxisCycle": "Cycle Render Layer Axis",
 
   "crosspatch.gui.title.litematica_box_layer": "Litematica Box Layer Filter",
 

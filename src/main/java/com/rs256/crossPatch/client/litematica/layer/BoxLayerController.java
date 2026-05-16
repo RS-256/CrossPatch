@@ -2,11 +2,13 @@ package com.rs256.crossPatch.client.litematica.layer;
 
 import com.rs256.crossPatch.client.config.Configs;
 import fi.dy.masa.litematica.data.DataManager;
+import fi.dy.masa.malilib.config.options.ConfigBoolean;
 import fi.dy.masa.litematica.util.SchematicWorldRefresher;
 import fi.dy.masa.malilib.util.LayerMode;
 import fi.dy.masa.malilib.util.LayerRange;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 
 public final class BoxLayerController {
@@ -75,6 +77,46 @@ public final class BoxLayerController {
         }
 
         setSelectedBoundsToPosition(entity.blockPosition());
+    }
+
+    public static void cycleAxis() {
+        LayerRange layerRange = DataManager.getRenderLayerRange();
+        layerRange.setAxis(nextAxis(layerRange.getAxis()));
+
+        if (isEnabled()) {
+            cycleBoxLayerEnabledStates();
+            Configs.saveToFile();
+        }
+
+        refreshSchematic();
+    }
+
+    private static Direction.Axis nextAxis(Direction.Axis axis) {
+        return switch (axis) {
+            case X -> Direction.Axis.Y;
+            case Y -> Direction.Axis.Z;
+            case Z -> Direction.Axis.X;
+        };
+    }
+
+    private static void cycleBoxLayerEnabledStates() {
+        cycleEnabledStates(
+                Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
+                Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
+                Configs.Generic.BOX_LAYER_Z_MIN_ENABLED
+        );
+        cycleEnabledStates(
+                Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
+                Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
+                Configs.Generic.BOX_LAYER_Z_MAX_ENABLED
+        );
+    }
+
+    private static void cycleEnabledStates(ConfigBoolean x, ConfigBoolean y, ConfigBoolean z) {
+        boolean previousX = x.getBooleanValue();
+        x.setBooleanValue(z.getBooleanValue());
+        z.setBooleanValue(y.getBooleanValue());
+        y.setBooleanValue(previousX);
     }
 
     public static void offsetSelectedBounds(int amount) {

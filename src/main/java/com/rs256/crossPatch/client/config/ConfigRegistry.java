@@ -152,6 +152,12 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
+            ),
+            new TaggedConfig(
+                    Hotkeys.LAYER_AXIS_CYCLE,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.HOTKEY
             )
     );
 }
