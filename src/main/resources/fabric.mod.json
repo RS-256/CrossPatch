@@ -37,6 +37,7 @@
   },
   "suggests": {
     "modmenu": "${modmenu}",
-    "litematica": "${litematica}"
+    "litematica": "${litematica}",
+    "itemscroller": "${itemscroller}"
   }
 }

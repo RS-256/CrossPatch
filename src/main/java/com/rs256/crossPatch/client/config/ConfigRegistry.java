@@ -20,6 +20,22 @@ public final class ConfigRegistry {
             ),
 
             /*
+             * ItemScroller - MassCraft options
+             */
+            new TaggedConfig(
+                    Configs.ItemScroller.MASS_CRAFT_STONECUTTER,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.ITEMSCROLLER,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.ItemScroller.MASS_CRAFT_ANVIL,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.ITEMSCROLLER,
+                    ConfigTag.OPTION
+            ),
+
+            /*
              * Litematica - Box Layer options
              *
              * These are saved to the config file, but not shown in the normal config list.

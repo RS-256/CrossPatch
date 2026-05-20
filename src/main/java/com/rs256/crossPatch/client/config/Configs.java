@@ -92,6 +92,18 @@ public class Configs implements IConfigHandler {
                         .apply(TRANSLATION_PREFIX);
     }
 
+    public static class ItemScroller {
+        private static final String TRANSLATION_PREFIX = Reference.MOD_ID + ".config.itemscroller";
+
+        public static final ConfigBoolean MASS_CRAFT_STONECUTTER =
+                new ConfigBoolean("massCraftStonecutter", false)
+                        .apply(TRANSLATION_PREFIX);
+
+        public static final ConfigBoolean MASS_CRAFT_ANVIL =
+                new ConfigBoolean("massCraftAnvil", false)
+                        .apply(TRANSLATION_PREFIX);
+    }
+
     public static void loadFromFile() {
         //? if <=1.21.11 {
         /*Path configFile = FileUtils.getConfigDirectoryAsPath().resolve(CONFIG_FILE_NAME);

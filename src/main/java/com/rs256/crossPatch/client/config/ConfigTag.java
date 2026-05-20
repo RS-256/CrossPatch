@@ -23,6 +23,11 @@ public enum ConfigTag {
     LITEMATICA,
 
     /**
+     * Related to ItemScroller patches.
+     */
+    ITEMSCROLLER,
+
+    /**
      * Generic CrossPatch settings.
      */
     GENERIC,

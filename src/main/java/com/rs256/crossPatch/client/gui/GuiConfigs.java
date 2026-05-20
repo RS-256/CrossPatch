@@ -39,7 +39,8 @@ public class GuiConfigs extends GuiConfigsBase {
 
         x += this.createTabButton(x, y, ConfigGuiTab.ALL) + 2;
         x += this.createTabButton(x, y, ConfigGuiTab.GENERIC) + 2;
-        x += this.createTabButton(x, y, ConfigGuiTab.LITEMATICA) + 8;
+        x += this.createTabButton(x, y, ConfigGuiTab.LITEMATICA) + 2;
+        x += this.createTabButton(x, y, ConfigGuiTab.ITEMSCROLLER) + 8;
 
         if (currentTab == ConfigGuiTab.LITEMATICA) {
             this.createOpenLayerGuiButton(x, y);
@@ -90,7 +91,8 @@ public class GuiConfigs extends GuiConfigsBase {
     private enum ConfigGuiTab {
         ALL(null, "crosspatch.gui.button.tab.all"),
         GENERIC(ConfigTag.GENERIC, "crosspatch.gui.button.tab.generic"),
-        LITEMATICA(ConfigTag.LITEMATICA, "crosspatch.gui.button.tab.litematica");
+        LITEMATICA(ConfigTag.LITEMATICA, "crosspatch.gui.button.tab.litematica"),
+        ITEMSCROLLER(ConfigTag.ITEMSCROLLER, "crosspatch.gui.button.tab.itemscroller");
 
         private final ConfigTag modTag;
         private final String translationKey;

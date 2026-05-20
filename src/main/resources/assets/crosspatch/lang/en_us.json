@@ -3,6 +3,8 @@
 
   "crosspatch.config.generic.name.boxLayerEnabled": "Box Layer Filter",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "Use Litematica Layer Hotkeys",
+  "crosspatch.config.itemscroller.name.massCraftAnvil": "Mass Craft with Anvil",
+  "crosspatch.config.itemscroller.name.massCraftStonecutter": "Mass Craft with Stonecutter",
   "crosspatch.config.hotkeys.name.layerAxisCycle": "Cycle Render Layer Axis",
   "crosspatch.config.hotkeys.name.openConfigGui": "Open Config GUI",
 
@@ -28,6 +30,7 @@
   "crosspatch.gui.button.tab.all": "All",
   "crosspatch.gui.button.tab.generic": "Generic",
   "crosspatch.gui.button.tab.litematica": "Litematica",
+  "crosspatch.gui.button.tab.itemscroller": "ItemScroller",
 
   "crosspatch.config.generic.name.forceLitematicaLayerAll": "Force Litematica Layer Mode to All",
   "crosspatch.gui.label.force_litematica_all": "Force Litematica: All",
