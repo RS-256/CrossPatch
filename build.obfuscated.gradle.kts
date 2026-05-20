@@ -74,6 +74,7 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:${property("deps.modmenu")}")
     modImplementation("com.github.sakura-ryoko:malilib:${sc.current.version}-${property("deps.malilib")}")
     modImplementation("com.github.sakura-ryoko:litematica:${sc.current.version}-${property("deps.litematica")}")
+    modImplementation("com.github.sakura-ryoko:itemscroller:${sc.current.version}-${property("deps.itemscroller")}")
 }
 
 // ---------------------------------------------------------------
@@ -127,6 +128,7 @@ tasks {
             "modmenu"       to project.property("build.modmenu"),
             "malilib"       to project.property("build.malilib"),
             "litematica"    to project.property("build.litematica"),
+            "itemscroller"  to project.property("build.itemscroller"),
             "fabricApiKey"  to fabricApiKey,
             "accesswidener" to accesswidener
         )
