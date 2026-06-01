@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class CrossPatchMixinPlugin implements IMixinConfigPlugin {
     private static final String LITEMATICA_MIXIN_PACKAGE =
-            "com.rs256.crosspatch.client.mixin.litematica.";
+            "com.rs256.crossPatch.client.mixin.litematica.";
 
     private boolean litematicaLoaded;
 
