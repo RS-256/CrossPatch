@@ -74,6 +74,7 @@ dependencies {
     implementation("com.github.sakura-ryoko:malilib:${sc.current.version}-${property("deps.malilib")}")
     implementation("com.github.sakura-ryoko:litematica:${sc.current.version}-${property("deps.litematica")}")
     implementation("com.github.sakura-ryoko:itemscroller:${sc.current.version}-${property("deps.itemscroller")}")
+    implementation("me.fallenbreath:tweakermore:${property("deps.tweakermore")}-mc${sc.current.version}")
 }
 
 // ---------------------------------------------------------------

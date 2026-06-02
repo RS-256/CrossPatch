@@ -30,6 +30,7 @@ deps.modmenu = "17.0.0"
 deps.malilib  = "0.27.9"
 deps.litematica  = "0.26.5"
 deps.itemscroller  = "0.30.3"
+deps.tweakermore = "3.31.0"
 
 ["26.1.2"]
 deps.fabric_api = "0.150.0+26.1.2"
@@ -41,3 +42,4 @@ deps.modmenu = "18.0.0-beta.1"
 deps.malilib  = "0.28.3"
 deps.litematica  = "0.27.3"
 deps.itemscroller  = "0.31.2"
+deps.tweakermore = "3.31.0"
