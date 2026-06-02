@@ -9,6 +9,7 @@
     "litematica.KeyCallbacksMixin",
     "litematica.RayTraceUtilsMixin",
     "litematica.SchematicPlacementMixin",
+    "litematica.TaskCountBlocksBaseMixin",
     "litematica.WorldSchematicMixin"
   ],
   "injectors": {
