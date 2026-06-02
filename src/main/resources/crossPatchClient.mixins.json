@@ -8,8 +8,8 @@
     "litematica.GuiRenderLayerMixin",
     "litematica.KeyCallbacksMixin",
     "litematica.RayTraceUtilsMixin",
-    "litematica.SchematicVerifierMixin",
-    "litematica.TaskCountBlocksBaseMixin"
+    "litematica.SchematicPlacementMixin",
+    "litematica.WorldSchematicMixin"
   ],
   "injectors": {
     "defaultRequire": 1
