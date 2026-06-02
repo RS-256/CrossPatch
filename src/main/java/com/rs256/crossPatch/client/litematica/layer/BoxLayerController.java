@@ -4,6 +4,8 @@ import com.rs256.crossPatch.client.config.Configs;
 import fi.dy.masa.litematica.data.DataManager;
 import fi.dy.masa.malilib.config.options.ConfigBoolean;
 import fi.dy.masa.litematica.util.SchematicWorldRefresher;
+import fi.dy.masa.malilib.config.options.ConfigInteger;
+import fi.dy.masa.malilib.util.IntBoundingBox;
 import fi.dy.masa.malilib.util.LayerMode;
 import fi.dy.masa.malilib.util.LayerRange;
 import net.minecraft.client.Minecraft;
@@ -59,6 +61,41 @@ public final class BoxLayerController {
     ) {
         return (!minEnabled || coordinate >= min)
                 && (!maxEnabled || coordinate <= max);
+    }
+
+    public static IntBoundingBox clipBox(IntBoundingBox box) {
+        if (!isEnabled()) {
+            return box;
+        }
+
+        int minX = clipMin(box.minX(), Configs.Generic.BOX_LAYER_X_MIN_ENABLED, Configs.Generic.BOX_LAYER_X_MIN_VALUE);
+        int minY = clipMin(box.minY(), Configs.Generic.BOX_LAYER_Y_MIN_ENABLED, Configs.Generic.BOX_LAYER_Y_MIN_VALUE);
+        int minZ = clipMin(box.minZ(), Configs.Generic.BOX_LAYER_Z_MIN_ENABLED, Configs.Generic.BOX_LAYER_Z_MIN_VALUE);
+        int maxX = clipMax(box.maxX(), Configs.Generic.BOX_LAYER_X_MAX_ENABLED, Configs.Generic.BOX_LAYER_X_MAX_VALUE);
+        int maxY = clipMax(box.maxY(), Configs.Generic.BOX_LAYER_Y_MAX_ENABLED, Configs.Generic.BOX_LAYER_Y_MAX_VALUE);
+        int maxZ = clipMax(box.maxZ(), Configs.Generic.BOX_LAYER_Z_MAX_ENABLED, Configs.Generic.BOX_LAYER_Z_MAX_VALUE);
+
+        if (minX > maxX || minY > maxY || minZ > maxZ) {
+            return null;
+        }
+
+        return new IntBoundingBox(minX, minY, minZ, maxX, maxY, maxZ);
+    }
+
+    private static int clipMin(
+            int current,
+            ConfigBoolean enabled,
+            ConfigInteger value
+    ) {
+        return enabled.getBooleanValue() ? Math.max(current, value.getIntegerValue()) : current;
+    }
+
+    private static int clipMax(
+            int current,
+            ConfigBoolean enabled,
+            ConfigInteger value
+    ) {
+        return enabled.getBooleanValue() ? Math.min(current, value.getIntegerValue()) : current;
     }
 
     public static void next() {
