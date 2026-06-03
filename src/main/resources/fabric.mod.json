@@ -38,6 +38,8 @@
   "suggests": {
     "modmenu": "${modmenu}",
     "litematica": "${litematica}",
-    "itemscroller": "${itemscroller}"
+    "itemscroller": "${itemscroller}",
+    "flashback": "${flashback}",
+    "bobby": "${bobby}"
   }
 }

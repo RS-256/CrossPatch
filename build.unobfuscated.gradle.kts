@@ -75,6 +75,8 @@ dependencies {
     implementation("com.github.sakura-ryoko:litematica:${sc.current.version}-${property("deps.litematica")}")
     implementation("com.github.sakura-ryoko:itemscroller:${sc.current.version}-${property("deps.itemscroller")}")
     implementation("me.fallenbreath:tweakermore:${property("deps.tweakermore")}-mc${sc.current.version}")
+    implementation("maven.modrinth:flashback:${property("deps.flashback")}")
+    implementation("maven.modrinth:bobby:${property("deps.bobby")}")
 }
 
 // ---------------------------------------------------------------
@@ -129,6 +131,8 @@ tasks {
             "malilib"       to project.property("build.malilib"),
             "litematica"    to project.property("build.litematica"),
             "itemscroller"  to project.property("build.itemscroller"),
+            "flashback"     to project.property("build.flashback"),
+            "bobby"         to project.property("build.bobby"),
             "fabricApiKey"  to fabricApiKey,
             "accesswidener" to accesswidener
         )
