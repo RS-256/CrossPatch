@@ -27,6 +27,9 @@ public class ChunkRendererSchematicVboMixin {
     protected void clear() {
     }
 
+    @Unique
+    private boolean crosspatch$clearingExcludedChunk;
+
     @Redirect(
             method = "rebuildChunk",
             at = @At(
@@ -55,7 +58,16 @@ public class ChunkRendererSchematicVboMixin {
             CallbackInfo ci
     ) {
         if (!this.crosspatch$intersectsBoxLayer()) {
-            this.clear();
+            if (!this.crosspatch$clearingExcludedChunk) {
+                this.crosspatch$clearingExcludedChunk = true;
+
+                try {
+                    this.clear();
+                } finally {
+                    this.crosspatch$clearingExcludedChunk = false;
+                }
+            }
+
             ci.cancel();
         }
     }
