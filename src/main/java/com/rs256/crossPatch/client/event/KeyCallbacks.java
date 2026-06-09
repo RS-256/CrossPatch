@@ -20,6 +20,7 @@ public final class KeyCallbacks {
         Hotkeys.BOX_LAYER_PREVIOUS.getKeybind().setCallback(callback);
         Hotkeys.BOX_LAYER_SET_HERE.getKeybind().setCallback(callback);
         Hotkeys.LAYER_AXIS_CYCLE.getKeybind().setCallback(callback);
+        Hotkeys.LAYER_HOTKEY_CYCLE.getKeybind().setCallback(callback);
         Hotkeys.OPEN_CONFIG_GUI.getKeybind().setCallback(callback);
     }
 
@@ -47,6 +48,11 @@ public final class KeyCallbacks {
 
             if (key == Hotkeys.LAYER_AXIS_CYCLE.getKeybind()) {
                 BoxLayerController.cycleAxis();
+                return true;
+            }
+
+            if (key == Hotkeys.LAYER_HOTKEY_CYCLE.getKeybind()) {
+                BoxLayerController.cycleHotkeyAxis();
                 return true;
             }
 

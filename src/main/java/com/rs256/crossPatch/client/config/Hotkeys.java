@@ -25,6 +25,10 @@ public class Hotkeys {
             new ConfigHotkey("layerAxisCycle", "")
                     .apply(TRANSLATION_PREFIX);
 
+    public static final ConfigHotkey LAYER_HOTKEY_CYCLE =
+            new ConfigHotkey("layerHotkeyCycle", "")
+                    .apply(TRANSLATION_PREFIX);
+
     public static final ConfigHotkey OPEN_CONFIG_GUI =
             new ConfigHotkey("openConfigGui", "")
                     .apply(TRANSLATION_PREFIX);
@@ -34,6 +38,7 @@ public class Hotkeys {
             BOX_LAYER_PREVIOUS,
             BOX_LAYER_SET_HERE,
             LAYER_AXIS_CYCLE,
+            LAYER_HOTKEY_CYCLE,
             OPEN_CONFIG_GUI
     );
 }

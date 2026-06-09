@@ -1,10 +1,12 @@
 package com.rs256.crossPatch.client.litematica.layer;
 
+import com.rs256.crossPatch.Reference;
 import com.rs256.crossPatch.client.config.Configs;
 import fi.dy.masa.litematica.data.DataManager;
 import fi.dy.masa.malilib.config.options.ConfigBoolean;
 import fi.dy.masa.litematica.util.SchematicWorldRefresher;
 import fi.dy.masa.malilib.config.options.ConfigInteger;
+import fi.dy.masa.malilib.util.InfoUtils;
 import fi.dy.masa.malilib.util.IntBoundingBox;
 import fi.dy.masa.malilib.util.LayerMode;
 import fi.dy.masa.malilib.util.LayerRange;
@@ -128,6 +130,13 @@ public final class BoxLayerController {
         refreshSchematic();
     }
 
+    public static void cycleHotkeyAxis() {
+        cycleBoxLayerHotkeyStates();
+        Configs.saveToFile();
+        printHotkeySelectionMessage();
+        refreshSchematic();
+    }
+
     private static Direction.Axis nextAxis(Direction.Axis axis) {
         return switch (axis) {
             case X -> Direction.Axis.Y;
@@ -149,11 +158,28 @@ public final class BoxLayerController {
         );
     }
 
+    private static void cycleBoxLayerHotkeyStates() {
+        cycleEnabledStates(
+                Configs.Generic.BOX_LAYER_X_MIN_SELECTED,
+                Configs.Generic.BOX_LAYER_Y_MIN_SELECTED,
+                Configs.Generic.BOX_LAYER_Z_MIN_SELECTED
+        );
+        cycleEnabledStates(
+                Configs.Generic.BOX_LAYER_X_MAX_SELECTED,
+                Configs.Generic.BOX_LAYER_Y_MAX_SELECTED,
+                Configs.Generic.BOX_LAYER_Z_MAX_SELECTED
+        );
+    }
+
     private static void cycleEnabledStates(ConfigBoolean x, ConfigBoolean y, ConfigBoolean z) {
         boolean previousX = x.getBooleanValue();
         x.setBooleanValue(z.getBooleanValue());
         z.setBooleanValue(y.getBooleanValue());
         y.setBooleanValue(previousX);
+    }
+
+    private static void printHotkeySelectionMessage() {
+        InfoUtils.printActionbarMessage(Reference.MOD_ID + ".message.box_layer_hotkey_selection_cycled");
     }
 
     public static void offsetSelectedBounds(int amount) {

@@ -7,6 +7,7 @@
   "crosspatch.config.itemscroller.name.massCraftStonecutter": "Mass Craft with Stonecutter",
   "crosspatch.config.hotkeys.name.layerAxisCycle": "Cycle Render Layer Axis",
   "crosspatch.config.hotkeys.name.openConfigGui": "Open Config GUI",
+  "crosspatch.config.hotkeys.name.layerHotkeyCycle": "layerHotkeyCycle",
 
   "crosspatch.gui.title.litematica_box_layer": "Litematica Box Layer Filter",
 
@@ -32,11 +33,12 @@
   "crosspatch.gui.button.tab.litematica": "Litematica",
   "crosspatch.gui.button.tab.itemscroller": "ItemScroller",
 
-  "crosspatch.config.generic.name.forceLitematicaLayerAll": "Force Litematica Layer Mode to All",
+  "crosspatch.config.generic.name.forceLitematicaLayerAll": "forceLitematicaLayerAll",
   "crosspatch.gui.label.force_litematica_all": "Force Litematica: All",
   "crosspatch.gui.hover.force_litematica_all": "Keeps Litematica's own render layer mode set to All while using CrossPatch Box Layer.",
 
   "crosspatch.gui.title.inline_box_layer": "CrossPatch Box Layer",
   "crosspatch.gui.label.box_layer": "Box Layer",
-  "crosspatch.gui.hover.box_layer": "Enable CrossPatch Box Layer rendering filter."
+  "crosspatch.gui.hover.box_layer": "Enable CrossPatch Box Layer rendering filter.",
+  "crosspatch.message.box_layer_hotkey_selection_cycled": "Box Layer hotkeys cycled"
 }
