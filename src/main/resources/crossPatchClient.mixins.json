@@ -12,6 +12,7 @@
     "litematica.SchematicPlacementMixin",
     "litematica.TaskCountBlocksBaseMixin",
     "litematica.TaskCountBlocksPlacementMixin",
+    "litematica.WorldRendererSchematicMixin",
     "litematica.WorldSchematicMixin"
   ],
   "injectors": {
