@@ -18,6 +18,8 @@ val requiredJava = when {
 // Repositories
 // ---------------------------------------------------------------
 repositories {
+    mavenCentral()
+
     /**
      * Restricts dependency search of the given [groups] to the [maven URL][url],
      * improving the setup speed.
@@ -46,6 +48,12 @@ repositories {
         url = uri("https://maven.terraformersmc.com/releases/")
         content {
             includeGroupAndSubgroups("com.terraformersmc")
+        }
+    }
+    maven {
+        url = uri("https://maven.enjarai.dev/mirrors")
+        content {
+            includeGroupAndSubgroups("com.github.bawnorton.mixinsquared")
         }
     }
     maven("https://jitpack.io")
@@ -77,6 +85,12 @@ dependencies {
     implementation("me.fallenbreath:tweakermore:${property("deps.tweakermore")}-mc${sc.current.version}")
     implementation("maven.modrinth:flashback:${property("deps.flashback")}")
     implementation("maven.modrinth:bobby:${property("deps.bobby")}")
+    implementation("com.github.bawnorton.mixinsquared:mixinsquared-fabric:${property("deps.mixinsquared")}")
+    implementation("com.moulberry:lattice:${property("deps.lattice")}")
+    implementation("org.spongepowered:configurate-core:${property("deps.configurate")}")
+    implementation("org.spongepowered:configurate-hocon:${property("deps.configurate")}")
+    implementation("com.typesafe:config:${property("deps.typesafe_config")}")
+    implementation("io.leangen.geantyref:geantyref:${property("deps.geantyref")}")
 }
 
 // ---------------------------------------------------------------

@@ -11,12 +11,19 @@ import java.util.Set;
 public class CrossPatchMixinPlugin implements IMixinConfigPlugin {
     private static final String LITEMATICA_MIXIN_PACKAGE =
             "com.rs256.crossPatch.client.mixin.litematica.";
+    private static final String FLASHBACK_MIXIN_PACKAGE =
+            "com.rs256.crossPatch.client.mixin.flashback.";
 
     private boolean litematicaLoaded;
+    private boolean flashbackLoaded;
+    private boolean bobbyLoaded;
 
     @Override
     public void onLoad(String mixinPackage) {
-        this.litematicaLoaded = FabricLoader.getInstance().isModLoaded("litematica");
+        FabricLoader fabricLoader = FabricLoader.getInstance();
+        this.litematicaLoaded = fabricLoader.isModLoaded("litematica");
+        this.flashbackLoaded = fabricLoader.isModLoaded("flashback");
+        this.bobbyLoaded = fabricLoader.isModLoaded("bobby");
     }
 
     @Override
@@ -28,6 +35,9 @@ public class CrossPatchMixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.startsWith(LITEMATICA_MIXIN_PACKAGE)) {
             return this.litematicaLoaded;
+        }
+        if (mixinClassName.startsWith(FLASHBACK_MIXIN_PACKAGE)) {
+            return this.flashbackLoaded && this.bobbyLoaded;
         }
 
         return true;

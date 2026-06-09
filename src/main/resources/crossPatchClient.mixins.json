@@ -13,7 +13,8 @@
     "litematica.TaskCountBlocksBaseMixin",
     "litematica.TaskCountBlocksPlacementMixin",
     "litematica.WorldRendererSchematicMixin",
-    "litematica.WorldSchematicMixin"
+    "litematica.WorldSchematicMixin",
+    "flashback.ReplayServerViewDistanceMixin"
   ],
   "injectors": {
     "defaultRequire": 1
