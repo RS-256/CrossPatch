@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 
 public class CrossPatch implements ModInitializer {
     public static final String MOD_ID = "crosspatch";
-    public static final String VERSION = /*$ mod_version*/ "0.1.0";
+    public static final String VERSION = /*$ mod_version*/ "0.2.5";
     public static final String MINECRAFT = /*$ minecraft*/ "26.1.2";
 
     // This logger is used to write text to the console and the log file.
