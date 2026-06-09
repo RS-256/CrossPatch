@@ -1,13 +1,16 @@
 {
   "crosspatch.gui.title.configs": "CrossPatch Configs",
 
-  "crosspatch.config.generic.name.boxLayerEnabled": "Box Layer Filter",
-  "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "Use Litematica Layer Hotkeys",
-  "crosspatch.config.itemscroller.name.massCraftAnvil": "Mass Craft with Anvil",
-  "crosspatch.config.itemscroller.name.massCraftStonecutter": "Mass Craft with Stonecutter",
-  "crosspatch.config.hotkeys.name.layerAxisCycle": "Cycle Render Layer Axis",
-  "crosspatch.config.hotkeys.name.openConfigGui": "Open Config GUI",
+  "crosspatch.config.generic.name.boxLayerEnabled": "boxLayerEnabled",
+  "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "useLitematicaLayerHotkeys",
+  "crosspatch.config.itemscroller.name.massCraftAnvil": "massCraftAnvil",
+  "crosspatch.config.itemscroller.name.massCraftStonecutter": "massCraftStonecutter",
+  "crosspatch.config.hotkeys.name.boxLayerNext": "boxLayerNext",
+  "crosspatch.config.hotkeys.name.boxLayerPrevious": "boxLayerPrevious",
+  "crosspatch.config.hotkeys.name.boxLayerSetHere": "boxLayerSetHere",
+  "crosspatch.config.hotkeys.name.layerAxisCycle": "layerAxisCycle",
   "crosspatch.config.hotkeys.name.layerHotkeyCycle": "layerHotkeyCycle",
+  "crosspatch.config.hotkeys.name.openConfigGui": "openConfigGui",
 
   "crosspatch.gui.title.litematica_box_layer": "Litematica Box Layer Filter",
 
