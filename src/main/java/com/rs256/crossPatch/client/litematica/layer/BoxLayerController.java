@@ -219,6 +219,9 @@ public final class BoxLayerController {
 
     public static void forceLitematicaLayerAll(){
         LayerRange layerRange = DataManager.getRenderLayerRange();
-        layerRange.setLayerMode(LayerMode.ALL);
+
+        if (layerRange.getLayerMode() != LayerMode.ALL) {
+            layerRange.setLayerMode(LayerMode.ALL);
+        }
     }
 }
