@@ -16,6 +16,31 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 
 public final class BoxLayerController {
+    private static final BoxAxis X_AXIS = new BoxAxis(
+            Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
+            Configs.Generic.BOX_LAYER_X_MIN_SELECTED,
+            Configs.Generic.BOX_LAYER_X_MIN_VALUE,
+            Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
+            Configs.Generic.BOX_LAYER_X_MAX_SELECTED,
+            Configs.Generic.BOX_LAYER_X_MAX_VALUE
+    );
+    private static final BoxAxis Y_AXIS = new BoxAxis(
+            Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
+            Configs.Generic.BOX_LAYER_Y_MIN_SELECTED,
+            Configs.Generic.BOX_LAYER_Y_MIN_VALUE,
+            Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
+            Configs.Generic.BOX_LAYER_Y_MAX_SELECTED,
+            Configs.Generic.BOX_LAYER_Y_MAX_VALUE
+    );
+    private static final BoxAxis Z_AXIS = new BoxAxis(
+            Configs.Generic.BOX_LAYER_Z_MIN_ENABLED,
+            Configs.Generic.BOX_LAYER_Z_MIN_SELECTED,
+            Configs.Generic.BOX_LAYER_Z_MIN_VALUE,
+            Configs.Generic.BOX_LAYER_Z_MAX_ENABLED,
+            Configs.Generic.BOX_LAYER_Z_MAX_SELECTED,
+            Configs.Generic.BOX_LAYER_Z_MAX_VALUE
+    );
+
     private BoxLayerController() {
     }
 
@@ -33,36 +58,9 @@ public final class BoxLayerController {
             return true;
         }
 
-        return isWithinAxis(
-                pos.getX(),
-                Configs.Generic.BOX_LAYER_X_MIN_ENABLED.getBooleanValue(),
-                Configs.Generic.BOX_LAYER_X_MIN_VALUE.getIntegerValue(),
-                Configs.Generic.BOX_LAYER_X_MAX_ENABLED.getBooleanValue(),
-                Configs.Generic.BOX_LAYER_X_MAX_VALUE.getIntegerValue()
-        ) && isWithinAxis(
-                pos.getY(),
-                Configs.Generic.BOX_LAYER_Y_MIN_ENABLED.getBooleanValue(),
-                Configs.Generic.BOX_LAYER_Y_MIN_VALUE.getIntegerValue(),
-                Configs.Generic.BOX_LAYER_Y_MAX_ENABLED.getBooleanValue(),
-                Configs.Generic.BOX_LAYER_Y_MAX_VALUE.getIntegerValue()
-        ) && isWithinAxis(
-                pos.getZ(),
-                Configs.Generic.BOX_LAYER_Z_MIN_ENABLED.getBooleanValue(),
-                Configs.Generic.BOX_LAYER_Z_MIN_VALUE.getIntegerValue(),
-                Configs.Generic.BOX_LAYER_Z_MAX_ENABLED.getBooleanValue(),
-                Configs.Generic.BOX_LAYER_Z_MAX_VALUE.getIntegerValue()
-        );
-    }
-
-    private static boolean isWithinAxis(
-            int coordinate,
-            boolean minEnabled,
-            int min,
-            boolean maxEnabled,
-            int max
-    ) {
-        return (!minEnabled || coordinate >= min)
-                && (!maxEnabled || coordinate <= max);
+        return X_AXIS.contains(pos.getX())
+                && Y_AXIS.contains(pos.getY())
+                && Z_AXIS.contains(pos.getZ());
     }
 
     public static IntBoundingBox clipBox(IntBoundingBox box) {
@@ -70,34 +68,18 @@ public final class BoxLayerController {
             return box;
         }
 
-        int minX = clipMin(box.minX(), Configs.Generic.BOX_LAYER_X_MIN_ENABLED, Configs.Generic.BOX_LAYER_X_MIN_VALUE);
-        int minY = clipMin(box.minY(), Configs.Generic.BOX_LAYER_Y_MIN_ENABLED, Configs.Generic.BOX_LAYER_Y_MIN_VALUE);
-        int minZ = clipMin(box.minZ(), Configs.Generic.BOX_LAYER_Z_MIN_ENABLED, Configs.Generic.BOX_LAYER_Z_MIN_VALUE);
-        int maxX = clipMax(box.maxX(), Configs.Generic.BOX_LAYER_X_MAX_ENABLED, Configs.Generic.BOX_LAYER_X_MAX_VALUE);
-        int maxY = clipMax(box.maxY(), Configs.Generic.BOX_LAYER_Y_MAX_ENABLED, Configs.Generic.BOX_LAYER_Y_MAX_VALUE);
-        int maxZ = clipMax(box.maxZ(), Configs.Generic.BOX_LAYER_Z_MAX_ENABLED, Configs.Generic.BOX_LAYER_Z_MAX_VALUE);
+        int minX = X_AXIS.clipMin(box.minX());
+        int minY = Y_AXIS.clipMin(box.minY());
+        int minZ = Z_AXIS.clipMin(box.minZ());
+        int maxX = X_AXIS.clipMax(box.maxX());
+        int maxY = Y_AXIS.clipMax(box.maxY());
+        int maxZ = Z_AXIS.clipMax(box.maxZ());
 
         if (minX > maxX || minY > maxY || minZ > maxZ) {
             return null;
         }
 
         return new IntBoundingBox(minX, minY, minZ, maxX, maxY, maxZ);
-    }
-
-    private static int clipMin(
-            int current,
-            ConfigBoolean enabled,
-            ConfigInteger value
-    ) {
-        return enabled.getBooleanValue() ? Math.max(current, value.getIntegerValue()) : current;
-    }
-
-    private static int clipMax(
-            int current,
-            ConfigBoolean enabled,
-            ConfigInteger value
-    ) {
-        return enabled.getBooleanValue() ? Math.min(current, value.getIntegerValue()) : current;
     }
 
     public static void next() {
@@ -146,33 +128,21 @@ public final class BoxLayerController {
     }
 
     private static void cycleBoxLayerEnabledStates() {
-        cycleEnabledStates(
-                Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MIN_ENABLED
-        );
-        cycleEnabledStates(
-                Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MAX_ENABLED
-        );
+        cycleAxisStates(BoxAxis::minEnabled);
+        cycleAxisStates(BoxAxis::maxEnabled);
     }
 
     private static void cycleBoxLayerHotkeyStates() {
-        cycleEnabledStates(
-                Configs.Generic.BOX_LAYER_X_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_Y_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_Z_MIN_SELECTED
-        );
-        cycleEnabledStates(
-                Configs.Generic.BOX_LAYER_X_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_Y_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_Z_MAX_SELECTED
-        );
+        cycleAxisStates(BoxAxis::minSelected);
+        cycleAxisStates(BoxAxis::maxSelected);
     }
 
-    private static void cycleEnabledStates(ConfigBoolean x, ConfigBoolean y, ConfigBoolean z) {
+    private static void cycleAxisStates(AxisStateSelector selector) {
+        ConfigBoolean x = selector.select(X_AXIS);
+        ConfigBoolean y = selector.select(Y_AXIS);
+        ConfigBoolean z = selector.select(Z_AXIS);
         boolean previousX = x.getBooleanValue();
+
         x.setBooleanValue(z.getBooleanValue());
         z.setBooleanValue(y.getBooleanValue());
         y.setBooleanValue(previousX);
@@ -183,51 +153,21 @@ public final class BoxLayerController {
     }
 
     public static void offsetSelectedBounds(int amount) {
-        offsetIfSelected(Configs.Generic.BOX_LAYER_X_MIN_SELECTED, Configs.Generic.BOX_LAYER_X_MIN_VALUE, amount);
-        offsetIfSelected(Configs.Generic.BOX_LAYER_X_MAX_SELECTED, Configs.Generic.BOX_LAYER_X_MAX_VALUE, amount);
-
-        offsetIfSelected(Configs.Generic.BOX_LAYER_Y_MIN_SELECTED, Configs.Generic.BOX_LAYER_Y_MIN_VALUE, amount);
-        offsetIfSelected(Configs.Generic.BOX_LAYER_Y_MAX_SELECTED, Configs.Generic.BOX_LAYER_Y_MAX_VALUE, amount);
-
-        offsetIfSelected(Configs.Generic.BOX_LAYER_Z_MIN_SELECTED, Configs.Generic.BOX_LAYER_Z_MIN_VALUE, amount);
-        offsetIfSelected(Configs.Generic.BOX_LAYER_Z_MAX_SELECTED, Configs.Generic.BOX_LAYER_Z_MAX_VALUE, amount);
+        X_AXIS.offsetSelected(amount);
+        Y_AXIS.offsetSelected(amount);
+        Z_AXIS.offsetSelected(amount);
 
         Configs.saveToFile();
         refreshSchematic();
-    }
-
-    private static void offsetIfSelected(
-            fi.dy.masa.malilib.config.options.ConfigBoolean selected,
-            fi.dy.masa.malilib.config.options.ConfigInteger value,
-            int amount
-    ) {
-        if (selected.getBooleanValue()) {
-            value.setIntegerValue(value.getIntegerValue() + amount);
-        }
     }
 
     public static void setSelectedBoundsToPosition(BlockPos pos) {
-        setIfSelected(Configs.Generic.BOX_LAYER_X_MIN_SELECTED, Configs.Generic.BOX_LAYER_X_MIN_VALUE, pos.getX());
-        setIfSelected(Configs.Generic.BOX_LAYER_X_MAX_SELECTED, Configs.Generic.BOX_LAYER_X_MAX_VALUE, pos.getX());
-
-        setIfSelected(Configs.Generic.BOX_LAYER_Y_MIN_SELECTED, Configs.Generic.BOX_LAYER_Y_MIN_VALUE, pos.getY());
-        setIfSelected(Configs.Generic.BOX_LAYER_Y_MAX_SELECTED, Configs.Generic.BOX_LAYER_Y_MAX_VALUE, pos.getY());
-
-        setIfSelected(Configs.Generic.BOX_LAYER_Z_MIN_SELECTED, Configs.Generic.BOX_LAYER_Z_MIN_VALUE, pos.getZ());
-        setIfSelected(Configs.Generic.BOX_LAYER_Z_MAX_SELECTED, Configs.Generic.BOX_LAYER_Z_MAX_VALUE, pos.getZ());
+        X_AXIS.setSelected(pos.getX());
+        Y_AXIS.setSelected(pos.getY());
+        Z_AXIS.setSelected(pos.getZ());
 
         Configs.saveToFile();
         refreshSchematic();
-    }
-
-    private static void setIfSelected(
-            fi.dy.masa.malilib.config.options.ConfigBoolean selected,
-            fi.dy.masa.malilib.config.options.ConfigInteger value,
-            int coordinate
-    ) {
-        if (selected.getBooleanValue()) {
-            value.setIntegerValue(coordinate);
-        }
     }
 
     public static void refreshSchematic() {
@@ -248,6 +188,54 @@ public final class BoxLayerController {
 
         if (layerRange.getLayerMode() != LayerMode.ALL) {
             layerRange.setLayerMode(LayerMode.ALL);
+        }
+    }
+
+    private interface AxisStateSelector {
+        ConfigBoolean select(BoxAxis axis);
+    }
+
+    private record BoxAxis(
+            ConfigBoolean minEnabled,
+            ConfigBoolean minSelected,
+            ConfigInteger minValue,
+            ConfigBoolean maxEnabled,
+            ConfigBoolean maxSelected,
+            ConfigInteger maxValue
+    ) {
+        boolean contains(int coordinate) {
+            return (!this.minEnabled.getBooleanValue() || coordinate >= this.minValue.getIntegerValue())
+                    && (!this.maxEnabled.getBooleanValue() || coordinate <= this.maxValue.getIntegerValue());
+        }
+
+        int clipMin(int current) {
+            return this.minEnabled.getBooleanValue() ? Math.max(current, this.minValue.getIntegerValue()) : current;
+        }
+
+        int clipMax(int current) {
+            return this.maxEnabled.getBooleanValue() ? Math.min(current, this.maxValue.getIntegerValue()) : current;
+        }
+
+        void offsetSelected(int amount) {
+            this.offsetIfSelected(this.minSelected, this.minValue, amount);
+            this.offsetIfSelected(this.maxSelected, this.maxValue, amount);
+        }
+
+        void setSelected(int coordinate) {
+            this.setIfSelected(this.minSelected, this.minValue, coordinate);
+            this.setIfSelected(this.maxSelected, this.maxValue, coordinate);
+        }
+
+        private void offsetIfSelected(ConfigBoolean selected, ConfigInteger value, int amount) {
+            if (selected.getBooleanValue()) {
+                value.setIntegerValue(value.getIntegerValue() + amount);
+            }
+        }
+
+        private void setIfSelected(ConfigBoolean selected, ConfigInteger value, int coordinate) {
+            if (selected.getBooleanValue()) {
+                value.setIntegerValue(coordinate);
+            }
         }
     }
 }
