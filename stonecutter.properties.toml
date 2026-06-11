@@ -23,6 +23,7 @@ build.bobby         = "*"
 
 publish.modrinth   = "XXXXXXXX"
 publish.curseforge = "XXXXXXXX"
+publish.github     = "RS-256/CrossPatch"
 
 # Per-version properties
 ["1.21.11"]
