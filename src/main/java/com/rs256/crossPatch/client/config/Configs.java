@@ -102,6 +102,10 @@ public class Configs implements IConfigHandler {
         public static final ConfigBoolean MASS_CRAFT_ANVIL =
                 new ConfigBoolean("massCraftAnvil", false)
                         .apply(TRANSLATION_PREFIX);
+
+        public static final ConfigBoolean USE_ITEMSCROLLER_HOTKEYS =
+                new ConfigBoolean("useItemScrollerHotkeys", true)
+                        .apply(TRANSLATION_PREFIX);
     }
 
     public static void loadFromFile() {

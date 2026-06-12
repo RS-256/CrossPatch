@@ -3,10 +3,17 @@ package com.rs256.crossPatch.client.config;
 import com.google.common.collect.ImmutableList;
 import com.rs256.crossPatch.Reference;
 import fi.dy.masa.malilib.config.options.ConfigHotkey;
+import fi.dy.masa.malilib.hotkeys.KeyAction;
+import fi.dy.masa.malilib.hotkeys.KeybindSettings;
 
 import java.util.List;
 
 public class Hotkeys {
+    private static final KeybindSettings GUI_RELAXED =
+            KeybindSettings.create(KeybindSettings.Context.GUI, KeyAction.PRESS, true, false, false, false);
+    private static final KeybindSettings GUI_RELAXED_CANCEL =
+            KeybindSettings.create(KeybindSettings.Context.GUI, KeyAction.PRESS, true, false, false, true);
+
     private static final String TRANSLATION_PREFIX = Reference.MOD_ID + ".config.hotkeys";
 
     public static final ConfigHotkey BOX_LAYER_NEXT =
@@ -33,12 +40,27 @@ public class Hotkeys {
             new ConfigHotkey("openConfigGui", "")
                     .apply(TRANSLATION_PREFIX);
 
+    public static final ConfigHotkey CRAFT_EVERYTHING =
+            new ConfigHotkey("craftEverything", "", GUI_RELAXED_CANCEL)
+                    .apply(TRANSLATION_PREFIX);
+
+    public static final ConfigHotkey RECIPE_VIEW =
+            new ConfigHotkey("recipeView", "", GUI_RELAXED)
+                    .apply(TRANSLATION_PREFIX);
+
+    public static final ConfigHotkey STORE_RECIPE =
+            new ConfigHotkey("storeRecipe", "", GUI_RELAXED_CANCEL)
+                    .apply(TRANSLATION_PREFIX);
+
     public static final List<ConfigHotkey> HOTKEY_LIST = ImmutableList.of(
             BOX_LAYER_NEXT,
             BOX_LAYER_PREVIOUS,
             BOX_LAYER_SET_HERE,
+            CRAFT_EVERYTHING,
             LAYER_AXIS_CYCLE,
             LAYER_HOTKEY_CYCLE,
-            OPEN_CONFIG_GUI
+            OPEN_CONFIG_GUI,
+            RECIPE_VIEW,
+            STORE_RECIPE
     );
 }

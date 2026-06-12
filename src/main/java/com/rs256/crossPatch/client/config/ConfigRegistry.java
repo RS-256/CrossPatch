@@ -34,6 +34,24 @@ public final class ConfigRegistry {
                     ConfigTag.ITEMSCROLLER,
                     ConfigTag.OPTION
             ),
+            new TaggedConfig(
+                    Configs.ItemScroller.USE_ITEMSCROLLER_HOTKEYS,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.ITEMSCROLLER,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Hotkeys.RECIPE_VIEW,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.ITEMSCROLLER,
+                    ConfigTag.HOTKEY
+            ),
+            new TaggedConfig(
+                    Hotkeys.STORE_RECIPE,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.ITEMSCROLLER,
+                    ConfigTag.HOTKEY
+            ),
 
             /*
              * Litematica - Box Layer options

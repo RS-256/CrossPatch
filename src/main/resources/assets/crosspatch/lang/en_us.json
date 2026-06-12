@@ -5,12 +5,16 @@
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "useLitematicaLayerHotkeys",
   "crosspatch.config.itemscroller.name.massCraftAnvil": "massCraftAnvil",
   "crosspatch.config.itemscroller.name.massCraftStonecutter": "massCraftStonecutter",
+  "crosspatch.config.itemscroller.name.useItemScrollerHotkeys": "useItemScrollerHotkeys",
   "crosspatch.config.hotkeys.name.boxLayerNext": "boxLayerNext",
+  "crosspatch.config.hotkeys.name.craftEverything": "craftEverything",
   "crosspatch.config.hotkeys.name.boxLayerPrevious": "boxLayerPrevious",
   "crosspatch.config.hotkeys.name.boxLayerSetHere": "boxLayerSetHere",
   "crosspatch.config.hotkeys.name.layerAxisCycle": "layerAxisCycle",
   "crosspatch.config.hotkeys.name.layerHotkeyCycle": "layerHotkeyCycle",
   "crosspatch.config.hotkeys.name.openConfigGui": "openConfigGui",
+  "crosspatch.config.hotkeys.name.recipeView": "recipeView",
+  "crosspatch.config.hotkeys.name.storeRecipe": "storeRecipe",
 
   "crosspatch.gui.title.litematica_box_layer": "Litematica Box Layer Filter",
 
