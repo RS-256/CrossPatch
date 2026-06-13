@@ -47,5 +47,5 @@
   "crosspatch.gui.title.inline_box_layer": "CrossPatch Box Layer",
   "crosspatch.gui.label.box_layer": "Box Layer",
   "crosspatch.gui.hover.box_layer": "Enable CrossPatch Box Layer rendering filter.",
-  "crosspatch.message.box_layer_hotkey_selection_cycled": "Box Layer hotkeys cycled"
+  "crosspatch.message.box_layer_hotkey_selection": "Box Layer hotkeys: %s"
 }

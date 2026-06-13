@@ -15,6 +15,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class BoxLayerController {
     private static final BoxAxis X_AXIS = new BoxAxis(
             Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
@@ -149,7 +152,29 @@ public final class BoxLayerController {
     }
 
     private static void printHotkeySelectionMessage() {
-        InfoUtils.printActionbarMessage(Reference.MOD_ID + ".message.box_layer_hotkey_selection_cycled");
+        InfoUtils.printActionbarMessage(
+                Reference.MOD_ID + ".message.box_layer_hotkey_selection",
+                getHotkeySelectionLabel()
+        );
+    }
+
+    private static String getHotkeySelectionLabel() {
+        List<String> selected = new ArrayList<>();
+
+        addSelectedLabel(selected, "X min", X_AXIS.minSelected());
+        addSelectedLabel(selected, "X max", X_AXIS.maxSelected());
+        addSelectedLabel(selected, "Y min", Y_AXIS.minSelected());
+        addSelectedLabel(selected, "Y max", Y_AXIS.maxSelected());
+        addSelectedLabel(selected, "Z min", Z_AXIS.minSelected());
+        addSelectedLabel(selected, "Z max", Z_AXIS.maxSelected());
+
+        return selected.isEmpty() ? "none" : String.join(", ", selected);
+    }
+
+    private static void addSelectedLabel(List<String> selected, String label, ConfigBoolean config) {
+        if (config.getBooleanValue()) {
+            selected.add(label);
+        }
     }
 
     public static void offsetSelectedBounds(int amount) {
@@ -187,7 +212,7 @@ public final class BoxLayerController {
         LayerRange layerRange = DataManager.getRenderLayerRange();
 
         if (layerRange.getLayerMode() != LayerMode.ALL) {
-            layerRange.setLayerMode(LayerMode.ALL);
+            layerRange.setLayerMode(LayerMode.ALL, false);
         }
     }
 
