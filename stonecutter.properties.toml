@@ -1,7 +1,7 @@
 # Mod metadata — shared across all versions
 mod.id      = "crosspatch"
 mod.name    = "crossPatch"
-mod.version = "0.2.8"
+mod.version = "0.2.9"
 mod.group   = "com.rs256.crossPatch"
 
 # deps. is used dependency resolving,
