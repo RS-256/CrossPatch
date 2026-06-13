@@ -138,7 +138,7 @@ public class Configs implements IConfigHandler {
          * shulker box that merely contains the needed item is collected.
          */
         public static final ConfigBoolean AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY =
-                new ConfigBoolean("autoCollectShulkerSingleItemOnly", true)
+                new ConfigBoolean("autoCollectWithShulkerSingleItemOnly", true)
                         .apply(TRANSLATION_PREFIX);
     }
 
