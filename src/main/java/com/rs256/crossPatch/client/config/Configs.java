@@ -120,6 +120,26 @@ public class Configs implements IConfigHandler {
         public static final ConfigBoolean AUTO_COLLECT_STACK_ROUND_UP =
                 new ConfigBoolean("autoCollectStackRoundUp", false)
                         .apply(TRANSLATION_PREFIX);
+
+        /**
+         * When enabled, TweakerMore's "auto collect material list item" feature also
+         * pulls whole shulker boxes (any color) out of the container when their
+         * contents match a missing material. Litematica counts the contents of
+         * shulker boxes carried in the player inventory, so the collected box is
+         * automatically credited against the material list.
+         */
+        public static final ConfigBoolean AUTO_COLLECT_WITH_SHULKER =
+                new ConfigBoolean("autoCollectWithShulker", false)
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * Restricts {@link #AUTO_COLLECT_WITH_SHULKER} to shulker boxes that are filled
+         * with a single item type (matching the needed material). When disabled, any
+         * shulker box that merely contains the needed item is collected.
+         */
+        public static final ConfigBoolean AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY =
+                new ConfigBoolean("autoCollectShulkerSingleItemOnly", true)
+                        .apply(TRANSLATION_PREFIX);
     }
 
     public static void loadFromFile() {

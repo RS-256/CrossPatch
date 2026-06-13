@@ -62,6 +62,18 @@ public final class ConfigRegistry {
                     ConfigTag.TWEAKERMORE,
                     ConfigTag.OPTION
             ),
+            new TaggedConfig(
+                    Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.TWEAKERMORE,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.TWEAKERMORE,
+                    ConfigTag.OPTION
+            ),
 
             /*
              * Litematica - Box Layer options
