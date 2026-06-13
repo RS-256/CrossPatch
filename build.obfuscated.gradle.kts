@@ -146,6 +146,7 @@ tasks {
             "malilib"       to project.property("build.malilib"),
             "litematica"    to project.property("build.litematica"),
             "itemscroller"  to project.property("build.itemscroller"),
+            "tweakermore"   to project.property("build.tweakermore"),
             "flashback"     to project.property("build.flashback"),
             "bobby"         to project.property("build.bobby"),
             "fabricApiKey"  to fabricApiKey,

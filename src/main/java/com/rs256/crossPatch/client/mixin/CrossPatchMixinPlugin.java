@@ -13,10 +13,13 @@ public class CrossPatchMixinPlugin implements IMixinConfigPlugin {
             "com.rs256.crossPatch.client.mixin.litematica.";
     private static final String FLASHBACK_MIXIN_PACKAGE =
             "com.rs256.crossPatch.client.mixin.flashback.";
+    private static final String TWEAKERMORE_MIXIN_PACKAGE =
+            "com.rs256.crossPatch.client.mixin.tweakermore.";
 
     private boolean litematicaLoaded;
     private boolean flashbackLoaded;
     private boolean bobbyLoaded;
+    private boolean tweakermoreLoaded;
 
     @Override
     public void onLoad(String mixinPackage) {
@@ -24,6 +27,7 @@ public class CrossPatchMixinPlugin implements IMixinConfigPlugin {
         this.litematicaLoaded = fabricLoader.isModLoaded("litematica");
         this.flashbackLoaded = fabricLoader.isModLoaded("flashback");
         this.bobbyLoaded = fabricLoader.isModLoaded("bobby");
+        this.tweakermoreLoaded = fabricLoader.isModLoaded("tweakermore");
     }
 
     @Override
@@ -38,6 +42,9 @@ public class CrossPatchMixinPlugin implements IMixinConfigPlugin {
         }
         if (mixinClassName.startsWith(FLASHBACK_MIXIN_PACKAGE)) {
             return this.flashbackLoaded && this.bobbyLoaded;
+        }
+        if (mixinClassName.startsWith(TWEAKERMORE_MIXIN_PACKAGE)) {
+            return this.tweakermoreLoaded && this.litematicaLoaded;
         }
 
         return true;

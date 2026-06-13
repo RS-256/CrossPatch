@@ -108,6 +108,20 @@ public class Configs implements IConfigHandler {
                         .apply(TRANSLATION_PREFIX);
     }
 
+    public static class TweakerMore {
+        private static final String TRANSLATION_PREFIX = Reference.MOD_ID + ".config.tweakermore";
+
+        /**
+         * When enabled, TweakerMore's "auto collect material list item" feature
+         * collects each material rounded up to the next full stack instead of the
+         * exact missing amount. For example, if 14 items are missing and the stack
+         * size is 64, it collects 64; if the stack size is 16, it collects 16.
+         */
+        public static final ConfigBoolean AUTO_COLLECT_STACK_ROUND_UP =
+                new ConfigBoolean("autoCollectStackRoundUp", false)
+                        .apply(TRANSLATION_PREFIX);
+    }
+
     public static void loadFromFile() {
         //? if <=1.21.11 {
         /*Path configFile = FileUtils.getConfigDirectoryAsPath().resolve(CONFIG_FILE_NAME);

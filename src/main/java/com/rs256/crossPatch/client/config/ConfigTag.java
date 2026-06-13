@@ -33,6 +33,11 @@ public enum ConfigTag {
     GENERIC,
 
     /**
+     * Related to TweakerMore patches.
+     */
+    TWEAKERMORE,
+
+    /**
      * Reserved for future Tweakeroo patches.
      */
     //TWEAKEROO,

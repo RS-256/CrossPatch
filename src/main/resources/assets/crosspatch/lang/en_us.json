@@ -6,6 +6,8 @@
   "crosspatch.config.itemscroller.name.massCraftAnvil": "massCraftAnvil",
   "crosspatch.config.itemscroller.name.massCraftStonecutter": "massCraftStonecutter",
   "crosspatch.config.itemscroller.name.useItemScrollerHotkeys": "useItemScrollerHotkeys",
+  "crosspatch.config.tweakermore.name.autoCollectStackRoundUp": "autoCollectStackRoundUp",
+  "crosspatch.config.tweakermore.comment.autoCollectStackRoundUp": "When TweakerMore's \"auto collect material list item\" feature runs, collect each material rounded up to the next full stack instead of the exact missing amount. Example: 14 missing with a stack size of 64 collects 64; with a stack size of 16 collects 16.",
   "crosspatch.config.hotkeys.name.boxLayerNext": "boxLayerNext",
   "crosspatch.config.hotkeys.name.craftEverything": "craftEverything",
   "crosspatch.config.hotkeys.name.boxLayerPrevious": "boxLayerPrevious",
@@ -39,6 +41,7 @@
   "crosspatch.gui.button.tab.generic": "Generic",
   "crosspatch.gui.button.tab.litematica": "Litematica",
   "crosspatch.gui.button.tab.itemscroller": "ItemScroller",
+  "crosspatch.gui.button.tab.tweakermore": "TweakerMore",
 
   "crosspatch.config.generic.name.forceLitematicaLayerAll": "forceLitematicaLayerAll",
   "crosspatch.gui.label.force_litematica_all": "Force Litematica: All",

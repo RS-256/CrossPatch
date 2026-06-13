@@ -18,6 +18,7 @@ build.modmenu       = "*"
 build.malilib       = "*"
 build.litematica    = "*"
 build.itemscroller  = "*"
+build.tweakermore   = "*"
 build.flashback     = "*"
 build.bobby         = "*"
 

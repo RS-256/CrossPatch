@@ -54,6 +54,16 @@ public final class ConfigRegistry {
             ),
 
             /*
+             * TweakerMore - patches
+             */
+            new TaggedConfig(
+                    Configs.TweakerMore.AUTO_COLLECT_STACK_ROUND_UP,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.TWEAKERMORE,
+                    ConfigTag.OPTION
+            ),
+
+            /*
              * Litematica - Box Layer options
              *
              * These are saved to the config file, but not shown in the normal config list.
