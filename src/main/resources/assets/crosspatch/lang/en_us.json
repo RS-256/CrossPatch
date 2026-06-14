@@ -1,6 +1,13 @@
 {
   "crosspatch.gui.title.configs": "CrossPatch v%s",
 
+  "crosspatch.config.crosspatch.name.pickBlockPro": "pickBlockPro",
+  "crosspatch.config.crosspatch.comment.pickBlockPro": "Enable CrossPatch's pickBlockPro feature. When disabled, vanilla pick block behaviour is left untouched.",
+  "crosspatch.config.crosspatch.name.pickBlockProReachOverride": "pickBlockProReachOverride",
+  "crosspatch.config.crosspatch.comment.pickBlockProReachOverride": "Maximum distance (in blocks) at which pick block can target a block while pickBlockPro is enabled. Vanilla pick block is limited to 4 blocks; this override extends that reach.",
+  "crosspatch.config.crosspatch.name.pickBlockProPickPlayerHead": "pickBlockProPickPlayerHead",
+  "crosspatch.config.crosspatch.comment.pickBlockProPickPlayerHead": "When enabled, picking while looking at a player gives that player's current player head (with their skin). Works at normal reach; combine with pickBlockPro to pick distant players too.",
+
   "crosspatch.config.generic.name.boxLayerEnabled": "boxLayerEnabled",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "useLitematicaLayerHotkeys",
   "crosspatch.config.itemscroller.name.massCraftAnvil": "massCraftAnvil",
@@ -42,6 +49,7 @@
   "crosspatch.gui.label.axis": "%s Axis",
 
   "crosspatch.gui.button.tab.all": "All",
+  "crosspatch.gui.button.tab.crosspatch": "CrossPatch",
   "crosspatch.gui.button.tab.generic": "Generic",
   "crosspatch.gui.button.tab.litematica": "Litematica",
   "crosspatch.gui.button.tab.itemscroller": "ItemScroller",

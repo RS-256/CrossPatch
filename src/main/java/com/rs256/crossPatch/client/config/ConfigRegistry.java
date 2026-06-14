@@ -20,6 +20,28 @@ public final class ConfigRegistry {
             ),
 
             /*
+             * CrossPatch - unique features
+             */
+            new TaggedConfig(
+                    Configs.PickBlock.PICK_BLOCK_PRO,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.CROSSPATCH,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.PickBlock.PICK_BLOCK_PRO_REACH_OVERRIDE,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.CROSSPATCH,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.PickBlock.PICK_BLOCK_PRO_PICK_PLAYER_HEAD,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.CROSSPATCH,
+                    ConfigTag.OPTION
+            ),
+
+            /*
              * ItemScroller - MassCraft options
              */
             new TaggedConfig(

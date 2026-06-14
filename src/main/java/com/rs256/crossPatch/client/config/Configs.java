@@ -7,6 +7,7 @@ import com.rs256.crossPatch.Reference;
 import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigHandler;
 import fi.dy.masa.malilib.config.options.ConfigBoolean;
+import fi.dy.masa.malilib.config.options.ConfigDouble;
 import fi.dy.masa.malilib.config.options.ConfigInteger;
 import fi.dy.masa.malilib.util.FileUtils;
 import fi.dy.masa.malilib.util.data.json.JsonUtils;
@@ -89,6 +90,36 @@ public class Configs implements IConfigHandler {
                         .apply(TRANSLATION_PREFIX);
         public static final ConfigInteger BOX_LAYER_Z_MAX_VALUE =
                 new ConfigInteger("boxLayerZMaxValue", 0, -30_000_000, 30_000_000)
+                        .apply(TRANSLATION_PREFIX);
+    }
+
+    public static class PickBlock {
+        private static final String TRANSLATION_PREFIX = Reference.MOD_ID + ".config.crosspatch";
+
+        /**
+         * Master switch for the pickBlockPro feature. When disabled, vanilla pick
+         * block behaviour is left untouched.
+         */
+        public static final ConfigBoolean PICK_BLOCK_PRO =
+                new ConfigBoolean("pickBlockPro", false)
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * Maximum distance (in blocks) at which pick block is allowed to target a
+         * block when {@link #PICK_BLOCK_PRO} is enabled. Vanilla pick block is
+         * limited to 4 blocks; this override extends that reach.
+         */
+        public static final ConfigDouble PICK_BLOCK_PRO_REACH_OVERRIDE =
+                new ConfigDouble("pickBlockProReachOverride", 4.0, 1.0, 128.0, true)
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * When enabled, picking while looking at a player yields that player's current
+         * player head (with their skin), instead of vanilla's behaviour. Works at normal
+         * reach; combined with {@link #PICK_BLOCK_PRO} it also picks distant players.
+         */
+        public static final ConfigBoolean PICK_BLOCK_PRO_PICK_PLAYER_HEAD =
+                new ConfigBoolean("pickBlockProPickPlayerHead", false)
                         .apply(TRANSLATION_PREFIX);
     }
 

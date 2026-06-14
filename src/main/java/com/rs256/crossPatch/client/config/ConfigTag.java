@@ -33,6 +33,11 @@ public enum ConfigTag {
     GENERIC,
 
     /**
+     * CrossPatch's own unique features (not patches to other mods).
+     */
+    CROSSPATCH,
+
+    /**
      * Related to TweakerMore patches.
      */
     TWEAKERMORE,

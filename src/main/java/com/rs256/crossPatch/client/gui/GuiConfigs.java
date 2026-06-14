@@ -40,6 +40,7 @@ public class GuiConfigs extends GuiConfigsBase {
         int y = 26;
 
         x += this.createTabButton(x, y, ConfigGuiTab.ALL) + 2;
+        x += this.createTabButton(x, y, ConfigGuiTab.CROSSPATCH) + 2;
         x += this.createTabButton(x, y, ConfigGuiTab.GENERIC) + 2;
         x += this.createTabButton(x, y, ConfigGuiTab.LITEMATICA) + 2;
         x += this.createTabButton(x, y, ConfigGuiTab.ITEMSCROLLER) + 2;
@@ -93,6 +94,7 @@ public class GuiConfigs extends GuiConfigsBase {
 
     private enum ConfigGuiTab {
         ALL(null, "crosspatch.gui.button.tab.all"),
+        CROSSPATCH(ConfigTag.CROSSPATCH, "crosspatch.gui.button.tab.crosspatch"),
         GENERIC(ConfigTag.GENERIC, "crosspatch.gui.button.tab.generic"),
         LITEMATICA(ConfigTag.LITEMATICA, "crosspatch.gui.button.tab.litematica"),
         ITEMSCROLLER(ConfigTag.ITEMSCROLLER, "crosspatch.gui.button.tab.itemscroller"),
