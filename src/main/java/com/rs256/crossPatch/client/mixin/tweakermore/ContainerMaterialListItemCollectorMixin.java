@@ -192,6 +192,7 @@ public class ContainerMaterialListItemCollectorMixin {
         return totalTaken + taken;
     }
 
+    @Unique
     private static boolean crosspatch$isShulkerBox(ItemStack stack) {
         return stack.getItem() instanceof BlockItem blockItem
                 && blockItem.getBlock() instanceof ShulkerBoxBlock;
@@ -200,6 +201,7 @@ public class ContainerMaterialListItemCollectorMixin {
     /**
      * @return true when the box holds a single item type and nothing else.
      */
+    @Unique
     private static boolean crosspatch$isFilledWithSingleItem(ItemStack shulkerBox) {
         NonNullList<ItemStack> stored = fi.dy.masa.malilib.util.InventoryUtils.getStoredItems(shulkerBox);
         ItemStack first = null;
@@ -218,6 +220,7 @@ public class ContainerMaterialListItemCollectorMixin {
         return first != null;
     }
 
+    @Unique
     private static int crosspatch$countMatchingItems(ItemStack shulkerBox, ItemStack needed) {
         NonNullList<ItemStack> stored = fi.dy.masa.malilib.util.InventoryUtils.getStoredItems(shulkerBox);
         int count = 0;
@@ -236,6 +239,7 @@ public class ContainerMaterialListItemCollectorMixin {
      * Records the amounts of every stored item that does not match {@code current} so
      * the matching material entries can claim them later in the loop.
      */
+    @Unique
     private static void crosspatch$recordOtherMaterials(
             Object2IntOpenHashMap<ItemType> credits,
             ItemStack shulkerBox,

@@ -5,6 +5,7 @@ import fi.dy.masa.malilib.util.LayerRange;
 import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Coerce;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -59,6 +60,7 @@ public abstract class GuiRenderLayerEditBaseMixin {
         cir.setReturnValue(button.getWidth() + 2);
     }
 
+    @Unique
     private static boolean crosspatch$isModeButton(Object type) {
         if (type instanceof Enum<?> enumValue) {
             return "MODE".equals(enumValue.name());
@@ -67,6 +69,7 @@ public abstract class GuiRenderLayerEditBaseMixin {
         return false;
     }
 
+    @Unique
     private static String crosspatch$getDisplayName(Object type, LayerRange layerRange) {
         try {
             Method method = type.getClass().getDeclaredMethod("getDisplayName", LayerRange.class);
