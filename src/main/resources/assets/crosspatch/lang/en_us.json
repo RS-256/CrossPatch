@@ -1,5 +1,5 @@
 {
-  "crosspatch.gui.title.configs": "CrossPatch Configs",
+  "crosspatch.gui.title.configs": "CrossPatch v%s",
 
   "crosspatch.config.generic.name.boxLayerEnabled": "boxLayerEnabled",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "useLitematicaLayerHotkeys",

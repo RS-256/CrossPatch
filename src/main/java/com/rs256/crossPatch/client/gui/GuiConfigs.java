@@ -1,5 +1,6 @@
 package com.rs256.crossPatch.client.gui;
 
+import com.rs256.crossPatch.CrossPatch;
 import com.rs256.crossPatch.Reference;
 import com.rs256.crossPatch.client.config.ConfigQuery;
 import com.rs256.crossPatch.client.config.ConfigTag;
@@ -26,7 +27,8 @@ public class GuiConfigs extends GuiConfigsBase {
                 50,
                 Reference.MOD_ID,
                 parent,
-                Reference.MOD_ID + ".gui.title.configs"
+                Reference.MOD_ID + ".gui.title.configs",
+                CrossPatch.VERSION
         );
     }
 
