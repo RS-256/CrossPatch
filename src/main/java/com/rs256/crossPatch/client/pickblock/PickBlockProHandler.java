@@ -53,7 +53,8 @@ public final class PickBlockProHandler {
         boolean reachExtension = Configs.PickBlock.PICK_BLOCK_PRO.getBooleanValue();
         boolean pickPlayerHead = Configs.PickBlock.PICK_BLOCK_PRO_PICK_PLAYER_HEAD.getBooleanValue();
         boolean pickShulker = Configs.PickBlock.PICK_BLOCK_PRO_PICK_SHULKER_WITH_ITEM.getBooleanValue();
-        if (!reachExtension && !pickPlayerHead && !pickShulker) {
+        boolean hotbarLock = HotbarSlotLock.isRestricted();
+        if (!reachExtension && !pickPlayerHead && !pickShulker && !hotbarLock) {
             return false;
         }
 
@@ -95,9 +96,16 @@ public final class PickBlockProHandler {
                 return !item.isEmpty() && PickBlockInventory.pickOrPlace(mc, item);
             }
 
-            // Within normal reach: only intercept to redirect to a shulker box that holds the
-            // item; everything else is left to vanilla so its behaviour is unchanged. In creative
-            // the item is picked directly (vanilla), so the shulker redirect is survival-only.
+            // Within normal reach we normally defer to vanilla. We only step in when a sub-feature
+            // changes the outcome:
+            //  - the hotbar lock needs every pick routed through our placement (any mode);
+            //  - the survival shulker redirect needs to substitute the shulker box.
+            if (hotbarLock) {
+                // Take over the whole pick so the item lands in an allowed hotbar slot.
+                ItemStack item = resolveBlockItem(mc, player, level, blockHit);
+                return !item.isEmpty() && PickBlockInventory.pickOrPlace(mc, item);
+            }
+
             if (pickShulker && !player.hasInfiniteMaterials()) {
                 ItemStack item = resolveBlockItem(mc, player, level, blockHit);
                 if (!item.isEmpty()

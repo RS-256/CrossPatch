@@ -9,6 +9,7 @@ import fi.dy.masa.malilib.config.IConfigHandler;
 import fi.dy.masa.malilib.config.options.ConfigBoolean;
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 import fi.dy.masa.malilib.config.options.ConfigInteger;
+import fi.dy.masa.malilib.config.options.ConfigString;
 import fi.dy.masa.malilib.util.FileUtils;
 import fi.dy.masa.malilib.util.data.json.JsonUtils;
 
@@ -140,6 +141,16 @@ public class Configs implements IConfigHandler {
          */
         public static final ConfigBoolean PICK_BLOCK_PRO_PICK_SHULKER_WITH_ITEM =
                 new ConfigBoolean("pickBlockProPickShulkerWithItem", false)
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * Restricts which hotbar slots pick may place items into. The value lists the allowed
+         * slot numbers (1-9); any non-digit separators are ignored, so "135", "1,3,5" and
+         * "1 3 5" are equivalent. Empty (or no valid digits) means no restriction - any slot
+         * may be used. When set, picked items only ever land in the listed slots.
+         */
+        public static final ConfigString PICK_BLOCK_PRO_PICK_SLOT_ENABLED =
+                new ConfigString("pickBlockProPickSlotEnabled", "")
                         .apply(TRANSLATION_PREFIX);
     }
 

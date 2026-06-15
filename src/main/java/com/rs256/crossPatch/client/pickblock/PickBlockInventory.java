@@ -9,11 +9,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.level.block.ShulkerBoxBlock;
-//? if <=1.21.11 {
-/*import net.minecraft.world.inventory.ClickType;
-*///?} else {
-import net.minecraft.world.inventory.ContainerInput;
-//?}
 
 import java.util.stream.Stream;
 
@@ -37,8 +32,6 @@ import java.util.stream.Stream;
  * </ul>
  */
 public final class PickBlockInventory {
-    private static final int HOTBAR_SIZE = Inventory.getSelectionSize();
-
     /** First hotbar slot index inside the player {@code InventoryMenu}. */
     private static final int INVENTORY_MENU_HOTBAR_START = 36;
 
@@ -76,6 +69,16 @@ public final class PickBlockInventory {
 
         // Creative can conjure the item itself.
         if (creative) {
+            // With a hotbar lock active, place the item directly into an allowed slot rather than
+            // letting addAndPickItem choose its own slot.
+            if (HotbarSlotLock.isRestricted()) {
+                int target = HotbarSlotLock.chooseTargetSlot(inventory, Inventory.NOT_FOUND_INDEX);
+                inventory.setSelectedSlot(target);
+                inventory.setSelectedItem(item);
+                updateCreativeSlot(mc, target);
+                return true;
+            }
+
             int freeSlotBefore = inventory.getFreeSlot();
             inventory.addAndPickItem(item);
 
@@ -113,16 +116,16 @@ public final class PickBlockInventory {
     }
 
     /**
-     * Brings the item at an existing inventory slot to hand: re-select it if it is already on
-     * the hotbar, otherwise swap it onto an optimal hotbar slot.
+     * Brings the item at an existing inventory slot to hand, honouring the hotbar lock: it ends up
+     * in an allowed hotbar slot (re-selected in place when already there, otherwise swapped in).
      */
-    private static boolean placeFromInventorySlot(Minecraft mc, Inventory inventory, int slot) {
-        if (Inventory.isHotbarSlot(slot)) {
-            inventory.setSelectedSlot(slot);
-            return true;
+    private static boolean placeFromInventorySlot(Minecraft mc, Inventory inventory, int sourceSlot) {
+        int targetSlot = HotbarSlotLock.chooseTargetSlot(inventory, sourceSlot);
+        inventory.setSelectedSlot(targetSlot);
+
+        if (targetSlot != sourceSlot) {
+            swapSlots(mc, targetSlot, sourceSlot);
         }
-        int hotbarSlot = selectOptimalHotbarSlot(inventory);
-        swapToHotbar(mc, hotbarSlot, slot);
         return true;
     }
 
@@ -173,51 +176,22 @@ public final class PickBlockInventory {
     }
 
     /**
-     * Selects an empty hotbar slot (starting from the current one), falling back to the
-     * currently selected slot when the whole hotbar is occupied.
+     * Swaps the item at {@code sourceSlot} onto {@code hotbarSlot} via a {@code SWAP} click on the
+     * player's own inventory menu (no reach check). Handles both main-inventory sources (9-35, which
+     * map 1:1 onto menu slots) and hotbar sources (0-8, which map to menu slots 36-44).
      *
-     * @return the selected hotbar slot index
+     * @param hotbarSlot destination hotbar slot (0-8)
+     * @param sourceSlot source inventory slot index (0-35)
      */
-    private static int selectOptimalHotbarSlot(Inventory inventory) {
-        int slot = findEmptyHotbarSlot(inventory);
-        if (slot == -1) {
-            slot = inventory.getSelectedSlot();
-        }
-        inventory.setSelectedSlot(slot);
-        return slot;
-    }
-
-    /**
-     * @return an empty hotbar slot index, scanning from the selected slot, or {@code -1} if the
-     * hotbar is full.
-     */
-    private static int findEmptyHotbarSlot(Inventory inventory) {
-        int slot = inventory.getSelectedSlot();
-        int tries = 0;
-        while (!inventory.getItem(slot).isEmpty() && tries < HOTBAR_SIZE) {
-            tries++;
-            slot++;
-            if (slot >= HOTBAR_SIZE) {
-                slot = 0;
-            }
-        }
-        return tries >= HOTBAR_SIZE ? -1 : slot;
-    }
-
-    /**
-     * Swaps a main-inventory item onto the given hotbar slot via a container click on the
-     * player's own inventory menu (no reach check).
-     *
-     * @param hotbarSlot    destination hotbar slot (0-8)
-     * @param inventorySlot source main-inventory slot index (9-35); these map 1:1 onto
-     *                      {@code InventoryMenu} slot indices
-     */
-    private static void swapToHotbar(Minecraft mc, int hotbarSlot, int inventorySlot) {
+    private static void swapSlots(Minecraft mc, int hotbarSlot, int sourceSlot) {
+        int menuSlot = Inventory.isHotbarSlot(sourceSlot)
+                ? INVENTORY_MENU_HOTBAR_START + sourceSlot
+                : sourceSlot;
         int containerId = mc.player.inventoryMenu.containerId;
         //? if <=1.21.11 {
-        /*mc.gameMode.handleInventoryMouseClick(containerId, inventorySlot, hotbarSlot, ClickType.SWAP, mc.player);
+        /*mc.gameMode.handleInventoryMouseClick(containerId, menuSlot, hotbarSlot, net.minecraft.world.inventory.ClickType.SWAP, mc.player);
         *///?} else {
-        mc.gameMode.handleContainerInput(containerId, inventorySlot, hotbarSlot, ContainerInput.SWAP, mc.player);
+        mc.gameMode.handleContainerInput(containerId, menuSlot, hotbarSlot, net.minecraft.world.inventory.ContainerInput.SWAP, mc.player);
         //?}
     }
 
