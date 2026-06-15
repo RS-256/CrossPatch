@@ -30,7 +30,7 @@ public class Configs implements IConfigHandler {
                 new ConfigBoolean("useLitematicaLayerHotkeys", true)
                         .apply(TRANSLATION_PREFIX);
         public static final ConfigBoolean FORCE_LITEMATICA_LAYER_ALL =
-                new ConfigBoolean("forceLitematicaLayerAll", false)
+                new ConfigBoolean("forceLitematicaLayerAll", true)
                         .apply(TRANSLATION_PREFIX);
 
         /**

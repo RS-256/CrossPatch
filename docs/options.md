@@ -28,7 +28,7 @@ are also saved through `ConfigRegistry`.
 | --- | --- | --- | --- | --- |
 | `boxLayerEnabled` | boolean | `false` | - | Enables CrossPatch Box Layer filtering for Litematica schematic rendering. When enabled, schematic blocks outside the active X/Y/Z bounds are hidden. |
 | `useLitematicaLayerHotkeys` | boolean | `true` | - | Lets Litematica's own layer next/previous/set-here hotkeys drive the CrossPatch Box Layer when `boxLayerEnabled` is on. |
-| `forceLitematicaLayerAll` | boolean | `false` | - | Keeps Litematica's own render layer mode set to `All` while CrossPatch Box Layer is active. |
+| `forceLitematicaLayerAll` | boolean | `true` | - | Keeps Litematica's own render layer mode set to `All` while CrossPatch Box Layer is active. |
 | `layerChangeAmount` | integer | `1` | `1` to `30000000` | Number of layers moved by one layer next/previous action. Applies to Litematica layer hotkeys and CrossPatch Box Layer hotkeys. |
 | `boxLayerNext` | hotkey | unbound | - | Moves the selected Box Layer bounds forward by `layerChangeAmount`. |
 | `boxLayerPrevious` | hotkey | unbound | - | Moves the selected Box Layer bounds backward by `layerChangeAmount`. |
