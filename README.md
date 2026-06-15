@@ -15,6 +15,12 @@ Current features include:
 For the full list of available options and hotkeys, see
 [docs/options.md](docs/options.md).
 
+## License
+
+CrossPatch is licensed under **LGPL-3.0-only**, matching the original
+[Pick Block Pro](https://modrinth.com/mod/pick-block-pro) project that the
+`pickBlockPro` feature is forked from.
+
 # Stonecutter Fabric template
 ## Setup
 1. Review the supported Minecraft versions in `settings.gradle.kts`.

@@ -11,7 +11,7 @@
     "homepage": "https://stonecutter.kikugie.dev/",
     "sources": "https://github.com/RS-256/CrossPatch"
   },
-  "license": "CC0-1.0",
+  "license": "LGPL-3.0-only",
   "icon": "assets/crosspatch/icon.png",
   "environment": "*",
   "entrypoints": {
