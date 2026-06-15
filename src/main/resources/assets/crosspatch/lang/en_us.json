@@ -7,6 +7,8 @@
   "crosspatch.config.crosspatch.comment.pickBlockProReachOverride": "Maximum distance (in blocks) at which pick block can target a block while pickBlockPro is enabled. Vanilla pick block is limited to 4 blocks; this override extends that reach.",
   "crosspatch.config.crosspatch.name.pickBlockProPickPlayerHead": "pickBlockProPickPlayerHead",
   "crosspatch.config.crosspatch.comment.pickBlockProPickPlayerHead": "When enabled, picking while looking at a player gives that player's current player head (with their skin). Works at normal reach; combine with pickBlockPro to pick distant players too.",
+  "crosspatch.config.crosspatch.name.pickBlockProPickShulkerWithItem": "pickBlockProPickShulkerWithItem",
+  "crosspatch.config.crosspatch.comment.pickBlockProPickShulkerWithItem": "When enabled in survival, if the picked item is not loose in your inventory but a shulker box you carry contains a matching item, that shulker box is picked to your hand instead (only the box is taken; its contents are left untouched). In creative the item itself is picked as usual.",
 
   "crosspatch.config.generic.name.boxLayerEnabled": "boxLayerEnabled",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "useLitematicaLayerHotkeys",

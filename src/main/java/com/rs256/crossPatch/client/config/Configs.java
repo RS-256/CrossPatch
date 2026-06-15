@@ -131,6 +131,16 @@ public class Configs implements IConfigHandler {
         public static final ConfigBoolean PICK_BLOCK_PRO_PICK_PLAYER_HEAD =
                 new ConfigBoolean("pickBlockProPickPlayerHead", false)
                         .apply(TRANSLATION_PREFIX);
+
+        /**
+         * Survival only. When enabled, if the picked item is not loose in the inventory but a
+         * shulker box in the inventory contains a matching item, that shulker box is brought to
+         * hand instead. The shulker's contents are left untouched - only the box is picked. In
+         * creative the item itself is picked as usual (the shulker is left alone).
+         */
+        public static final ConfigBoolean PICK_BLOCK_PRO_PICK_SHULKER_WITH_ITEM =
+                new ConfigBoolean("pickBlockProPickShulkerWithItem", false)
+                        .apply(TRANSLATION_PREFIX);
     }
 
     public static class ItemScroller {

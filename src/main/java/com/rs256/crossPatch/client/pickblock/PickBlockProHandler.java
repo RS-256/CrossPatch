@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.ItemStack;
@@ -51,7 +52,8 @@ public final class PickBlockProHandler {
     public static boolean tryHandlePick(Minecraft mc) {
         boolean reachExtension = Configs.PickBlock.PICK_BLOCK_PRO.getBooleanValue();
         boolean pickPlayerHead = Configs.PickBlock.PICK_BLOCK_PRO_PICK_PLAYER_HEAD.getBooleanValue();
-        if (!reachExtension && !pickPlayerHead) {
+        boolean pickShulker = Configs.PickBlock.PICK_BLOCK_PRO_PICK_SHULKER_WITH_ITEM.getBooleanValue();
+        if (!reachExtension && !pickPlayerHead && !pickShulker) {
             return false;
         }
 
@@ -79,18 +81,30 @@ public final class PickBlockProHandler {
             return PickBlockInventory.pickOrPlace(mc, createPlayerHead(target));
         }
 
-        // Block reach extension: pick blocks that are out of normal reach.
-        if (reachExtension && hit.getType() == HitResult.Type.BLOCK) {
+        if (hit.getType() == HitResult.Type.BLOCK) {
             BlockHitResult blockHit = (BlockHitResult) hit;
-
-            // Defer to vanilla within normal reach (it keeps block/entity priority etc.).
             Vec3 eye = player.getEyePosition(partialTick);
-            if (eye.distanceToSqr(blockHit.getLocation()) <= blockReach * blockReach) {
-                return false;
+            boolean beyondReach = eye.distanceToSqr(blockHit.getLocation()) > blockReach * blockReach;
+
+            // Blocks out of normal reach: take over the pick entirely (needs reach extension).
+            if (beyondReach) {
+                if (!reachExtension) {
+                    return false;
+                }
+                ItemStack item = resolveBlockItem(mc, player, level, blockHit);
+                return !item.isEmpty() && PickBlockInventory.pickOrPlace(mc, item);
             }
 
-            ItemStack item = resolveBlockItem(mc, player, level, blockHit);
-            return !item.isEmpty() && PickBlockInventory.pickOrPlace(mc, item);
+            // Within normal reach: only intercept to redirect to a shulker box that holds the
+            // item; everything else is left to vanilla so its behaviour is unchanged. In creative
+            // the item is picked directly (vanilla), so the shulker redirect is survival-only.
+            if (pickShulker && !player.hasInfiniteMaterials()) {
+                ItemStack item = resolveBlockItem(mc, player, level, blockHit);
+                if (!item.isEmpty()
+                        && player.getInventory().findSlotMatchingItem(item) == Inventory.NOT_FOUND_INDEX) {
+                    return PickBlockInventory.bringContainingShulker(mc, item);
+                }
+            }
         }
 
         return false;
