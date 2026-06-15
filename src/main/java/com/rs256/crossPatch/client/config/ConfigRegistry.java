@@ -224,6 +224,12 @@ public final class ConfigRegistry {
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
+                    Configs.Generic.LAYER_CHANGE_AMOUNT,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
                     Hotkeys.BOX_LAYER_NEXT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,

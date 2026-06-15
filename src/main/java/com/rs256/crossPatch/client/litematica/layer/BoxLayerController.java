@@ -85,12 +85,16 @@ public final class BoxLayerController {
         return new IntBoundingBox(minX, minY, minZ, maxX, maxY, maxZ);
     }
 
+    public static int layerChangeAmount() {
+        return Math.max(1, Configs.Generic.LAYER_CHANGE_AMOUNT.getIntegerValue());
+    }
+
     public static void next() {
-        offsetSelectedBounds(1);
+        offsetSelectedBounds(layerChangeAmount());
     }
 
     public static void previous() {
-        offsetSelectedBounds(-1);
+        offsetSelectedBounds(-layerChangeAmount());
     }
 
     public static void setHere(Minecraft mc) {

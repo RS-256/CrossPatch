@@ -10,6 +10,8 @@
 
   "crosspatch.config.generic.name.boxLayerEnabled": "boxLayerEnabled",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "useLitematicaLayerHotkeys",
+  "crosspatch.config.generic.name.layerChangeAmount": "layerChangeAmount",
+  "crosspatch.config.generic.comment.layerChangeAmount": "How many layers a single Layer Next / Layer Previous press moves. Applies to both Litematica's own layer hotkeys and CrossPatch Box Layer. 1 = normal single-step; higher values treat one press as that many presses.",
   "crosspatch.config.itemscroller.name.massCraftAnvil": "massCraftAnvil",
   "crosspatch.config.itemscroller.name.massCraftStonecutter": "massCraftStonecutter",
   "crosspatch.config.itemscroller.name.useItemScrollerHotkeys": "useItemScrollerHotkeys",

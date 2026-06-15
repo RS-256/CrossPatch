@@ -2,6 +2,7 @@ package com.rs256.crossPatch.client.mixin.litematica;
 
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
 import fi.dy.masa.litematica.config.Hotkeys;
+import fi.dy.masa.litematica.data.DataManager;
 import fi.dy.masa.malilib.hotkeys.IKeybind;
 import fi.dy.masa.malilib.hotkeys.KeyAction;
 import net.minecraft.client.Minecraft;
@@ -28,24 +29,43 @@ public class KeyCallbacksMixin {
             return;
         }
 
-        if (!BoxLayerController.shouldUseLitematicaLayerHotkeys()) {
+        if (BoxLayerController.shouldUseLitematicaLayerHotkeys()) {
+            if (key == Hotkeys.LAYER_NEXT.getKeybind()) {
+                BoxLayerController.next();
+                cir.setReturnValue(true);
+                return;
+            }
+
+            if (key == Hotkeys.LAYER_PREVIOUS.getKeybind()) {
+                BoxLayerController.previous();
+                cir.setReturnValue(true);
+                return;
+            }
+
+            if (key == Hotkeys.LAYER_SET_HERE.getKeybind()) {
+                BoxLayerController.setHere(this.mc);
+                cir.setReturnValue(true);
+            }
+
+            return;
+        }
+
+        // Litematica's own layer hotkeys move its render layer by a single step.
+        // Scale that to layerChangeAmount; amount == 1 keeps vanilla Litematica behaviour.
+        int amount = BoxLayerController.layerChangeAmount();
+
+        if (amount == 1) {
             return;
         }
 
         if (key == Hotkeys.LAYER_NEXT.getKeybind()) {
-            BoxLayerController.next();
+            DataManager.getRenderLayerRange().moveLayer(amount);
             cir.setReturnValue(true);
             return;
         }
 
         if (key == Hotkeys.LAYER_PREVIOUS.getKeybind()) {
-            BoxLayerController.previous();
-            cir.setReturnValue(true);
-            return;
-        }
-
-        if (key == Hotkeys.LAYER_SET_HERE.getKeybind()) {
-            BoxLayerController.setHere(this.mc);
+            DataManager.getRenderLayerRange().moveLayer(-amount);
             cir.setReturnValue(true);
         }
     }

@@ -32,6 +32,16 @@ public class Configs implements IConfigHandler {
                 new ConfigBoolean("forceLitematicaLayerAll", false)
                         .apply(TRANSLATION_PREFIX);
 
+        /**
+         * Number of layers a single Layer Next / Layer Previous press moves. Applies
+         * both to Litematica's own layer hotkeys and to CrossPatch Box Layer. A value
+         * of 1 is the normal single-step behaviour; higher values treat one press as
+         * that many presses.
+         */
+        public static final ConfigInteger LAYER_CHANGE_AMOUNT =
+                new ConfigInteger("layerChangeAmount", 1, 1, 30_000_000)
+                        .apply(TRANSLATION_PREFIX);
+
         public static final ConfigBoolean BOX_LAYER_X_MIN_ENABLED =
                 new ConfigBoolean("boxLayerXMinEnabled", false)
                         .apply(TRANSLATION_PREFIX);
