@@ -1,3 +1,20 @@
+# CrossPatch
+
+CrossPatch is a client-side Fabric mod that adds small compatibility patches and
+quality-of-life features around Litematica, ItemScroller, TweakerMore, and
+pick-block behavior.
+
+Current features include:
+
+- Litematica Box Layer rendering limits with configurable X/Y/Z bounds.
+- Extended pick-block behavior, including optional player-head picking.
+- Stonecutter mass-crafting support for ItemScroller-style workflows.
+- TweakerMore material collection patches, including stack rounding and shulker
+  box collection support.
+
+For the full list of available options and hotkeys, see
+[docs/options.md](docs/options.md).
+
 # Stonecutter Fabric template
 ## Setup
 1. Review the supported Minecraft versions in `settings.gradle.kts`.
