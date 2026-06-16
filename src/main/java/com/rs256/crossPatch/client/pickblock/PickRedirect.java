@@ -17,14 +17,14 @@ import java.util.List;
  * registry, the target against the item registry. Unparseable or unknown ids are skipped, so a
  * bad entry never breaks the rest of the list.</p>
  */
-final class PickRedirect {
+public final class PickRedirect {
     private PickRedirect() {
     }
 
     /**
      * @return {@code true} if any redirect entries are configured.
      */
-    static boolean isEnabled() {
+    public static boolean isEnabled() {
         return !Configs.PickBlock.PICK_BLOCK_PRO_PICK_REDIRECT.getStrings().isEmpty();
     }
 
@@ -34,7 +34,7 @@ final class PickRedirect {
      * @return the item to give instead of picking {@code source}, or {@code null} if {@code source}
      * has no (valid) redirect entry.
      */
-    static Item lookup(Block source) {
+    public static Item lookup(Block source) {
         List<String> entries = Configs.PickBlock.PICK_BLOCK_PRO_PICK_REDIRECT.getStrings();
 
         for (String entry : entries) {
