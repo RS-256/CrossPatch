@@ -45,12 +45,12 @@ public class GuiLitematicaBoxLayer extends GuiBase {
                 sectionY,
                 AxisType.X,
                 "X",
-                Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_X_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_X_MAX_VALUE,
-                Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_X_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_X_MIN_VALUE
+                Configs.Litematica.BOX_LAYER_X_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_X_MAX_SELECTED,
+                Configs.Litematica.BOX_LAYER_X_MAX_VALUE,
+                Configs.Litematica.BOX_LAYER_X_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_X_MIN_SELECTED,
+                Configs.Litematica.BOX_LAYER_X_MIN_VALUE
         );
 
         sectionY += AXIS_LABEL_GAP;
@@ -60,12 +60,12 @@ public class GuiLitematicaBoxLayer extends GuiBase {
                 sectionY,
                 AxisType.Y,
                 "Y",
-                Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_Y_MAX_VALUE,
-                Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_Y_MIN_VALUE
+                Configs.Litematica.BOX_LAYER_Y_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_Y_MAX_SELECTED,
+                Configs.Litematica.BOX_LAYER_Y_MAX_VALUE,
+                Configs.Litematica.BOX_LAYER_Y_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_Y_MIN_SELECTED,
+                Configs.Litematica.BOX_LAYER_Y_MIN_VALUE
         );
 
         sectionY += AXIS_GAP;
@@ -75,12 +75,12 @@ public class GuiLitematicaBoxLayer extends GuiBase {
                 sectionY,
                 AxisType.Z,
                 "Z",
-                Configs.Generic.BOX_LAYER_Z_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_Z_MAX_VALUE,
-                Configs.Generic.BOX_LAYER_Z_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_Z_MIN_VALUE
+                Configs.Litematica.BOX_LAYER_Z_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_Z_MAX_SELECTED,
+                Configs.Litematica.BOX_LAYER_Z_MAX_VALUE,
+                Configs.Litematica.BOX_LAYER_Z_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_Z_MIN_SELECTED,
+                Configs.Litematica.BOX_LAYER_Z_MIN_VALUE
         );
 
         this.updateTextFieldValues();
@@ -124,14 +124,14 @@ public class GuiLitematicaBoxLayer extends GuiBase {
     private void updateTextFieldValues() {
         int index = 0;
 
-        this.setTextFieldValue(index++, Configs.Generic.BOX_LAYER_X_MAX_VALUE);
-        this.setTextFieldValue(index++, Configs.Generic.BOX_LAYER_X_MIN_VALUE);
+        this.setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_X_MAX_VALUE);
+        this.setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_X_MIN_VALUE);
 
-        this.setTextFieldValue(index++, Configs.Generic.BOX_LAYER_Y_MAX_VALUE);
-        this.setTextFieldValue(index++, Configs.Generic.BOX_LAYER_Y_MIN_VALUE);
+        this.setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_Y_MAX_VALUE);
+        this.setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_Y_MIN_VALUE);
 
-        this.setTextFieldValue(index++, Configs.Generic.BOX_LAYER_Z_MAX_VALUE);
-        this.setTextFieldValue(index, Configs.Generic.BOX_LAYER_Z_MIN_VALUE);
+        this.setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_Z_MAX_VALUE);
+        this.setTextFieldValue(index, Configs.Litematica.BOX_LAYER_Z_MIN_VALUE);
     }
 
     private void setTextFieldValue(int index, ConfigInteger value) {
@@ -187,28 +187,28 @@ public class GuiLitematicaBoxLayer extends GuiBase {
         this.addInvalidAxisWarning(
                 warnings,
                 "X",
-                Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_X_MIN_VALUE,
-                Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_X_MAX_VALUE
+                Configs.Litematica.BOX_LAYER_X_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_X_MIN_VALUE,
+                Configs.Litematica.BOX_LAYER_X_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_X_MAX_VALUE
         );
 
         this.addInvalidAxisWarning(
                 warnings,
                 "Y",
-                Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MIN_VALUE,
-                Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MAX_VALUE
+                Configs.Litematica.BOX_LAYER_Y_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_Y_MIN_VALUE,
+                Configs.Litematica.BOX_LAYER_Y_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_Y_MAX_VALUE
         );
 
         this.addInvalidAxisWarning(
                 warnings,
                 "Z",
-                Configs.Generic.BOX_LAYER_Z_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MIN_VALUE,
-                Configs.Generic.BOX_LAYER_Z_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MAX_VALUE
+                Configs.Litematica.BOX_LAYER_Z_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_Z_MIN_VALUE,
+                Configs.Litematica.BOX_LAYER_Z_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_Z_MAX_VALUE
         );
 
         return warnings;

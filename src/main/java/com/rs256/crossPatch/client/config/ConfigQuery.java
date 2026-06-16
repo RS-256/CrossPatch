@@ -9,11 +9,16 @@ public final class ConfigQuery {
     }
 
     /**
-     * All normal options to be saved under "Generic".
-     * Includes internal options that are not shown in the normal config GUI.
+     * All options belonging to a single mod group, saved under that group's
+     * category (named after its config class). Includes internal options that
+     * are not shown in the normal config GUI.
      */
-    public static List<IConfigBase> allOptions() {
-        return collectByTag(ConfigTag.OPTION);
+    public static List<IConfigBase> optionsFor(ConfigTag modTag) {
+        return ConfigRegistry.ENTRIES.stream()
+                .filter(entry -> entry.has(ConfigTag.OPTION))
+                .filter(entry -> entry.has(modTag))
+                .map(TaggedConfig::config)
+                .toList();
     }
 
     /**

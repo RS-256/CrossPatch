@@ -21,8 +21,8 @@ import java.nio.file.Path;
 public class Configs implements IConfigHandler {
     private static final String CONFIG_FILE_NAME = Reference.MOD_ID + ".json";
 
-    public static class Generic {
-        private static final String TRANSLATION_PREFIX = Reference.MOD_ID + ".config.generic";
+    public static class Litematica {
+        private static final String TRANSLATION_PREFIX = Reference.MOD_ID + ".config.litematica";
 
         public static final ConfigBoolean BOX_LAYER_ENABLED =
                 new ConfigBoolean("boxLayerEnabled", false)
@@ -234,7 +234,10 @@ public class Configs implements IConfigHandler {
             if (element != null && element.isJsonObject()) {
                 JsonObject root = element.getAsJsonObject();
 
-                ConfigUtils.readConfigBase(root, "Generic", ConfigQuery.allOptions());
+                ConfigUtils.readConfigBase(root, "Litematica", ConfigQuery.optionsFor(ConfigTag.LITEMATICA));
+                ConfigUtils.readConfigBase(root, "PickBlock", ConfigQuery.optionsFor(ConfigTag.CROSSPATCH));
+                ConfigUtils.readConfigBase(root, "ItemScroller", ConfigQuery.optionsFor(ConfigTag.ITEMSCROLLER));
+                ConfigUtils.readConfigBase(root, "TweakerMore", ConfigQuery.optionsFor(ConfigTag.TWEAKERMORE));
                 ConfigUtils.readConfigBase(root, "Hotkeys", ConfigQuery.allHotkeys());
 
                 CrossPatch.LOGGER.info(
@@ -269,7 +272,10 @@ public class Configs implements IConfigHandler {
         if (Files.isDirectory(dir)) {
             JsonObject root = new JsonObject();
 
-            ConfigUtils.writeConfigBase(root, "Generic", ConfigQuery.allOptions());
+            ConfigUtils.writeConfigBase(root, "Litematica", ConfigQuery.optionsFor(ConfigTag.LITEMATICA));
+            ConfigUtils.writeConfigBase(root, "PickBlock", ConfigQuery.optionsFor(ConfigTag.CROSSPATCH));
+            ConfigUtils.writeConfigBase(root, "ItemScroller", ConfigQuery.optionsFor(ConfigTag.ITEMSCROLLER));
+            ConfigUtils.writeConfigBase(root, "TweakerMore", ConfigQuery.optionsFor(ConfigTag.TWEAKERMORE));
             ConfigUtils.writeConfigBase(root, "Hotkeys", ConfigQuery.allHotkeys());
 
             JsonUtils.writeJsonToFile(root, dir.resolve(CONFIG_FILE_NAME));

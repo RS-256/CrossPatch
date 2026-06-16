@@ -27,7 +27,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rs256.crossPatch.client.config.Configs.Generic.BOX_LAYER_ENABLED;
+import static com.rs256.crossPatch.client.config.Configs.Litematica.BOX_LAYER_ENABLED;
 
 @Mixin(targets = "fi.dy.masa.litematica.gui.GuiRenderLayer")
 public abstract class GuiRenderLayerMixin {
@@ -102,12 +102,12 @@ public abstract class GuiRenderLayerMixin {
                 y,
                 AxisType.X,
                 "X",
-                Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_X_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_X_MAX_VALUE,
-                Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_X_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_X_MIN_VALUE
+                Configs.Litematica.BOX_LAYER_X_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_X_MAX_SELECTED,
+                Configs.Litematica.BOX_LAYER_X_MAX_VALUE,
+                Configs.Litematica.BOX_LAYER_X_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_X_MIN_SELECTED,
+                Configs.Litematica.BOX_LAYER_X_MIN_VALUE
         );
 
         y += 6;
@@ -118,12 +118,12 @@ public abstract class GuiRenderLayerMixin {
                 y,
                 AxisType.Y,
                 "Y",
-                Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_Y_MAX_VALUE,
-                Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Y_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_Y_MIN_VALUE
+                Configs.Litematica.BOX_LAYER_Y_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_Y_MAX_SELECTED,
+                Configs.Litematica.BOX_LAYER_Y_MAX_VALUE,
+                Configs.Litematica.BOX_LAYER_Y_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_Y_MIN_SELECTED,
+                Configs.Litematica.BOX_LAYER_Y_MIN_VALUE
         );
 
         y += 6;
@@ -134,12 +134,12 @@ public abstract class GuiRenderLayerMixin {
                 y,
                 AxisType.Z,
                 "Z",
-                Configs.Generic.BOX_LAYER_Z_MAX_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MAX_SELECTED,
-                Configs.Generic.BOX_LAYER_Z_MAX_VALUE,
-                Configs.Generic.BOX_LAYER_Z_MIN_ENABLED,
-                Configs.Generic.BOX_LAYER_Z_MIN_SELECTED,
-                Configs.Generic.BOX_LAYER_Z_MIN_VALUE
+                Configs.Litematica.BOX_LAYER_Z_MAX_ENABLED,
+                Configs.Litematica.BOX_LAYER_Z_MAX_SELECTED,
+                Configs.Litematica.BOX_LAYER_Z_MAX_VALUE,
+                Configs.Litematica.BOX_LAYER_Z_MIN_ENABLED,
+                Configs.Litematica.BOX_LAYER_Z_MIN_SELECTED,
+                Configs.Litematica.BOX_LAYER_Z_MIN_VALUE
         );
 
         this.crosspatch$updateTextFieldValues();
@@ -285,14 +285,14 @@ public abstract class GuiRenderLayerMixin {
     private void crosspatch$updateTextFieldValues() {
         int index = 0;
 
-        this.crosspatch$setTextFieldValue(index++, Configs.Generic.BOX_LAYER_X_MAX_VALUE);
-        this.crosspatch$setTextFieldValue(index++, Configs.Generic.BOX_LAYER_X_MIN_VALUE);
+        this.crosspatch$setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_X_MAX_VALUE);
+        this.crosspatch$setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_X_MIN_VALUE);
 
-        this.crosspatch$setTextFieldValue(index++, Configs.Generic.BOX_LAYER_Y_MAX_VALUE);
-        this.crosspatch$setTextFieldValue(index++, Configs.Generic.BOX_LAYER_Y_MIN_VALUE);
+        this.crosspatch$setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_Y_MAX_VALUE);
+        this.crosspatch$setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_Y_MIN_VALUE);
 
-        this.crosspatch$setTextFieldValue(index++, Configs.Generic.BOX_LAYER_Z_MAX_VALUE);
-        this.crosspatch$setTextFieldValue(index, Configs.Generic.BOX_LAYER_Z_MIN_VALUE);
+        this.crosspatch$setTextFieldValue(index++, Configs.Litematica.BOX_LAYER_Z_MAX_VALUE);
+        this.crosspatch$setTextFieldValue(index, Configs.Litematica.BOX_LAYER_Z_MIN_VALUE);
     }
 
     @Unique

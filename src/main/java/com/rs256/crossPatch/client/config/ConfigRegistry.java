@@ -123,97 +123,97 @@ public final class ConfigRegistry {
              */
 
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
+                    Configs.Litematica.BOX_LAYER_X_MIN_ENABLED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_X_MIN_SELECTED,
+                    Configs.Litematica.BOX_LAYER_X_MIN_SELECTED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_X_MIN_VALUE,
-                    ConfigTag.LITEMATICA,
-                    ConfigTag.OPTION
-            ),
-
-            new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
-                    ConfigTag.LITEMATICA,
-                    ConfigTag.OPTION
-            ),
-            new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_X_MAX_SELECTED,
-                    ConfigTag.LITEMATICA,
-                    ConfigTag.OPTION
-            ),
-            new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_X_MAX_VALUE,
+                    Configs.Litematica.BOX_LAYER_X_MIN_VALUE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
 
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
+                    Configs.Litematica.BOX_LAYER_X_MAX_ENABLED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Y_MIN_SELECTED,
+                    Configs.Litematica.BOX_LAYER_X_MAX_SELECTED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Y_MIN_VALUE,
-                    ConfigTag.LITEMATICA,
-                    ConfigTag.OPTION
-            ),
-
-            new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
-                    ConfigTag.LITEMATICA,
-                    ConfigTag.OPTION
-            ),
-            new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Y_MAX_SELECTED,
-                    ConfigTag.LITEMATICA,
-                    ConfigTag.OPTION
-            ),
-            new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Y_MAX_VALUE,
+                    Configs.Litematica.BOX_LAYER_X_MAX_VALUE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
 
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Z_MIN_ENABLED,
+                    Configs.Litematica.BOX_LAYER_Y_MIN_ENABLED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Z_MIN_SELECTED,
+                    Configs.Litematica.BOX_LAYER_Y_MIN_SELECTED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Z_MIN_VALUE,
+                    Configs.Litematica.BOX_LAYER_Y_MIN_VALUE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
 
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Z_MAX_ENABLED,
+                    Configs.Litematica.BOX_LAYER_Y_MAX_ENABLED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Z_MAX_SELECTED,
+                    Configs.Litematica.BOX_LAYER_Y_MAX_SELECTED,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_Z_MAX_VALUE,
+                    Configs.Litematica.BOX_LAYER_Y_MAX_VALUE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+
+            new TaggedConfig(
+                    Configs.Litematica.BOX_LAYER_Z_MIN_ENABLED,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.Litematica.BOX_LAYER_Z_MIN_SELECTED,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.Litematica.BOX_LAYER_Z_MIN_VALUE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+
+            new TaggedConfig(
+                    Configs.Litematica.BOX_LAYER_Z_MAX_ENABLED,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.Litematica.BOX_LAYER_Z_MAX_SELECTED,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.Litematica.BOX_LAYER_Z_MAX_VALUE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
@@ -224,25 +224,25 @@ public final class ConfigRegistry {
              * These are shown in the normal config list.
              */
             new TaggedConfig(
-                    Configs.Generic.BOX_LAYER_ENABLED,
+                    Configs.Litematica.BOX_LAYER_ENABLED,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.USE_LITEMATICA_LAYER_HOTKEYS,
+                    Configs.Litematica.USE_LITEMATICA_LAYER_HOTKEYS,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.FORCE_LITEMATICA_LAYER_ALL,
+                    Configs.Litematica.FORCE_LITEMATICA_LAYER_ALL,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
-                    Configs.Generic.LAYER_CHANGE_AMOUNT,
+                    Configs.Litematica.LAYER_CHANGE_AMOUNT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION

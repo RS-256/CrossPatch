@@ -20,40 +20,40 @@ import java.util.List;
 
 public final class BoxLayerController {
     private static final BoxAxis X_AXIS = new BoxAxis(
-            Configs.Generic.BOX_LAYER_X_MIN_ENABLED,
-            Configs.Generic.BOX_LAYER_X_MIN_SELECTED,
-            Configs.Generic.BOX_LAYER_X_MIN_VALUE,
-            Configs.Generic.BOX_LAYER_X_MAX_ENABLED,
-            Configs.Generic.BOX_LAYER_X_MAX_SELECTED,
-            Configs.Generic.BOX_LAYER_X_MAX_VALUE
+            Configs.Litematica.BOX_LAYER_X_MIN_ENABLED,
+            Configs.Litematica.BOX_LAYER_X_MIN_SELECTED,
+            Configs.Litematica.BOX_LAYER_X_MIN_VALUE,
+            Configs.Litematica.BOX_LAYER_X_MAX_ENABLED,
+            Configs.Litematica.BOX_LAYER_X_MAX_SELECTED,
+            Configs.Litematica.BOX_LAYER_X_MAX_VALUE
     );
     private static final BoxAxis Y_AXIS = new BoxAxis(
-            Configs.Generic.BOX_LAYER_Y_MIN_ENABLED,
-            Configs.Generic.BOX_LAYER_Y_MIN_SELECTED,
-            Configs.Generic.BOX_LAYER_Y_MIN_VALUE,
-            Configs.Generic.BOX_LAYER_Y_MAX_ENABLED,
-            Configs.Generic.BOX_LAYER_Y_MAX_SELECTED,
-            Configs.Generic.BOX_LAYER_Y_MAX_VALUE
+            Configs.Litematica.BOX_LAYER_Y_MIN_ENABLED,
+            Configs.Litematica.BOX_LAYER_Y_MIN_SELECTED,
+            Configs.Litematica.BOX_LAYER_Y_MIN_VALUE,
+            Configs.Litematica.BOX_LAYER_Y_MAX_ENABLED,
+            Configs.Litematica.BOX_LAYER_Y_MAX_SELECTED,
+            Configs.Litematica.BOX_LAYER_Y_MAX_VALUE
     );
     private static final BoxAxis Z_AXIS = new BoxAxis(
-            Configs.Generic.BOX_LAYER_Z_MIN_ENABLED,
-            Configs.Generic.BOX_LAYER_Z_MIN_SELECTED,
-            Configs.Generic.BOX_LAYER_Z_MIN_VALUE,
-            Configs.Generic.BOX_LAYER_Z_MAX_ENABLED,
-            Configs.Generic.BOX_LAYER_Z_MAX_SELECTED,
-            Configs.Generic.BOX_LAYER_Z_MAX_VALUE
+            Configs.Litematica.BOX_LAYER_Z_MIN_ENABLED,
+            Configs.Litematica.BOX_LAYER_Z_MIN_SELECTED,
+            Configs.Litematica.BOX_LAYER_Z_MIN_VALUE,
+            Configs.Litematica.BOX_LAYER_Z_MAX_ENABLED,
+            Configs.Litematica.BOX_LAYER_Z_MAX_SELECTED,
+            Configs.Litematica.BOX_LAYER_Z_MAX_VALUE
     );
 
     private BoxLayerController() {
     }
 
     public static boolean isEnabled() {
-        return Configs.Generic.BOX_LAYER_ENABLED.getBooleanValue();
+        return Configs.Litematica.BOX_LAYER_ENABLED.getBooleanValue();
     }
 
     public static boolean shouldUseLitematicaLayerHotkeys() {
         return isEnabled()
-                && Configs.Generic.USE_LITEMATICA_LAYER_HOTKEYS.getBooleanValue();
+                && Configs.Litematica.USE_LITEMATICA_LAYER_HOTKEYS.getBooleanValue();
     }
 
     public static boolean shouldRender(BlockPos pos) {
@@ -86,7 +86,7 @@ public final class BoxLayerController {
     }
 
     public static int layerChangeAmount() {
-        return Math.max(1, Configs.Generic.LAYER_CHANGE_AMOUNT.getIntegerValue());
+        return Math.max(1, Configs.Litematica.LAYER_CHANGE_AMOUNT.getIntegerValue());
     }
 
     public static void next() {
@@ -208,8 +208,8 @@ public final class BoxLayerController {
     }
 
     public static boolean shouldForceLitematicaLayerAll() {
-        return Configs.Generic.BOX_LAYER_ENABLED.getBooleanValue()
-                && Configs.Generic.FORCE_LITEMATICA_LAYER_ALL.getBooleanValue();
+        return Configs.Litematica.BOX_LAYER_ENABLED.getBooleanValue()
+                && Configs.Litematica.FORCE_LITEMATICA_LAYER_ALL.getBooleanValue();
     }
 
     public static void forceLitematicaLayerAll(){
