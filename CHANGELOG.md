@@ -1,24 +1,16 @@
 # Changelog
 
-## v0.2.12
-
-Changes since v0.2.11.
-
+## v0.3.0
 ### Added
-
-- Added `layerChangeAmount`, which lets Litematica layer next/previous actions move multiple layers per key press. This applies to both CrossPatch Box Layer hotkeys and Litematica's own layer hotkeys.
-- Added `pickBlockProPickShulkerWithItem`. In survival, when the picked item is not loose in the inventory but a carried shulker box contains it, pick block can bring that shulker box to hand instead.
-- Added `pickBlockProPickSlotEnabled`, allowing pick-block placement to be restricted to selected hotbar slots. Slot lists such as `135`, `1,3,5`, and `1 3 5` are treated equivalently.
-- Added `docs/options.md` with the full saved option and hotkey list.
-- Added `MODRINTH.md` as release-page documentation.
-
+- Added `pickBlockProPickRedirect`, a Pick Block Pro option that redirects picked blocks to another item. Entries can be written as `source -> target`, `source = target`, or `source target`; for example, `minecraft:grass_block -> minecraft:dirt`.
+- Applied Pick Block Pro redirects to Litematica schematic-world pick block, so redirected schematic blocks now pick the configured replacement item.
+- Applied `pickBlockProReachOverride` to Litematica schematic-world pick block ray traces, allowing distant schematic blocks to be picked while Pick Block Pro is enabled.
 ### Changed
-
-- Bumped the mod version from `0.2.11` to `0.2.12` in `stonecutter.properties.toml`.
-- Replaced the Stonecutter template README with CrossPatch project documentation, including feature highlights and build commands.
-- Updated licensing metadata to `LGPL-3.0-only` and refreshed the `LICENSE` text to match the integrated Pick Block Pro license.
-- Registered the new Pick Block Pro and Litematica options in the config registry and English language file.
-
+- Reorganized saved options into mod-specific config categories: `Litematica`, `PickBlock`, `ItemScroller`, and `TweakerMore`, instead of writing all normal options under `Generic`.
+- Existing option values saved under the old `Generic` category are not migrated automatically, so affected settings will be reset to their defaults after updating.
+- Renamed the internal Litematica option group from `Generic` to `Litematica` and updated its translation keys.
+- Added hover/comment text for Litematica, ItemScroller, TweakerMore, and hotkey options in the config GUI.
 ### Fixed
-
-- Ensured the default for `forceLitematicaLayerAll` is `true`, so Litematica's render layer mode stays on `All` while CrossPatch Box Layer is active.
+- Fixed the config GUI title showing a stale hard-coded CrossPatch version by reading the installed mod version from Fabric Loader metadata.
+- Fixed missing hover text for several config and hotkey entries.
+- Fixed Pick Block Pro features not being applied consistently when picking blocks from Litematica's schematic world.
