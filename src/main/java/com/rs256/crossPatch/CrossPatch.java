@@ -4,6 +4,7 @@ import fi.dy.masa.litematica.InitHandler;
 import fi.dy.masa.malilib.event.InitializationHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.loader.api.FabricLoader;
 //? if <=1.18.2 {
 /*import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +15,11 @@ import org.slf4j.Logger;
 
 public class CrossPatch implements ModInitializer {
     public static final String MOD_ID = "crosspatch";
-    public static final String VERSION = /*$ mod_version*/ "0.2.5";
+    public static final String VERSION = FabricLoader.getInstance()
+            .getModContainer(MOD_ID)
+            .map(container -> container.getMetadata().getVersion().getFriendlyString())
+            .orElse("unknown");
+
     public static final String MINECRAFT = /*$ minecraft*/ "26.1.2";
 
     // This logger is used to write text to the console and the log file.
