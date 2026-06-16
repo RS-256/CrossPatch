@@ -1,5 +1,6 @@
 package com.rs256.crossPatch.client.config;
 
+import com.google.common.collect.ImmutableList;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.rs256.crossPatch.CrossPatch;
@@ -10,6 +11,7 @@ import fi.dy.masa.malilib.config.options.ConfigBoolean;
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 import fi.dy.masa.malilib.config.options.ConfigInteger;
 import fi.dy.masa.malilib.config.options.ConfigString;
+import fi.dy.masa.malilib.config.options.ConfigStringList;
 import fi.dy.masa.malilib.util.FileUtils;
 import fi.dy.masa.malilib.util.data.json.JsonUtils;
 
@@ -151,6 +153,17 @@ public class Configs implements IConfigHandler {
          */
         public static final ConfigString PICK_BLOCK_PRO_PICK_SLOT_ENABLED =
                 new ConfigString("pickBlockProPickSlotEnabled", "")
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * Redirects picked blocks to a different item. Each entry maps a source block id to a
+         * target item id, written as {@code "source -> target"} (the separator may be an arrow,
+         * {@code =}, or whitespace), e.g. {@code "minecraft:grass_block -> minecraft:dirt"}.
+         * When you pick a listed block, you receive the target item instead. Unlisted blocks and
+         * unparseable / unknown ids are left untouched.
+         */
+        public static final ConfigStringList PICK_BLOCK_PRO_PICK_REDIRECT =
+                new ConfigStringList("pickBlockProPickRedirect", ImmutableList.of())
                         .apply(TRANSLATION_PREFIX);
     }
 

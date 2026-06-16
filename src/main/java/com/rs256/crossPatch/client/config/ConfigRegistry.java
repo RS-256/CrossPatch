@@ -52,6 +52,12 @@ public final class ConfigRegistry {
                     ConfigTag.CROSSPATCH,
                     ConfigTag.OPTION
             ),
+            new TaggedConfig(
+                    Configs.PickBlock.PICK_BLOCK_PRO_PICK_REDIRECT,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.CROSSPATCH,
+                    ConfigTag.OPTION
+            ),
 
             /*
              * ItemScroller - MassCraft options

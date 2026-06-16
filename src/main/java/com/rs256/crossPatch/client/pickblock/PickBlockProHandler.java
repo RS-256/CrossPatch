@@ -9,6 +9,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ResolvableProfile;
@@ -54,7 +55,8 @@ public final class PickBlockProHandler {
         boolean pickPlayerHead = Configs.PickBlock.PICK_BLOCK_PRO_PICK_PLAYER_HEAD.getBooleanValue();
         boolean pickShulker = Configs.PickBlock.PICK_BLOCK_PRO_PICK_SHULKER_WITH_ITEM.getBooleanValue();
         boolean hotbarLock = HotbarSlotLock.isRestricted();
-        if (!reachExtension && !pickPlayerHead && !pickShulker && !hotbarLock) {
+        boolean pickRedirect = PickRedirect.isEnabled();
+        if (!reachExtension && !pickPlayerHead && !pickShulker && !hotbarLock && !pickRedirect) {
             return false;
         }
 
@@ -99,9 +101,12 @@ public final class PickBlockProHandler {
             // Within normal reach we normally defer to vanilla. We only step in when a sub-feature
             // changes the outcome:
             //  - the hotbar lock needs every pick routed through our placement (any mode);
+            //  - a redirect changes which item the block yields;
             //  - the survival shulker redirect needs to substitute the shulker box.
-            if (hotbarLock) {
-                // Take over the whole pick so the item lands in an allowed hotbar slot.
+            boolean redirected = pickRedirect
+                    && PickRedirect.lookup(level.getBlockState(blockHit.getBlockPos()).getBlock()) != null;
+            if (hotbarLock || redirected) {
+                // Take over the whole pick (resolveBlockItem applies any redirect).
                 ItemStack item = resolveBlockItem(mc, player, level, blockHit);
                 return !item.isEmpty() && PickBlockInventory.pickOrPlace(mc, item);
             }
@@ -199,6 +204,12 @@ public final class PickBlockProHandler {
         BlockState state = level.getBlockState(blockHit.getBlockPos());
         if (state.isAir()) {
             return ItemStack.EMPTY;
+        }
+
+        // Redirect the picked block to a configured replacement item, if any.
+        Item redirect = PickRedirect.lookup(state.getBlock());
+        if (redirect != null) {
+            return new ItemStack(redirect);
         }
 
         boolean includeData = player.hasInfiniteMaterials() && mc.hasControlDown();

@@ -11,6 +11,8 @@
   "crosspatch.config.crosspatch.comment.pickBlockProPickShulkerWithItem": "When enabled in survival, if the picked item is not loose in your inventory but a shulker box you carry contains a matching item, that shulker box is picked to your hand instead (only the box is taken; its contents are left untouched). In creative the item itself is picked as usual.",
   "crosspatch.config.crosspatch.name.pickBlockProPickSlotEnabled": "pickBlockProPickSlotEnabled",
   "crosspatch.config.crosspatch.comment.pickBlockProPickSlotEnabled": "Chooses which hotbar slots pick is allowed to use. List the enabled slot numbers 1-9 (e.g. \"135\" or \"1,3,5\"); separators are ignored. Leave empty to allow every slot. When set, picked items only ever land in the listed slots.",
+  "crosspatch.config.crosspatch.name.pickBlockProPickRedirect": "pickBlockProPickRedirect",
+  "crosspatch.config.crosspatch.comment.pickBlockProPickRedirect": "Redirects picked blocks to a different item. Each entry maps a source block id to a target item id as \"source -> target\" (separator may be an arrow, =, or space), e.g. \"minecraft:grass_block -> minecraft:dirt\". Picking a listed block gives the target item instead. Unknown ids are ignored.",
 
   "crosspatch.config.generic.name.boxLayerEnabled": "boxLayerEnabled",
   "crosspatch.config.generic.name.useLitematicaLayerHotkeys": "useLitematicaLayerHotkeys",
