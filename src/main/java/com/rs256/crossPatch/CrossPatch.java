@@ -3,7 +3,6 @@ package com.rs256.crossPatch;
 import fi.dy.masa.litematica.InitHandler;
 import fi.dy.masa.malilib.event.InitializationHandler;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 //? if <=1.18.2 {
 /*import org.apache.logging.log4j.LogManager;
