@@ -10,6 +10,7 @@
     "litematica.InventoryUtilsMixin",
     "litematica.KeyCallbacksMixin",
     "litematica.SchematicPlacementMixin",
+    "litematica.SchematicVerifierMixin",
     "litematica.TaskCountBlocksBaseMixin",
     "litematica.TaskCountBlocksPlacementMixin",
     "litematica.WorldRendererSchematicMixin",
