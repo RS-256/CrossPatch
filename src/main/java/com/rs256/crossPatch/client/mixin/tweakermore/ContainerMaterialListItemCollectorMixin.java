@@ -145,6 +145,7 @@ public class ContainerMaterialListItemCollectorMixin {
         // 2) Pull whole boxes that still contain this material out of the container.
         if (missing > 0) {
             boolean singleItemOnly = Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY.getBooleanValue();
+            boolean roundUp = Configs.TweakerMore.AUTO_COLLECT_STACK_ROUND_UP.getBooleanValue();
 
             for (Slot slot : containerInvSlots) {
                 ItemStack slotStack = slot.getItem();
@@ -161,6 +162,10 @@ public class ContainerMaterialListItemCollectorMixin {
                 }
 
                 int inBox = crosspatch$countMatchingItems(boxCopy, needed);
+
+                if (!roundUp && inBox > missing) {
+                    continue;
+                }
 
                 // Shift-click the whole shulker box into the player inventory.
                 fi.dy.masa.itemscroller.util.InventoryUtils.shiftClickSlot(containerScreen, slot.index);
