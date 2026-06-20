@@ -4,14 +4,19 @@ import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
 import fi.dy.masa.litematica.data.DataManager;
 import fi.dy.masa.litematica.schematic.placement.SchematicPlacement;
 import fi.dy.masa.litematica.util.BlockInfoListType;
+import fi.dy.masa.litematica.world.WorldSchematic;
 import fi.dy.masa.malilib.util.IntBoundingBox;
 import fi.dy.masa.malilib.util.LayerRange;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.block.state.BlockState;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Iterator;
@@ -45,6 +50,7 @@ import java.util.Set;
  */
 @Mixin(targets = "fi.dy.masa.litematica.schematic.verifier.SchematicVerifier")
 public abstract class SchematicVerifierMixin {
+    @Final
     @Shadow(remap = false)
     private Set<ChunkPos> requiredChunks;
 
@@ -56,6 +62,28 @@ public abstract class SchematicVerifierMixin {
 
     @Shadow(remap = false)
     public abstract void updateRequiredChunksStringList();
+
+    /**
+     * Keeps the verifier reading the <em>full</em> schematic, independent of the box layer.
+     *
+     * <p>{@code WorldSchematicMixin} makes the schematic world facade hide box-layer blocks, but the
+     * verifier must compare against the real schematic state (the {@code ALL} mode covers everything,
+     * and the per-chunk {@code verifyChunk} path already reads the raw chunk directly). This redirect
+     * routes {@code checkChangedPositions}' incremental re-check through the raw chunk too, so it
+     * matches {@code verifyChunk} and is unaffected by box-layer hiding.</p>
+     */
+    @Redirect(
+            method = "checkChangedPositions",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lfi/dy/masa/litematica/world/WorldSchematic;getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;",
+                    remap = false
+            ),
+            remap = false
+    )
+    private BlockState crosspatch$verifierReadsRawSchematicState(WorldSchematic world, BlockPos pos) {
+        return world.getChunkAt(pos).getBlockState(pos);
+    }
 
     @Inject(method = "startVerification", at = @At("TAIL"), remap = false)
     private void crosspatch$filterRequiredChunksByLayer(CallbackInfo ci) {

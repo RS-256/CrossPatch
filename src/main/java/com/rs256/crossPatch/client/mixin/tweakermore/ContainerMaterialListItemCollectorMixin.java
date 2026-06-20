@@ -6,9 +6,15 @@ import com.rs256.crossPatch.client.config.Configs;
 import fi.dy.masa.litematica.materials.MaterialListEntry;
 import fi.dy.masa.malilib.util.data.ItemType;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.NonNullList;
+//? if <=1.21.11 {
+/*import net.minecraft.world.inventory.ClickType;
+*///?} else {
+import net.minecraft.world.inventory.ContainerInput;
+//?}
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -168,7 +174,14 @@ public class ContainerMaterialListItemCollectorMixin {
                 }
 
                 // Shift-click the whole shulker box into the player inventory.
-                fi.dy.masa.itemscroller.util.InventoryUtils.shiftClickSlot(containerScreen, slot.index);
+                Minecraft mc = Minecraft.getInstance();
+                //? if <=1.21.11 {
+                /*mc.gameMode.handleInventoryMouseClick(
+                        containerScreen.getMenu().containerId, slot.index, 0, ClickType.QUICK_MOVE, mc.player);
+                *///?} else {
+                mc.gameMode.handleContainerInput(
+                        containerScreen.getMenu().containerId, slot.index, 0, ContainerInput.QUICK_MOVE, mc.player);
+                //?}
 
                 // The box (max stack size 1) leaves the slot only if the move succeeded.
                 if (!slot.getItem().isEmpty()) {
@@ -217,7 +230,7 @@ public class ContainerMaterialListItemCollectorMixin {
             }
             if (first == null) {
                 first = boxStack;
-            } else if (!fi.dy.masa.itemscroller.util.InventoryUtils.areStacksEqual(first, boxStack)) {
+            } else if (!fi.dy.masa.malilib.util.InventoryUtils.areStacksEqual(first, boxStack)) {
                 return false;
             }
         }
@@ -231,8 +244,7 @@ public class ContainerMaterialListItemCollectorMixin {
         int count = 0;
 
         for (ItemStack boxStack : stored) {
-            if (!boxStack.isEmpty()
-                    && fi.dy.masa.itemscroller.util.InventoryUtils.areStacksEqual(needed, boxStack)) {
+            if (!boxStack.isEmpty() && fi.dy.masa.malilib.util.InventoryUtils.areStacksEqual(needed, boxStack)) {
                 count += boxStack.getCount();
             }
         }
@@ -253,8 +265,7 @@ public class ContainerMaterialListItemCollectorMixin {
         NonNullList<ItemStack> stored = fi.dy.masa.malilib.util.InventoryUtils.getStoredItems(shulkerBox);
 
         for (ItemStack boxStack : stored) {
-            if (boxStack.isEmpty()
-                    || fi.dy.masa.itemscroller.util.InventoryUtils.areStacksEqual(current, boxStack)) {
+            if (boxStack.isEmpty() || fi.dy.masa.malilib.util.InventoryUtils.areStacksEqual(current, boxStack)) {
                 continue;
             }
             credits.addTo(new ItemType(boxStack, true, false), boxStack.getCount());
