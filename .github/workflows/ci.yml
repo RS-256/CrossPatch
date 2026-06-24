@@ -126,7 +126,7 @@ jobs:
       matrix: ${{ fromJson(needs.build.outputs.matrix) }}
     steps:
       - name: Download built jars
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: _staging-all-remapped
           path: staging
@@ -165,7 +165,7 @@ jobs:
     steps:
       # build ジョブが上げた staging artifact（全 remapped jar）を取得する。
       - name: Download built jars
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: _staging-all-remapped
           path: dist
