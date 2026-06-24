@@ -36,7 +36,7 @@ jobs:
       checksums: ${{ steps.collect.outputs.checksums }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # build 前に mod.version を取得して output 化する。
       # 以降のステップ／ジョブはこのバージョンのディレクトリだけを参照する。
