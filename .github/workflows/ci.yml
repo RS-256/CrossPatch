@@ -110,7 +110,7 @@ jobs:
       # per-file artifact 化のため、いったん全 jar を内部 staging artifact に退避する。
       # （summary ジョブの最後で削除し、最終的には per-file artifact のみ残す）
       - name: Upload staging (all remapped jars)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: _staging-all-remapped
           path: build/libs/${{ steps.version.outputs.version }}/remapped/*.jar
@@ -143,7 +143,7 @@ jobs:
           cp "$file" "dist/${{ matrix.jar }}"
 
       - name: Upload ${{ matrix.jar }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ matrix.artifact }}
           path: dist/${{ matrix.jar }}
