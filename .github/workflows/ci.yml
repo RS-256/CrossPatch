@@ -249,8 +249,8 @@ jobs:
           {
             echo "## \`buildReleaseRemapped\` artifacts"
             echo ""
-            echo "| Jar | Size | SHA-256 | Artifact |"
-            echo "| --- | ---: | --- | --- |"
+            echo "| Jar | Size | SHA-256 |"
+            echo "| --- | ---: | --- |"
           } > summary.md
 
           echo "$CHECKSUMS" \
@@ -260,11 +260,11 @@ jobs:
                 id="${ID[$artifact]:-}"
                 human=$(numfmt --to=iec-i --suffix=B "$size")
                 if [ -n "$id" ]; then
-                  link="[Download](https://github.com/$REPO/actions/runs/$RUN_ID/artifacts/$id)"
+                  jar_cell="[\`$jar\`](https://github.com/$REPO/actions/runs/$RUN_ID/artifacts/$id)"
                 else
-                  link="_n/a_"
+                  jar_cell="\`$jar\`"
                 fi
-                echo "| \`$jar\` | $human ($size B) | \`$sha\` | $link |" >> summary.md
+                echo "| $jar_cell | $human ($size B) | \`$sha\` |" >> summary.md
               done
 
           cat summary.md >> "$GITHUB_STEP_SUMMARY"
