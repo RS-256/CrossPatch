@@ -27,6 +27,7 @@ These are the main options most users will probably care about first:
 - `boxLayerEnabled`: enables CrossPatch's Litematica Box Layer render filter.
 - `pickBlockPro`: enables pickBlockPro features.
 - `massCraftStonecutter`: enables the stonecutter mass-crafting features.
+- `massCraftAnvil`: enables anvil mass crafting (hold the mass-craft hotkey to rename/repair a whole inventory; the rename box no longer swallows the hotkeys).
 - `autoCollectWithShulker`: lets TweakerMore collect whole shulker boxes that contain needed materials.
 
 ## Full Options

@@ -1,5 +1,6 @@
 package com.rs256.crossPatch.client.mixin.screen;
 
+import com.rs256.crossPatch.client.itemscroller.AnvilRenderEventHandler;
 import com.rs256.crossPatch.client.itemscroller.StonecutterRenderEventHandler;
 import fi.dy.masa.malilib.render.GuiContext;
 import net.minecraft.client.Minecraft;
@@ -20,11 +21,13 @@ public abstract class ScreenMixin {
     /*@Inject(method = "renderWithTooltipAndSubtitles", at = @At("TAIL"))
     private void crosspatch_onDrawScreenPost(GuiGraphics graphics, int mouseX, int mouseY, float tickDelta, CallbackInfo ci) {
         StonecutterRenderEventHandler.instance().onDrawScreenPost(GuiContext.fromGuiGraphics(graphics), Minecraft.getInstance(), mouseX, mouseY);
+        AnvilRenderEventHandler.instance().onDrawScreenPost(GuiContext.fromGuiGraphics(graphics), Minecraft.getInstance(), mouseX, mouseY);
     }
     *///?} else {
     @Inject(method = "extractRenderStateWithTooltipAndSubtitles", at = @At("TAIL"))
     private void crosspatch_onDrawScreenPost(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float tickDelta, CallbackInfo ci) {
         StonecutterRenderEventHandler.instance().onDrawScreenPost(GuiContext.fromGuiGraphics(graphics), Minecraft.getInstance(), mouseX, mouseY);
+        AnvilRenderEventHandler.instance().onDrawScreenPost(GuiContext.fromGuiGraphics(graphics), Minecraft.getInstance(), mouseX, mouseY);
     }
     //?}
 }

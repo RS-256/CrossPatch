@@ -62,10 +62,10 @@ Concrete saved option names:
 | Option | Type | Default | Range | Description |
 | --- | --- | --- | --- | --- |
 | `massCraftStonecutter` | boolean | `false` | - | Enables stonecutter mass crafting support. With a stored recipe, the feature can refill the input slot, select the recipe, craft everything, or mass-craft while the mass-craft hotkey is held. |
-| `massCraftAnvil` | boolean | `false` | - | Registered option for anvil mass crafting. No current implementation uses this option. |
+| `massCraftAnvil` | boolean | `false` | - | Enables anvil mass crafting. Place the items in the anvil and hold the mass-craft hotkey: the feature keeps taking the result and refilling both input slots with matching items (e.g. `diamond_sword` + `enchanted_book`), applying the same operation across a whole inventory. Hold the recipe-view hotkey to show stored anvil recipes on the left and store/select one (store hotkey or click); the selected recipe is used for refilling, otherwise the items currently in the slots are used. The rename box no longer auto-focuses (so the hotkeys are not swallowed as typed text): click it to type a name, then press Enter to hand the keyboard back to the hotkeys. |
 | `useItemScrollerHotkeys` | boolean | `true` | - | When ItemScroller is installed, uses ItemScroller's recipe view, store recipe, craft everything, and mass craft hotkeys/settings. When disabled or ItemScroller is absent, CrossPatch fallback hotkeys are used where available. |
-| `recipeView` | hotkey | unbound | - | Holds open CrossPatch's stonecutter recipe view when ItemScroller hotkeys are not being used. |
-| `storeRecipe` | hotkey | unbound | - | Stores the stonecutter recipe under the mouse while the recipe view is open. |
+| `recipeView` | hotkey | unbound | - | Holds open CrossPatch's stonecutter / anvil recipe view when ItemScroller hotkeys are not being used. |
+| `storeRecipe` | hotkey | unbound | - | Stores a recipe while the recipe view is open: the stonecutter recipe under the mouse, or the current anvil contents. |
 | `craftEverything` | hotkey | unbound | - | Crafts as much as possible from the stored stonecutter recipe into the player inventory. This hotkey is registered with malilib's keybind manager, but is not currently registered in `ConfigRegistry`, so it is not shown in the normal config list and is not saved by CrossPatch's config handler. |
 
 ## TweakerMore

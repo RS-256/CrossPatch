@@ -14,7 +14,7 @@ public final class StonecutterInputUtils {
         return Configs.ItemScroller.MASS_CRAFT_STONECUTTER.getBooleanValue() &&
                 craftingFeaturesEnabled() &&
                 GuiUtils.getCurrentScreen() instanceof StonecutterScreen &&
-                getRecipeViewKeybindHeld();
+                isRecipeViewKeybindHeld();
     }
 
     /**
@@ -69,7 +69,7 @@ public final class StonecutterInputUtils {
         return 2;
     }
 
-    private static boolean getRecipeViewKeybindHeld() {
+    public static boolean isRecipeViewKeybindHeld() {
         if (useItemScrollerHotkeys()) {
             return fi.dy.masa.itemscroller.config.Hotkeys.RECIPE_VIEW.getKeybind().isKeybindHeld();
         }

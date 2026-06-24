@@ -3,6 +3,8 @@ package com.rs256.crossPatch;
 import com.rs256.crossPatch.client.config.Configs;
 import com.rs256.crossPatch.client.event.InputHandler;
 import com.rs256.crossPatch.client.event.KeyCallbacks;
+import com.rs256.crossPatch.client.itemscroller.AnvilMassCraftHandler;
+import com.rs256.crossPatch.client.itemscroller.AnvilWorldLoadListener;
 import com.rs256.crossPatch.client.itemscroller.StonecutterMassCraftHandler;
 import com.rs256.crossPatch.client.itemscroller.StonecutterWorldLoadListener;
 import fi.dy.masa.malilib.config.ConfigManager;
@@ -23,7 +25,13 @@ public class InitHandler implements IInitializationHandler {
         StonecutterWorldLoadListener listener = new StonecutterWorldLoadListener();
         WorldLoadHandler.getInstance().registerWorldLoadPreHandler(listener);
         WorldLoadHandler.getInstance().registerWorldLoadPostHandler(listener);
+
+        AnvilWorldLoadListener anvilListener = new AnvilWorldLoadListener();
+        WorldLoadHandler.getInstance().registerWorldLoadPreHandler(anvilListener);
+        WorldLoadHandler.getInstance().registerWorldLoadPostHandler(anvilListener);
+
         TickHandler.getInstance().registerClientTickHandler(StonecutterMassCraftHandler.getInstance());
+        TickHandler.getInstance().registerClientTickHandler(AnvilMassCraftHandler.getInstance());
 
         KeyCallbacks.init(Minecraft.getInstance());
     }

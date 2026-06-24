@@ -20,6 +20,8 @@
     "tweakermore.ContainerMaterialListItemCollectorMixin",
     "flashback.ReplayServerViewDistanceMixin",
     "screen.AbstractContainerScreenAccessor",
+    "screen.AnvilScreenAccessor",
+    "screen.AnvilScreenMixin",
     "screen.ScreenMixin"
   ],
   "injectors": {
