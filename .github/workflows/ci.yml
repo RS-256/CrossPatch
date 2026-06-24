@@ -57,7 +57,7 @@ jobs:
           echo "Resolved mod.version=$version"
 
       - name: Set up JDK 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           # 26.1.2 が Java 25 を要求するため、リリース全体を JDK 25 でビルドする。
