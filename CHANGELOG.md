@@ -1,16 +1,20 @@
 # Changelog
 
-## v0.3.0
+## v0.3.3
 ### Added
-- Added `pickBlockProPickRedirect`, a Pick Block Pro option that redirects picked blocks to another item. Entries can be written as `source -> target`, `source = target`, or `source target`; for example, `minecraft:grass_block -> minecraft:dirt`.
-- Applied Pick Block Pro redirects to Litematica schematic-world pick block, so redirected schematic blocks now pick the configured replacement item.
-- Applied `pickBlockProReachOverride` to Litematica schematic-world pick block ray traces, allowing distant schematic blocks to be picked while Pick Block Pro is enabled.
+- Added `massCraftAnvil`, an ItemScroller-style anvil mass crafting option.
 ### Changed
-- Reorganized saved options into mod-specific config categories: `Litematica`, `PickBlock`, `ItemScroller`, and `TweakerMore`, instead of writing all normal options under `Generic`.
-- Existing option values saved under the old `Generic` category are not migrated automatically, so affected settings will be reset to their defaults after updating.
-- Renamed the internal Litematica option group from `Generic` to `Litematica` and updated its translation keys.
-- Added hover/comment text for Litematica, ItemScroller, TweakerMore, and hotkey options in the config GUI.
+- Updated `recipeView` and `storeRecipe` hotkey descriptions to cover both stonecutter and anvil recipes.
+- Changed the anvil rename box behavior while `massCraftAnvil` is enabled so it no longer auto-focuses and swallows hotkeys. Click the field to type a name, then press Enter to return focus to hotkeys.
+- Updated Gradle wrapper metadata.
+
+## v0.3.2
 ### Fixed
-- Fixed the config GUI title showing a stale hard-coded CrossPatch version by reading the installed mod version from Fabric Loader metadata.
-- Fixed missing hover text for several config and hotkey entries.
-- Fixed Pick Block Pro features not being applied consistently when picking blocks from Litematica's schematic world.
+- Made Litematica schematic verification account for render-layer limits, so verification only requires chunks that intersect the currently rendered region.
+- Fixed Litematica verifier progress getting stuck on unseen chunks outside the active render layer or Box Layer bounds.
+- Fixed Box Layer mode still blocking pick/raycast behavior on hidden schematic blocks by making world-level schematic reads see hidden positions as air.
+- Fixed the schematic verifier's incremental changed-position checks being affected by Box Layer hiding; verifier checks now read the raw schematic state where needed.
+- Fixed TweakerMore shulker auto-collect taking a shulker box that would over-collect when `autoCollectStackRoundUp` is disabled.
+- Fixed TweakerMore shulker collection compatibility with newer Minecraft inventory click APIs.
+### Changed
+- Updated Gradle wrapper metadata.
