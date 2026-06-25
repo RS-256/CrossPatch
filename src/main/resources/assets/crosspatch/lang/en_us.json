@@ -46,12 +46,27 @@
   "crosspatch.config.hotkeys.comment.layerHotkeyCycle": "Cycle which Box Layer bounds (X/Y/Z) are moved by the layer hotkeys, and print the current selection.",
   "crosspatch.config.hotkeys.name.openConfigGui": "openConfigGui",
   "crosspatch.config.hotkeys.comment.openConfigGui": "Open the CrossPatch config GUI.",
+  "crosspatch.config.hotkeys.name.openLitematicDownloader": "openLitematicDownloader",
+  "crosspatch.config.hotkeys.comment.openLitematicDownloader": "Open the Litematic Downloader, a modal that takes a download link.",
   "crosspatch.config.hotkeys.name.recipeView": "recipeView",
   "crosspatch.config.hotkeys.comment.recipeView": "Hold open CrossPatch's stonecutter / anvil recipe view (used when ItemScroller hotkeys are not active).",
   "crosspatch.config.hotkeys.name.storeRecipe": "storeRecipe",
   "crosspatch.config.hotkeys.comment.storeRecipe": "Store the recipe while the recipe view is open: the stonecutter recipe under the cursor, or the current anvil contents.",
 
   "crosspatch.gui.title.litematica_box_layer": "Litematica Box Layer Filter",
+  "crosspatch.gui.title.litematic_downloader": "Litematic Downloader - enter a direct link",
+
+  "crosspatch.message.litematic_downloader.invalid_empty": "No link entered.",
+  "crosspatch.message.litematic_downloader.invalid_url": "Invalid link: not a valid URL.",
+  "crosspatch.message.litematic_downloader.invalid_scheme": "Invalid link: only http and https links are allowed.",
+  "crosspatch.message.litematic_downloader.invalid_not_a_file": "Invalid link: it must point directly to a file.",
+  "crosspatch.message.litematic_downloader.invalid_extension": "Invalid link: unsupported file type. Use a direct link.",
+  "crosspatch.message.litematic_downloader.downloading": "Downloading %s ...",
+  "crosspatch.message.litematic_downloader.download_success": "Saved %s to schematics/download.",
+  "crosspatch.message.litematic_downloader.download_failed": "Failed to download %s.",
+  "crosspatch.message.litematic_downloader.http_error": "Download failed: server returned status %s.",
+  "crosspatch.message.litematic_downloader.too_large": "Download aborted: %s is too large.",
+  "crosspatch.message.litematic_downloader.directory_failed": "Failed to create the download directory: %s.",
 
   "crosspatch.gui.button.open_litematica_box_layer": "Open Litematica Box Layer GUI",
 

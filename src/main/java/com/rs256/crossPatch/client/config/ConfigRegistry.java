@@ -58,6 +58,12 @@ public final class ConfigRegistry {
                     ConfigTag.CROSSPATCH,
                     ConfigTag.OPTION
             ),
+            new TaggedConfig(
+                    Hotkeys.OPEN_LITEMATIC_DOWNLOADER,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.CROSSPATCH,
+                    ConfigTag.HOTKEY
+            ),
 
             /*
              * ItemScroller - MassCraft options

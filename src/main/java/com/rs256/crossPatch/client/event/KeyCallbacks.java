@@ -3,6 +3,7 @@ package com.rs256.crossPatch.client.event;
 import com.rs256.crossPatch.client.config.Hotkeys;
 import com.rs256.crossPatch.client.gui.GuiConfigs;
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
+import com.rs256.crossPatch.client.litematicdownloader.LitematicDownloader;
 import com.rs256.crossPatch.client.itemscroller.AnvilInputUtils;
 import com.rs256.crossPatch.client.itemscroller.StonecutterInputUtils;
 import com.rs256.crossPatch.client.itemscroller.StonecutterMassCraftHandler;
@@ -26,6 +27,7 @@ public final class KeyCallbacks {
         Hotkeys.LAYER_HOTKEY_CYCLE.getKeybind().setCallback(callback);
         Hotkeys.CRAFT_EVERYTHING.getKeybind().setCallback(callback);
         Hotkeys.OPEN_CONFIG_GUI.getKeybind().setCallback(callback);
+        Hotkeys.OPEN_LITEMATIC_DOWNLOADER.getKeybind().setCallback(callback);
         Hotkeys.STORE_RECIPE.getKeybind().setCallback(callback);
     }
 
@@ -63,6 +65,11 @@ public final class KeyCallbacks {
 
             if (key == Hotkeys.OPEN_CONFIG_GUI.getKeybind()) {
                 GuiBase.openGui(new GuiConfigs(null));
+                return true;
+            }
+
+            if (key == Hotkeys.OPEN_LITEMATIC_DOWNLOADER.getKeybind()) {
+                LitematicDownloader.openModal(null);
                 return true;
             }
 
