@@ -40,6 +40,10 @@ public class Hotkeys {
             new ConfigHotkey("openConfigGui", "")
                     .apply(TRANSLATION_PREFIX);
 
+    public static final ConfigHotkey OPEN_LITEMATIC_DOWNLOADER =
+            new ConfigHotkey("openLitematicDownloader", "")
+                    .apply(TRANSLATION_PREFIX);
+
     public static final ConfigHotkey CRAFT_EVERYTHING =
             new ConfigHotkey("craftEverything", "", GUI_RELAXED_CANCEL)
                     .apply(TRANSLATION_PREFIX);
@@ -60,6 +64,7 @@ public class Hotkeys {
             LAYER_AXIS_CYCLE,
             LAYER_HOTKEY_CYCLE,
             OPEN_CONFIG_GUI,
+            OPEN_LITEMATIC_DOWNLOADER,
             RECIPE_VIEW,
             STORE_RECIPE
     );
