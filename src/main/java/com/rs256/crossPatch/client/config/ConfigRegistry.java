@@ -254,6 +254,12 @@ public final class ConfigRegistry {
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
+                    Configs.Litematica.PICK_BLOCK_SHULKER_PREFER_FEWER,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
                     Hotkeys.BOX_LAYER_NEXT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,

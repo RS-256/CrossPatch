@@ -24,17 +24,18 @@ are also saved through `ConfigRegistry`.
 
 ## Litematica
 
-| Option | Type | Default | Range | Description |
-| --- | --- | --- | --- | --- |
-| `boxLayerEnabled` | boolean | `false` | - | Enables CrossPatch Box Layer filtering for Litematica schematic rendering. When enabled, schematic blocks outside the active X/Y/Z bounds are hidden. |
-| `useLitematicaLayerHotkeys` | boolean | `true` | - | Lets Litematica's own layer next/previous/set-here hotkeys drive the CrossPatch Box Layer when `boxLayerEnabled` is on. |
-| `forceLitematicaLayerAll` | boolean | `true` | - | Keeps Litematica's own render layer mode set to `All` while CrossPatch Box Layer is active. |
-| `layerChangeAmount` | integer | `1` | `1` to `30000000` | Number of layers moved by one layer next/previous action. Applies to Litematica layer hotkeys and CrossPatch Box Layer hotkeys. |
-| `boxLayerNext` | hotkey | unbound | - | Moves the selected Box Layer bounds forward by `layerChangeAmount`. |
-| `boxLayerPrevious` | hotkey | unbound | - | Moves the selected Box Layer bounds backward by `layerChangeAmount`. |
-| `boxLayerSetHere` | hotkey | unbound | - | Sets the selected Box Layer bounds to the player's current block position. |
-| `layerAxisCycle` | hotkey | unbound | - | Cycles Litematica's layer axis. When Box Layer is enabled, also cycles which Box Layer bounds are enabled between X/Y/Z. |
-| `layerHotkeyCycle` | hotkey | unbound | - | Cycles which Box Layer bounds are selected for hotkey movement between X/Y/Z and prints the current selection. |
+| Option                        | Type    | Default | Range             | Description                                                                                                                                                              |
+|-------------------------------|---------|---------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `boxLayerEnabled`             | boolean | `false` | -                 | Enables CrossPatch Box Layer filtering for Litematica schematic rendering. When enabled, schematic blocks outside the active X/Y/Z bounds are hidden.                    |
+| `useLitematicaLayerHotkeys`   | boolean | `true`  | -                 | Lets Litematica's own layer next/previous/set-here hotkeys drive the CrossPatch Box Layer when `boxLayerEnabled` is on.                                                  |
+| `forceLitematicaLayerAll`     | boolean | `true`  | -                 | Keeps Litematica's own render layer mode set to `All` while CrossPatch Box Layer is active.                                                                              |
+| `layerChangeAmount`           | integer | `1`     | `1` to `30000000` | Number of layers moved by one layer next/previous action. Applies to Litematica layer hotkeys and CrossPatch Box Layer hotkeys.                                          |
+| `pickBlockShulkerPreferFewer` | boolean | `false` | -                 | When Litematica's pick block brings a shulker box containing the needed item, prefer the shulker box with the fewest matching items instead of the first/most one found. |
+| `boxLayerNext`                | hotkey  | unbound | -                 | Moves the selected Box Layer bounds forward by `layerChangeAmount`.                                                                                                      |
+| `boxLayerPrevious`            | hotkey  | unbound | -                 | Moves the selected Box Layer bounds backward by `layerChangeAmount`.                                                                                                     |
+| `boxLayerSetHere`             | hotkey  | unbound | -                 | Sets the selected Box Layer bounds to the player's current block position.                                                                                               |
+| `layerAxisCycle`              | hotkey  | unbound | -                 | Cycles Litematica's layer axis. When Box Layer is enabled, also cycles which Box Layer bounds are enabled between X/Y/Z.                                                 |
+| `layerHotkeyCycle`            | hotkey  | unbound | -                 | Cycles which Box Layer bounds are selected for hotkey movement between X/Y/Z and prints the current selection.                                                           |
 
 ### Litematica Box Layer GUI Options
 
