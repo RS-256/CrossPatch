@@ -260,6 +260,18 @@ public final class ConfigRegistry {
                     ConfigTag.OPTION
             ),
             new TaggedConfig(
+                    Configs.Litematica.RENDER_ENTITIES_AS_TRANSLUCENT,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
+                    Configs.Litematica.RENDER_ENTITIES_TRANSLUCENT_ALPHA,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ),
+            new TaggedConfig(
                     Hotkeys.BOX_LAYER_NEXT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
