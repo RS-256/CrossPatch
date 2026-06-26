@@ -130,12 +130,15 @@ public final class PickBlockInventory {
     }
 
     /**
-     * Scans the player's storage for the shulker box holding the most of {@code item} and
-     * returns its slot, or {@link Inventory#NOT_FOUND_INDEX} if none carry it.
+     * Scans the player's storage for a shulker box containing {@code item} and returns its slot,
+     * or {@link Inventory#NOT_FOUND_INDEX} if none carry it. Picks the shulker holding the most of
+     * {@code item}, unless {@link Configs.Litematica#PICK_BLOCK_SHULKER_PREFER_FEWER} is enabled,
+     * in which case the shulker holding the fewest (but at least one) is picked instead.
      */
     private static int findShulkerContainingItem(Inventory inventory, Item item) {
+        boolean preferFewer = Configs.Litematica.PICK_BLOCK_SHULKER_PREFER_FEWER.getBooleanValue();
         int bestSlot = Inventory.NOT_FOUND_INDEX;
-        int bestAmount = 0;
+        int bestAmount = preferFewer ? Integer.MAX_VALUE : 0;
 
         for (int slot = 0; slot < Inventory.INVENTORY_SIZE; slot++) {
             ItemStack slotStack = inventory.getItem(slot);
@@ -144,7 +147,11 @@ public final class PickBlockInventory {
             }
 
             int amount = countItemInShulker(slotStack, item);
-            if (amount > bestAmount) {
+            if (amount <= 0) {
+                continue;
+            }
+
+            if (preferFewer ? amount < bestAmount : amount > bestAmount) {
                 bestAmount = amount;
                 bestSlot = slot;
             }

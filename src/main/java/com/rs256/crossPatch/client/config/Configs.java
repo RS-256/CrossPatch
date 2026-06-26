@@ -45,6 +45,14 @@ public class Configs implements IConfigHandler {
                 new ConfigInteger("layerChangeAmount", 1, 1, 30_000_000)
                         .apply(TRANSLATION_PREFIX);
 
+        /**
+         * When enabled, Litematica's pick block shulker logic prefers the shulker box
+         * containing the fewest matching items instead of the first/most one found.
+         */
+        public static final ConfigBoolean PICK_BLOCK_SHULKER_PREFER_FEWER =
+                new ConfigBoolean("pickBlockShulkerPreferFewer", false)
+                        .apply(TRANSLATION_PREFIX);
+
         public static final ConfigBoolean BOX_LAYER_X_MIN_ENABLED =
                 new ConfigBoolean("boxLayerXMinEnabled", false)
                         .apply(TRANSLATION_PREFIX);
