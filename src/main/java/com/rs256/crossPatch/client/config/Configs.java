@@ -53,6 +53,46 @@ public class Configs implements IConfigHandler {
                 new ConfigBoolean("pickBlockShulkerPreferFewer", false)
                         .apply(TRANSLATION_PREFIX);
 
+        /**
+         * When enabled, entities contained in the schematic are rendered translucent,
+         * so they can be told apart from the real world entities. This complements
+         * Litematica's own {@code renderBlocksAsTranslucent} (which only ghosts the
+         * blocks); enable both together for a fully translucent schematic preview.
+         */
+        public static final ConfigBoolean RENDER_ENTITIES_AS_TRANSLUCENT =
+                new ConfigBoolean("renderEntitiesAsTranslucent", false)
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * Opacity of schematic entities while {@link #RENDER_ENTITIES_AS_TRANSLUCENT}
+         * is on. 1.0 is fully opaque, 0.0 is fully invisible. Independent of
+         * Litematica's Ghost Block Alpha so block and entity opacity can be tuned
+         * separately.
+         */
+        public static final ConfigDouble RENDER_ENTITIES_TRANSLUCENT_ALPHA =
+                new ConfigDouble("renderEntitiesTranslucentAlpha", 0.5, 0.0, 1.0, true)
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * When enabled, blocks drawn by a special block-entity renderer (chests,
+         * shulker boxes, ender chests, the bell's golden body, signs, banners…) are
+         * rendered translucent. These are not part of the static chunk geometry, so
+         * Litematica's {@code renderBlocksAsTranslucent} does not ghost them; this
+         * option does.
+         */
+        public static final ConfigBoolean RENDER_ANIMATIVE_BLOCK_AS_TRANSLUCENT =
+                new ConfigBoolean("renderAnimativeBlockAsTranslucent", false)
+                        .apply(TRANSLATION_PREFIX);
+
+        /**
+         * Opacity of specially-rendered block entities while
+         * {@link #RENDER_ANIMATIVE_BLOCK_AS_TRANSLUCENT} is on. 1.0 is fully opaque,
+         * 0.0 is fully invisible. Independent of the entity and Ghost Block opacities.
+         */
+        public static final ConfigDouble RENDER_ANIMATIVE_BLOCK_TRANSLUCENT_ALPHA =
+                new ConfigDouble("renderAnimativeBlockTranslucentAlpha", 0.5, 0.0, 1.0, true)
+                        .apply(TRANSLATION_PREFIX);
+
         public static final ConfigBoolean BOX_LAYER_X_MIN_ENABLED =
                 new ConfigBoolean("boxLayerXMinEnabled", false)
                         .apply(TRANSLATION_PREFIX);

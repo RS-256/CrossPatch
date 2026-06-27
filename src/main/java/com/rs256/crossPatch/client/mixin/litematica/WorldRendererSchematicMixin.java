@@ -32,6 +32,16 @@ public class WorldRendererSchematicMixin {
         SchematicTranslucency.end();
     }
 
+    @Inject(method = "renderBlockEntities", at = @At("HEAD"), remap = false)
+    private void crosspatch$beginBlockEntityTranslucent(CallbackInfo ci) {
+        SchematicTranslucency.beginBlockEntities();
+    }
+
+    @Inject(method = "renderBlockEntities", at = @At("RETURN"), remap = false)
+    private void crosspatch$endBlockEntityTranslucent(CallbackInfo ci) {
+        SchematicTranslucency.end();
+    }
+
     @Redirect(
             method = "prepareEntities",
             at = @At(
