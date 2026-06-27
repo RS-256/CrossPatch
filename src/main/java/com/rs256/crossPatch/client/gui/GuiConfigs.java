@@ -11,11 +11,13 @@ import fi.dy.masa.malilib.gui.GuiConfigsBase;
 import fi.dy.masa.malilib.gui.button.ButtonBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.gui.button.IButtonActionListener;
+import fi.dy.masa.malilib.gui.interfaces.IConfigInfoProvider;
 import fi.dy.masa.malilib.util.StringUtils;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screens.Screen;
 import org.jspecify.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GuiConfigs extends GuiConfigsBase {
@@ -30,6 +32,11 @@ public class GuiConfigs extends GuiConfigsBase {
                 Reference.MOD_ID + ".gui.title.configs",
                 CrossPatch.VERSION
         );
+
+        // Wrap the config hover text so long comments fold instead of running
+        // off-screen. The wrap width tracks the current screen size because the
+        // config list (and thus the hover widgets) is rebuilt on every resize.
+        this.setHoverInfoProvider(new WrappingHoverInfoProvider());
     }
 
     @Override
@@ -90,6 +97,29 @@ public class GuiConfigs extends GuiConfigsBase {
     @Override
     public List getConfigs() {
         return ConfigOptionWrapper.createFor(currentTab.getConfigs());
+    }
+
+    /**
+     * Folds each config's hover comment to roughly half the current screen width.
+     * The returned string keeps any author-supplied {@code \n} breaks (handled by
+     * {@link StringUtils#splitTextToLines}) and re-joins the wrapped lines with
+     * {@code \n}, which malilib's hover widget renders as separate lines.
+     */
+    private final class WrappingHoverInfoProvider implements IConfigInfoProvider {
+        @Override
+        public String getHoverInfo(IConfigBase config) {
+            String comment = config.getComment();
+
+            if (comment == null || comment.isEmpty()) {
+                return comment;
+            }
+
+            int maxLineWidth = Math.max(1, GuiConfigs.this.width / 2);
+            List<String> lines = new ArrayList<>();
+            StringUtils.splitTextToLines(lines, comment, maxLineWidth);
+
+            return String.join("\n", lines);
+        }
     }
 
     private enum ConfigGuiTab {
