@@ -4,6 +4,8 @@ import com.rs256.crossPatch.CrossPatch;
 import com.rs256.crossPatch.Reference;
 import com.rs256.crossPatch.client.config.ConfigQuery;
 import com.rs256.crossPatch.client.config.ConfigTag;
+import com.rs256.crossPatch.client.config.TaggedConfig;
+import com.rs256.crossPatch.client.config.lang.CrossPatchI18n;
 import com.rs256.crossPatch.client.gui.litematica.GuiLitematicaBoxLayer;
 import fi.dy.masa.malilib.config.IConfigBase;
 import fi.dy.masa.malilib.gui.GuiBase;
@@ -100,25 +102,97 @@ public class GuiConfigs extends GuiConfigsBase {
     }
 
     /**
-     * Folds each config's hover comment to roughly half the current screen width.
-     * The returned string keeps any author-supplied {@code \n} breaks (handled by
-     * {@link StringUtils#splitTextToLines}) and re-joins the wrapped lines with
-     * {@code \n}, which malilib's hover widget renders as separate lines.
+     * Builds each config's hover text: the (white) comment body folded to roughly
+     * half the current screen width, followed by grey metadata sections — a
+     * "see also" list of related configs and a "required" mod checklist whose
+     * boxes are ticked from the live mod-presence state. Lines are joined with
+     * {@code \n}, which malilib's hover widget renders as separate lines, and the
+     * {@code §} colour codes are honoured by the font renderer.
      */
     private final class WrappingHoverInfoProvider implements IConfigInfoProvider {
         @Override
         public String getHoverInfo(IConfigBase config) {
-            String comment = config.getComment();
+            List<String> lines = new ArrayList<>();
+            int maxLineWidth = Math.max(1, GuiConfigs.this.width / 2);
 
-            if (comment == null || comment.isEmpty()) {
-                return comment;
+            String comment = config.getComment();
+            if (comment != null && !comment.isEmpty()) {
+                StringUtils.splitTextToLines(lines, comment, maxLineWidth);
             }
 
-            int maxLineWidth = Math.max(1, GuiConfigs.this.width / 2);
-            List<String> lines = new ArrayList<>();
-            StringUtils.splitTextToLines(lines, comment, maxLineWidth);
+            TaggedConfig entry = ConfigQuery.entryOf(config);
+            if (entry != null) {
+                appendSeeAlso(lines, entry, maxLineWidth);
+                appendRequired(lines, entry, maxLineWidth);
+                appendSuggested(lines, entry, maxLineWidth);
+            }
 
             return String.join("\n", lines);
+        }
+
+        private void appendSeeAlso(List<String> lines, TaggedConfig entry, int maxLineWidth) {
+            List<String> refs = entry.meta().seeAlso();
+
+            if (refs.isEmpty()) {
+                return;
+            }
+
+            addColoredWrapped(lines, StringUtils.translate("crosspatch.gui.hover.see_also"),
+                    GuiBase.TXT_AQUA, maxLineWidth);
+
+            String defaultGroup = ConfigQuery.groupOf(entry);
+            for (String ref : refs) {
+                String name = StringUtils.translate(CrossPatchI18n.nameKey(ref, defaultGroup));
+                addColoredWrapped(lines, "- " + name, GuiBase.TXT_GRAY, maxLineWidth);
+            }
+        }
+
+        private void appendRequired(List<String> lines, TaggedConfig entry, int maxLineWidth) {
+            List<String> required = entry.meta().requiredMods();
+
+            if (required.isEmpty()) {
+                return;
+            }
+
+            addColoredWrapped(lines, StringUtils.translate("crosspatch.gui.hover.required"),
+                    GuiBase.TXT_GOLD, maxLineWidth);
+
+            for (String mod : required) {
+                boolean present = FabricLoader.getInstance().isModLoaded(mod);
+                String box = present ? "[x] " : "[ ] ";
+                addColoredWrapped(lines, box + mod, GuiBase.TXT_GRAY, maxLineWidth);
+            }
+        }
+
+        private void appendSuggested(List<String> lines, TaggedConfig entry, int maxLineWidth) {
+            List<String> suggested = entry.meta().suggestedMods();
+
+            if (suggested.isEmpty()) {
+                return;
+            }
+
+            addColoredWrapped(lines, StringUtils.translate("crosspatch.gui.hover.suggested"),
+                    GuiBase.TXT_YELLOW, maxLineWidth);
+
+            for (String mod : suggested) {
+                boolean present = FabricLoader.getInstance().isModLoaded(mod);
+                String box = present ? "[x] " : "[ ] ";
+                addColoredWrapped(lines, box + mod, GuiBase.TXT_GRAY, maxLineWidth);
+            }
+        }
+
+        /**
+         * Wraps {@code text} to {@code maxLineWidth} like the comment body, then adds
+         * each wrapped line in {@code color}. The colour is re-applied per line because
+         * the font renderer resets formatting at every {@code \n}.
+         */
+        private void addColoredWrapped(List<String> lines, String text, String color, int maxLineWidth) {
+            List<String> wrapped = new ArrayList<>();
+            StringUtils.splitTextToLines(wrapped, text, maxLineWidth);
+
+            for (String line : wrapped) {
+                lines.add(color + line + GuiBase.TXT_RST);
+            }
         }
     }
 

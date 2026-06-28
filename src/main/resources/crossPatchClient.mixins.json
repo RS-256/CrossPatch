@@ -23,6 +23,7 @@
     "pickblock.MinecraftPickBlockMixin",
     "tweakermore.ContainerMaterialListItemCollectorMixin",
     "flashback.ReplayServerViewDistanceMixin",
+    "lang.ClientLanguageMixin",
     "screen.AbstractContainerScreenAccessor",
     "screen.AnvilScreenAccessor",
     "screen.AnvilScreenMixin",

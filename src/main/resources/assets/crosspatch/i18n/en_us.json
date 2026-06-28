@@ -1,0 +1,197 @@
+{
+  "crosspatch": {
+    "config": {
+      "crosspatch": {
+        "pickBlockPro": {
+          "name": "pickBlockPro",
+          "hover": "Enable CrossPatch's pickBlockPro feature. When disabled, vanilla pick block behaviour is left untouched."
+        },
+        "pickBlockProReachOverride": {
+          "name": "pickBlockProReachOverride",
+          "hover": "Maximum distance (in blocks) at which pick block can target a block while pickBlockPro is enabled. Vanilla pick block is limited to 4 blocks; this override extends that reach."
+        },
+        "pickBlockProPickPlayerHead": {
+          "name": "pickBlockProPickPlayerHead",
+          "hover": "When enabled, picking while looking at a player gives that player's current player head (with their skin). Works at normal reach; combine with pickBlockPro to pick distant players too."
+        },
+        "pickBlockProPickShulkerWithItem": {
+          "name": "pickBlockProPickShulkerWithItem",
+          "hover": "When enabled in survival, if the picked item is not loose in your inventory but a shulker box you carry contains a matching item, that shulker box is picked to your hand instead (only the box is taken; its contents are left untouched). In creative the item itself is picked as usual."
+        },
+        "pickBlockProPickSlotEnabled": {
+          "name": "pickBlockProPickSlotEnabled",
+          "hover": "Chooses which hotbar slots pick is allowed to use. List the enabled slot numbers 1-9 (e.g. \"135\" or \"1,3,5\"); separators are ignored. Leave empty to allow every slot. When set, picked items only ever land in the listed slots."
+        },
+        "pickBlockProPickRedirect": {
+          "name": "pickBlockProPickRedirect",
+          "hover": "Redirects picked blocks to a different item. Each entry maps a source block id to a target item id as \"source -> target\" (separator may be an arrow, =, or space), e.g. \"minecraft:grass_block -> minecraft:dirt\". Picking a listed block gives the target item instead. Unknown ids are ignored."
+        }
+      },
+      "litematica": {
+        "boxLayerEnabled": {
+          "name": "boxLayerEnabled",
+          "hover": "Enable CrossPatch Box Layer filtering for Litematica schematic rendering. When enabled, schematic blocks outside the active X/Y/Z bounds are hidden. The bounds are edited from the Box Layer GUI."
+        },
+        "useLitematicaLayerHotkeys": {
+          "name": "useLitematicaLayerHotkeys",
+          "hover": "When Box Layer is enabled, let Litematica's own Layer Next / Layer Previous / Set Here hotkeys also drive the CrossPatch Box Layer bounds."
+        },
+        "layerChangeAmount": {
+          "name": "layerChangeAmount",
+          "hover": "How many layers a single Layer Next / Layer Previous press moves. Applies to both Litematica's own layer hotkeys and CrossPatch Box Layer. 1 = normal single-step; higher values treat one press as that many presses."
+        },
+        "pickBlockShulkerPreferFewer": {
+          "name": "pickBlockShulkerPreferFewer",
+          "hover": "When Litematica's pick block brings a shulker box containing the needed item, prefer the shulker box with the fewest matching items instead of the first/most one found."
+        },
+        "renderEntitiesAsTranslucent": {
+          "name": "renderEntitiesAsTranslucent",
+          "hover": "Render the entities contained in the schematic translucent, so they can be told apart from the real world entities. Litematica's own renderBlocksAsTranslucent only ghosts the blocks; enable both together for a fully translucent schematic preview."
+        },
+        "renderEntitiesTranslucentAlpha": {
+          "name": "renderEntitiesTranslucentAlpha",
+          "hover": "Opacity of schematic entities while renderEntitiesAsTranslucent is on. 1.0 is fully opaque, 0.0 is fully invisible. Independent of Litematica's Ghost Block Alpha so block and entity opacity can be tuned separately."
+        },
+        "renderAnimativeBlockAsTranslucent": {
+          "name": "renderAnimativeBlockAsTranslucent",
+          "hover": "Render blocks drawn by a special block-entity renderer (chests, shulker boxes, ender chests, the bell's golden body, signs, banners...) translucent. These are not part of the static chunk geometry, so Litematica's renderBlocksAsTranslucent does not ghost them; this option does."
+        },
+        "renderAnimativeBlockTranslucentAlpha": {
+          "name": "renderAnimativeBlockTranslucentAlpha",
+          "hover": "Opacity of specially-rendered block entities while renderAnimativeBlockAsTranslucent is on. 1.0 is fully opaque, 0.0 is fully invisible. Independent of the entity and Ghost Block opacities."
+        },
+        "forceLitematicaLayerAll": {
+          "name": "forceLitematicaLayerAll",
+          "hover": "Keep Litematica's own render layer mode set to All while CrossPatch Box Layer is active, so Box Layer is the only thing limiting which schematic layers are shown."
+        }
+      },
+      "itemscroller": {
+        "massCraftAnvil": {
+          "name": "massCraftAnvil",
+          "hover": "Enable anvil mass crafting. Place the items in the anvil and hold the mass-craft hotkey: CrossPatch keeps taking the result and refilling both input slots with matching items (e.g. diamond_sword + enchanted_book), applying the same operation across a whole inventory. Hold the recipe-view hotkey to show stored anvil recipes on the left and store/select one (store hotkey or click); the selected recipe is used for refilling. The rename box no longer auto-focuses (so the hotkeys are not swallowed as typed text): click it to type a name, then press Enter to hand the keyboard back to the hotkeys."
+        },
+        "massCraftStonecutter": {
+          "name": "massCraftStonecutter",
+          "hover": "Enable stonecutter mass crafting. With a stored recipe, CrossPatch can refill the input slot, select the recipe, and craft everything (including while the mass-craft hotkey is held)."
+        },
+        "useItemScrollerHotkeys": {
+          "name": "useItemScrollerHotkeys",
+          "hover": "When ItemScroller is installed, reuse its recipe view, store recipe, craft everything and mass craft hotkeys/settings. When disabled or ItemScroller is absent, CrossPatch's own fallback hotkeys are used where available."
+        }
+      },
+      "tweakermore": {
+        "autoCollectStackRoundUp": {
+          "name": "autoCollectStackRoundUp",
+          "hover": "When TweakerMore's \"auto collect material list item\" feature runs, collect each material rounded up to the next full stack instead of the exact missing amount. Example: 14 missing with a stack size of 64 collects 64; with a stack size of 16 collects 16."
+        },
+        "autoCollectWithShulker": {
+          "name": "autoCollectWithShulker",
+          "hover": "When TweakerMore's \"auto collect material list item\" feature runs, also pull whole shulker boxes (any color) from the container whose contents match a missing material. The box is moved into your inventory and Litematica credits its contents against the material list."
+        },
+        "autoCollectWithShulkerSingleItemOnly": {
+          "name": "autoCollectWithShulkerSingleItemOnly",
+          "hover": "Only collect a shulker box when it is filled with a single item type that matches the needed material. When disabled, any shulker box that contains the needed item is collected."
+        }
+      },
+      "hotkeys": {
+        "boxLayerNext": {
+          "name": "boxLayerNext",
+          "hover": "Move the selected Box Layer bounds forward by layerChangeAmount."
+        },
+        "craftEverything": {
+          "name": "craftEverything",
+          "hover": "Craft as much as possible from the stored stonecutter recipe into your inventory."
+        },
+        "boxLayerPrevious": {
+          "name": "boxLayerPrevious",
+          "hover": "Move the selected Box Layer bounds backward by layerChangeAmount."
+        },
+        "boxLayerSetHere": {
+          "name": "boxLayerSetHere",
+          "hover": "Set the selected Box Layer bounds to your current block position."
+        },
+        "layerAxisCycle": {
+          "name": "layerAxisCycle",
+          "hover": "Cycle Litematica's layer axis. When Box Layer is enabled, also cycle which Box Layer bounds (X/Y/Z) are enabled."
+        },
+        "layerHotkeyCycle": {
+          "name": "layerHotkeyCycle",
+          "hover": "Cycle which Box Layer bounds (X/Y/Z) are moved by the layer hotkeys, and print the current selection."
+        },
+        "openConfigGui": {
+          "name": "openConfigGui",
+          "hover": "Open the CrossPatch config GUI."
+        },
+        "openLitematicDownloader": {
+          "name": "openLitematicDownloader",
+          "hover": "Open the Litematic Downloader, a modal that takes a download link."
+        },
+        "recipeView": {
+          "name": "recipeView",
+          "hover": "Hold open CrossPatch's stonecutter / anvil recipe view (used when ItemScroller hotkeys are not active)."
+        },
+        "storeRecipe": {
+          "name": "storeRecipe",
+          "hover": "Store the recipe while the recipe view is open: the stonecutter recipe under the cursor, or the current anvil contents."
+        }
+      }
+    },
+    "gui": {
+      "title": {
+        "configs": "CrossPatch v%s",
+        "litematica_box_layer": "Litematica Box Layer Filter",
+        "litematic_downloader": "Litematic Downloader - enter a direct link",
+        "inline_box_layer": "CrossPatch Box Layer"
+      },
+      "button": {
+        "open_litematica_box_layer": "Open Litematica Box Layer GUI",
+        "set_here": "Set Here",
+        "tab": {
+          "all": "All",
+          "crosspatch": "CrossPatch",
+          "generic": "Generic",
+          "litematica": "Litematica",
+          "itemscroller": "ItemScroller",
+          "tweakermore": "TweakerMore"
+        }
+      },
+      "label": {
+        "hotkey": "Hotkey",
+        "max_layer": "Max layer",
+        "min_layer": "Min layer",
+        "enable": "Enable",
+        "axis": "%s Axis",
+        "force_litematica_all": "Force Litematica: All",
+        "box_layer": "Box Layer"
+      },
+      "hover": {
+        "enable": "Use this bound as a schematic render limit.",
+        "hotkey": "Move this bound with layer hotkeys.",
+        "force_litematica_all": "Keeps Litematica's own render layer mode set to All while using CrossPatch Box Layer.",
+        "box_layer": "Enable CrossPatch Box Layer rendering filter.",
+        "see_also": "See also:",
+        "required": "required:",
+        "suggested": "suggested:"
+      },
+      "warning": {
+        "invalid_range": "Invalid range: no schematic blocks will be rendered."
+      }
+    },
+    "message": {
+      "litematic_downloader": {
+        "invalid_empty": "No link entered.",
+        "invalid_url": "Invalid link: not a valid URL.",
+        "invalid_scheme": "Invalid link: only http and https links are allowed.",
+        "invalid_not_a_file": "Invalid link: it must point directly to a file.",
+        "invalid_extension": "Invalid link: unsupported file type. Use a direct link.",
+        "downloading": "Downloading %s ...",
+        "download_success": "Saved %s to schematics/download.",
+        "download_failed": "Failed to download %s.",
+        "http_error": "Download failed: server returned status %s.",
+        "too_large": "Download aborted: %s is too large.",
+        "directory_failed": "Failed to create the download directory: %s."
+      },
+      "box_layer_hotkey_selection": "Box Layer hotkeys: %s"
+    }
+  }
+}

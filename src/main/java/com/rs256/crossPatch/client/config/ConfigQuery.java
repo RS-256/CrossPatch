@@ -1,11 +1,49 @@
 package com.rs256.crossPatch.client.config;
 
 import fi.dy.masa.malilib.config.IConfigBase;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
 public final class ConfigQuery {
     private ConfigQuery() {
+    }
+
+    /**
+     * The registry entry backing a given config option, or {@code null} when the
+     * config is not registered. Identity comparison: configs are singletons.
+     */
+    @Nullable
+    public static TaggedConfig entryOf(IConfigBase config) {
+        return ConfigRegistry.ENTRIES.stream()
+                .filter(entry -> entry.config() == config)
+                .findFirst()
+                .orElse(null);
+    }
+
+    /**
+     * The translation-key group an entry's keys live under, e.g. {@code litematica}
+     * or {@code hotkeys}. Hotkeys share a single {@code hotkeys} group regardless of
+     * which mod they patch, matching how the i18n keys are laid out.
+     */
+    public static String groupOf(TaggedConfig entry) {
+        if (entry.has(ConfigTag.HOTKEY)) {
+            return "hotkeys";
+        }
+        if (entry.has(ConfigTag.CROSSPATCH)) {
+            return "crosspatch";
+        }
+        if (entry.has(ConfigTag.LITEMATICA)) {
+            return "litematica";
+        }
+        if (entry.has(ConfigTag.ITEMSCROLLER)) {
+            return "itemscroller";
+        }
+        if (entry.has(ConfigTag.TWEAKERMORE)) {
+            return "tweakermore";
+        }
+
+        return "";
     }
 
     /**

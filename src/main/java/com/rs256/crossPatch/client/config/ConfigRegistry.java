@@ -27,6 +27,12 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.CROSSPATCH,
                     ConfigTag.OPTION
+            ).seeAlso(
+                    "pickBlockProReachOverride",
+                    "pickBlockProPickPlayerHead",
+                    "pickBlockProPickShulkerWithItem",
+                    "pickBlockProPickSlotEnabled",
+                    "pickBlockProPickRedirect"
             ),
             new TaggedConfig(
                     Configs.PickBlock.PICK_BLOCK_PRO_REACH_OVERRIDE,
@@ -73,31 +79,31 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.ITEMSCROLLER,
                     ConfigTag.OPTION
-            ),
+            ).suggested("itemscroller"),
             new TaggedConfig(
                     Configs.ItemScroller.MASS_CRAFT_ANVIL,
                     ConfigTag.VIEWABLE,
                     ConfigTag.ITEMSCROLLER,
                     ConfigTag.OPTION
-            ),
+            ).suggested("itemscroller"),
             new TaggedConfig(
                     Configs.ItemScroller.USE_ITEMSCROLLER_HOTKEYS,
                     ConfigTag.VIEWABLE,
                     ConfigTag.ITEMSCROLLER,
                     ConfigTag.OPTION
-            ),
+            ).suggested("itemscroller"),
             new TaggedConfig(
                     Hotkeys.RECIPE_VIEW,
                     ConfigTag.VIEWABLE,
                     ConfigTag.ITEMSCROLLER,
                     ConfigTag.HOTKEY
-            ),
+            ).suggested("itemscroller"),
             new TaggedConfig(
                     Hotkeys.STORE_RECIPE,
                     ConfigTag.VIEWABLE,
                     ConfigTag.ITEMSCROLLER,
                     ConfigTag.HOTKEY
-            ),
+            ).suggested("itemscroller"),
 
             /*
              * TweakerMore - patches
@@ -107,19 +113,19 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.TWEAKERMORE,
                     ConfigTag.OPTION
-            ),
+            ).required("tweakermore"),
             new TaggedConfig(
                     Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER,
                     ConfigTag.VIEWABLE,
                     ConfigTag.TWEAKERMORE,
                     ConfigTag.OPTION
-            ),
+            ).required("tweakermore").seeAlso("autoCollectWithShulkerSingleItemOnly"),
             new TaggedConfig(
                     Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY,
                     ConfigTag.VIEWABLE,
                     ConfigTag.TWEAKERMORE,
                     ConfigTag.OPTION
-            ),
+            ).required("tweakermore").seeAlso("autoCollectWithShulker"),
 
             /*
              * Litematica - Box Layer options
@@ -234,6 +240,9 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
+            ).required("litematica").seeAlso(
+                    "useLitematicaLayerHotkeys",
+                    "forceLitematicaLayerAll"
             ),
             new TaggedConfig(
                     Configs.Litematica.USE_LITEMATICA_LAYER_HOTKEYS,
@@ -258,55 +267,55 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica").seeAlso("pickBlockProPickShulkerWithItem"),
             new TaggedConfig(
                     Configs.Litematica.RENDER_ENTITIES_AS_TRANSLUCENT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica").seeAlso("renderEntitiesTranslucentAlpha"),
             new TaggedConfig(
                     Configs.Litematica.RENDER_ENTITIES_TRANSLUCENT_ALPHA,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica"),
             new TaggedConfig(
                     Configs.Litematica.RENDER_ANIMATIVE_BLOCK_AS_TRANSLUCENT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica").seeAlso("renderAnimativeBlockTranslucentAlpha"),
             new TaggedConfig(
                     Configs.Litematica.RENDER_ANIMATIVE_BLOCK_TRANSLUCENT_ALPHA,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica"),
             new TaggedConfig(
                     Hotkeys.BOX_LAYER_NEXT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ),
+            ).suggested("litematica"),
             new TaggedConfig(
                     Hotkeys.BOX_LAYER_PREVIOUS,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ),
+            ).suggested("litematica"),
             new TaggedConfig(
                     Hotkeys.BOX_LAYER_SET_HERE,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ),
+            ).suggested("litematica"),
             new TaggedConfig(
                     Hotkeys.LAYER_AXIS_CYCLE,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ),
+            ).suggested("litematica"),
             new TaggedConfig(
                     Hotkeys.LAYER_HOTKEY_CYCLE,
                     ConfigTag.VIEWABLE,
