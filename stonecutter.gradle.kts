@@ -1,8 +1,6 @@
 import groovy.json.JsonOutput
-import groovy.json.JsonSlurper
 import java.net.HttpURLConnection
 import java.net.URI
-import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
 plugins {
@@ -100,9 +98,6 @@ abstract class PublishGithubReleaseTask : DefaultTask() {
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val changelogFile: RegularFileProperty
 
-    @get:Input
-    abstract val jarPaths: ListProperty<String>
-
     @TaskAction
     fun publish() {
         val tokenValue = token.orNull
@@ -114,9 +109,6 @@ abstract class PublishGithubReleaseTask : DefaultTask() {
         }
 
         val changelog = changelogFile.get().asFile.readText(StandardCharsets.UTF_8)
-        val jars = jarPaths.get().map(::File).onEach { jar ->
-            require(jar.isFile) { "Release jar was not found: ${jar.absolutePath}" }
-        }
 
         fun Any?.toJsonValue() = JsonOutput.toJson(this)
 
@@ -134,25 +126,6 @@ abstract class PublishGithubReleaseTask : DefaultTask() {
         val (createStatus, createResponse) = githubRequest("POST", releaseApi, tokenValue, body = createBody)
         if (createStatus !in 200..299) {
             throw GradleException("Failed to create GitHub Release ($createStatus): $createResponse")
-        }
-
-        @Suppress("UNCHECKED_CAST")
-        val releaseId = (JsonSlurper().parseText(createResponse) as Map<String, Any>)["id"]
-            ?: throw GradleException("Could not find GitHub release id in API response.")
-
-        jars.forEach { jar ->
-            val encodedName = URLEncoder.encode(jar.name, StandardCharsets.UTF_8).replace("+", "%20")
-            val uploadUri = "https://uploads.github.com/repos/$repositoryValue/releases/$releaseId/assets?name=$encodedName"
-            val (uploadStatus, uploadResponse) = githubRequest(
-                method = "POST",
-                uri = uploadUri,
-                token = tokenValue,
-                contentType = "application/java-archive",
-                body = jar.readBytes()
-            )
-            if (uploadStatus !in 200..299) {
-                throw GradleException("Failed to upload ${jar.name} to GitHub Release ($uploadStatus): $uploadResponse")
-            }
         }
     }
 
@@ -187,30 +160,21 @@ abstract class PublishGithubReleaseTask : DefaultTask() {
 
 val githubToken = providers.environmentVariable("GITHUB_TOKEN")
 val githubRepository = property("publish.github").toString()
-val githubModId = property("mod.id").toString()
 val githubModName = property("mod.name").toString()
 val githubModVersion = property("mod.version").toString()
 val githubReleaseTitle = "$githubModName v$githubModVersion"
 val githubReleaseTag = "v$githubModVersion"
 val githubChangelogFile = layout.projectDirectory.file("CHANGELOG.md")
-val githubReleaseJarFiles = releaseVersions.map { version ->
-    layout.buildDirectory.file("libs/$githubModVersion/remapped/$githubModId-v$githubModVersion-mc$version.jar")
-        .get()
-        .asFile
-        .absolutePath
-}
 
 tasks.register<PublishGithubReleaseTask>("publishGithubRelease") {
     group       = "publishing"
-    description = "Build release jars and publish them to a GitHub Release."
-    dependsOn("buildReleaseRemapped")
+    description = "Publish a GitHub Release without uploading assets."
 
     token.set(githubToken)
     repository.set(githubRepository)
     releaseTitle.set(githubReleaseTitle)
     releaseTag.set(githubReleaseTag)
     changelogFile.set(githubChangelogFile)
-    jarPaths.set(githubReleaseJarFiles)
 }
 /*
 gradle.projectsEvaluated {
