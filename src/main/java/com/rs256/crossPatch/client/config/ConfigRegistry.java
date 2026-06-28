@@ -113,19 +113,19 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.TWEAKERMORE,
                     ConfigTag.OPTION
-            ).required("tweakermore"),
+            ).required("tweakermore", "litematica"),
             new TaggedConfig(
                     Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER,
                     ConfigTag.VIEWABLE,
                     ConfigTag.TWEAKERMORE,
                     ConfigTag.OPTION
-            ).required("tweakermore").seeAlso("autoCollectWithShulkerSingleItemOnly"),
+            ).required("tweakermore", "litematica").seeAlso("autoCollectWithShulkerSingleItemOnly"),
             new TaggedConfig(
                     Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY,
                     ConfigTag.VIEWABLE,
                     ConfigTag.TWEAKERMORE,
                     ConfigTag.OPTION
-            ).required("tweakermore").seeAlso("autoCollectWithShulker"),
+            ).required("tweakermore", "litematica").seeAlso("autoCollectWithShulker"),
 
             /*
              * Litematica - Box Layer options
@@ -249,25 +249,25 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica"),
             new TaggedConfig(
                     Configs.Litematica.FORCE_LITEMATICA_LAYER_ALL,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica"),
             new TaggedConfig(
                     Configs.Litematica.LAYER_CHANGE_AMOUNT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ),
+            ).required("litematica"),
             new TaggedConfig(
                     Configs.Litematica.PICK_BLOCK_SHULKER_PREFER_FEWER,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ).required("litematica").seeAlso("pickBlockProPickShulkerWithItem"),
+            ).required("litematica").seeAlso("crosspatch.pickBlockProPickShulkerWithItem"),
             new TaggedConfig(
                     Configs.Litematica.RENDER_ENTITIES_AS_TRANSLUCENT,
                     ConfigTag.VIEWABLE,
@@ -297,30 +297,30 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ).suggested("litematica"),
+            ).required("litematica"),
             new TaggedConfig(
                     Hotkeys.BOX_LAYER_PREVIOUS,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ).suggested("litematica"),
+            ).required("litematica"),
             new TaggedConfig(
                     Hotkeys.BOX_LAYER_SET_HERE,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ).suggested("litematica"),
+            ).required("litematica"),
             new TaggedConfig(
                     Hotkeys.LAYER_AXIS_CYCLE,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            ).suggested("litematica"),
+            ).required("litematica"),
             new TaggedConfig(
                     Hotkeys.LAYER_HOTKEY_CYCLE,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
-            )
+            ).required("litematica")
     );
 }
