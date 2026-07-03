@@ -182,11 +182,22 @@ public final class BoxLayerController {
     }
 
     public static void offsetSelectedBounds(int amount) {
+        offsetSelectedBounds(amount, true);
+    }
+
+    /**
+     * @param save whether to persist the config to disk; hold-to-repeat skips saving
+     *             per step and flushes once when the key is released
+     */
+    public static void offsetSelectedBounds(int amount, boolean save) {
         X_AXIS.offsetSelected(amount);
         Y_AXIS.offsetSelected(amount);
         Z_AXIS.offsetSelected(amount);
 
-        Configs.saveToFile();
+        if (save) {
+            Configs.saveToFile();
+        }
+
         refreshSchematic();
     }
 

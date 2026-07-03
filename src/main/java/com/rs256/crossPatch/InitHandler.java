@@ -1,6 +1,7 @@
 package com.rs256.crossPatch;
 
 import com.rs256.crossPatch.client.config.Configs;
+import com.rs256.crossPatch.client.event.BoxLayerRepeatHandler;
 import com.rs256.crossPatch.client.event.InputHandler;
 import com.rs256.crossPatch.client.event.KeyCallbacks;
 import com.rs256.crossPatch.client.itemscroller.AnvilMassCraftHandler;
@@ -32,6 +33,7 @@ public class InitHandler implements IInitializationHandler {
 
         TickHandler.getInstance().registerClientTickHandler(StonecutterMassCraftHandler.getInstance());
         TickHandler.getInstance().registerClientTickHandler(AnvilMassCraftHandler.getInstance());
+        TickHandler.getInstance().registerClientTickHandler(BoxLayerRepeatHandler.getInstance());
 
         KeyCallbacks.init(Minecraft.getInstance());
     }
