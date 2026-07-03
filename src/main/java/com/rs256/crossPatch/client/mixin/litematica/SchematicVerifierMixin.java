@@ -66,7 +66,7 @@ public abstract class SchematicVerifierMixin {
     /**
      * Keeps the verifier reading the <em>full</em> schematic, independent of the box layer.
      *
-     * <p>{@code WorldSchematicMixin} makes the schematic world facade hide box-layer blocks, but the
+     * <p>{@code LevelBoxLayerMixin} makes the schematic world facade hide box-layer blocks, but the
      * verifier must compare against the real schematic state (the {@code ALL} mode covers everything,
      * and the per-chunk {@code verifyChunk} path already reads the raw chunk directly). This redirect
      * routes {@code checkChangedPositions}' incremental re-check through the raw chunk too, so it

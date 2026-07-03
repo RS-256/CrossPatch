@@ -4,11 +4,14 @@
   "compatibilityLevel": "${java}",
   "plugin": "com.rs256.crossPatch.client.mixin.CrossPatchMixinPlugin",
   "client": [
+    "flashback.ReplayServerViewDistanceMixin",
+    "lang.ClientLanguageMixin",
     "litematica.ChunkCacheSchematicMixin",
     "litematica.ChunkRendererSchematicVboMixin",
     "litematica.GuiRenderLayerMixin",
     "litematica.InventoryUtilsMixin",
     "litematica.KeyCallbacksMixin",
+    "litematica.LevelBoxLayerMixin",
     "litematica.RenderSetupTexturesAccessor",
     "litematica.RenderTypeStateAccessor",
     "litematica.SchematicPlacementMixin",
@@ -18,16 +21,13 @@
     "litematica.TaskCountBlocksPlacementMixin",
     "litematica.TextureBindingAccessor",
     "litematica.WorldRendererSchematicMixin",
-    "litematica.WorldSchematicMixin",
     "litematica.WorldUtilsPickBlockMixin",
     "pickblock.MinecraftPickBlockMixin",
-    "tweakermore.ContainerMaterialListItemCollectorMixin",
-    "flashback.ReplayServerViewDistanceMixin",
-    "lang.ClientLanguageMixin",
     "screen.AbstractContainerScreenAccessor",
     "screen.AnvilScreenAccessor",
     "screen.AnvilScreenMixin",
-    "screen.ScreenMixin"
+    "screen.ScreenMixin",
+    "tweakermore.ContainerMaterialListItemCollectorMixin"
   ],
   "injectors": {
     "defaultRequire": 1
@@ -36,6 +36,7 @@
     "requireAnnotations": true
   },
   "mixins": [
-    "litematica.GuiRenderLayerEditBaseMixin"
+    "litematica.GuiRenderLayerEditBaseMixin",
+    "litematica.LevelMixin"
   ]
 }
