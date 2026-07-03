@@ -7,7 +7,7 @@ plugins {
     id("dev.kikugie.stonecutter")
     id("net.fabricmc.fabric-loom") version "1.16-SNAPSHOT" apply false
     id("net.fabricmc.fabric-loom-remap") version "1.16-SNAPSHOT" apply false
-    // id("me.modmuss50.mod-publish-plugin") version "1.1.0" apply false  // uncomment to enable publishing
+    id("me.modmuss50.mod-publish-plugin") version "1.1.0" apply false  // uncomment to enable publishing
 }
 
 stonecutter active "26.1.2"
@@ -67,7 +67,7 @@ tasks.register("buildReleaseRemapped") {
 // mod-publish-plugin above and setting publish.modrinth /
 // publish.curseforge in gradle.properties.
 // ---------------------------------------------------------------
-/*
+
 stonecutter tasks {
     order("publishModrinth")
     order("publishCurseforge")
@@ -78,7 +78,6 @@ tasks.register("publishAllToModrinthRelease") {
     description = "Publish all release versions to Modrinth in order."
     dependsOn(releaseVersions.map { ":$it:publishModrinth" })
 }
-*/
 
 @DisableCachingByDefault(because = "Publishes artifacts to GitHub Releases.")
 abstract class PublishGithubReleaseTask : DefaultTask() {
@@ -176,7 +175,7 @@ tasks.register<PublishGithubReleaseTask>("publishGithubRelease") {
     releaseTag.set(githubReleaseTag)
     changelogFile.set(githubChangelogFile)
 }
-/*
+
 gradle.projectsEvaluated {
     releaseVersions.zipWithNext().forEach { (prev, next) ->
         project(":$next").tasks.named("publishModrinth") {
@@ -184,4 +183,3 @@ gradle.projectsEvaluated {
         }
     }
 }
-*/

@@ -1,6 +1,6 @@
 plugins {
     id("net.fabricmc.fabric-loom-remap")
-    // id("me.modmuss50.mod-publish-plugin")  // uncomment to enable publishing
+    id("me.modmuss50.mod-publish-plugin")  // uncomment to enable publishing
 }
 
 version = "${property("mod.version")}+${sc.current.version}"
@@ -213,7 +213,6 @@ tasks {
 // root/gradle.properties.
 // ---------------------------------------------------------------
 
-/*
 val changelogReleaseVersion = rootProject.extra["publish.changelogReleaseVersion"] as String
 val publishChangelog =
     if (sc.current.version == changelogReleaseVersion) rootProject.file("CHANGELOG.md").readText()
@@ -221,7 +220,7 @@ val publishChangelog =
 
 publishMods {
     file           = tasks.remapJar.flatMap { it.archiveFile }
-    additionalFiles.from(tasks.remapSourcesJar.flatMap { it.archiveFile })
+    //dditionalFiles.from(tasks.remapSourcesJar.flatMap { it.archiveFile })
     displayName    = "${property("mod.name")} v${property("mod.version")} for mc${property("mod.mc_title")}"
     version        = "v${property("mod.version")}-mc${sc.current.version}"
     changelog      = publishChangelog
@@ -229,7 +228,7 @@ publishMods {
     modLoaders.add("fabric")
 
     dryRun = providers.environmentVariable("MODRINTH_TOKEN").getOrNull() == null
-        || providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
+    //    || providers.environmentVariable("CURSEFORGE_TOKEN").getOrNull() == null
 
 // Strongly recommend that you save the token in your PC’s environment variables.
 
@@ -241,7 +240,7 @@ publishMods {
             slug = "fabric-api"
         }
     }
-
+/*
     curseforge {
         projectId   = property("publish.curseforge") as String
         accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
@@ -250,12 +249,13 @@ publishMods {
             slug = "fabric-api"
         }
     }
+*/
 }
 
 tasks.named("publishModrinth") {
     dependsOn("remapJar")
 }
-
+/*
 tasks.named("publishCurseforge") {
     dependsOn("remapJar")
 }

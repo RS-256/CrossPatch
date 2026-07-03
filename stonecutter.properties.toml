@@ -22,7 +22,7 @@ build.tweakermore   = "*"
 build.flashback     = "*"
 build.bobby         = "*"
 
-publish.modrinth   = "XXXXXXXX"
+publish.modrinth   = "BVBbOmXq"
 publish.curseforge = "XXXXXXXX"
 publish.github     = "RS-256/CrossPatch"
 
