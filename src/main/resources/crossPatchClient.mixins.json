@@ -11,7 +11,6 @@
     "litematica.GuiRenderLayerMixin",
     "litematica.InventoryUtilsMixin",
     "litematica.KeyCallbacksMixin",
-    "litematica.LevelBoxLayerMixin",
     "litematica.RenderSetupTexturesAccessor",
     "litematica.RenderTypeStateAccessor",
     "litematica.SchematicPlacementMixin",
