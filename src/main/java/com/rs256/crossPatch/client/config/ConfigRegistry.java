@@ -293,6 +293,12 @@ public final class ConfigRegistry {
                     ConfigTag.OPTION
             ).required("litematica"),
             new TaggedConfig(
+                    Configs.Litematica.RENDER_OVERLAPPING_SCHEMATICS,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION
+            ).required("litematica"),
+            new TaggedConfig(
                     Hotkeys.BOX_LAYER_NEXT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,

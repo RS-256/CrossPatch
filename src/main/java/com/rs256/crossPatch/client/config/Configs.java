@@ -93,6 +93,20 @@ public class Configs implements IConfigHandler {
                 new ConfigDouble("renderAnimativeBlockTranslucentAlpha", 0.5, 0.0, 1.0, true)
                         .apply(TRANSLATION_PREFIX);
 
+        /**
+         * When enabled, overlapping schematic placements are all rendered in the
+         * area they share. Litematica rebuilds each schematic-world chunk by
+         * placing every placement into it in order, and by default a later
+         * placement's air erases the earlier placements' blocks inside the whole
+         * overlapping volume, leaving only one schematic visible there. This
+         * option keeps air from erasing already-placed blocks, so the union of
+         * all placements is shown. Where two placements put a (non-air) block at
+         * the very same position only one of them can be displayed.
+         */
+        public static final ConfigBoolean RENDER_OVERLAPPING_SCHEMATICS =
+                new ConfigBoolean("renderOverlappingSchematics", false)
+                        .apply(TRANSLATION_PREFIX);
+
         public static final ConfigBoolean BOX_LAYER_X_MIN_ENABLED =
                 new ConfigBoolean("boxLayerXMinEnabled", false)
                         .apply(TRANSLATION_PREFIX);

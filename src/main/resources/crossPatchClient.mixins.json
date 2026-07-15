@@ -20,6 +20,7 @@
     "litematica.TaskCountBlocksBaseMixin",
     "litematica.TaskCountBlocksPlacementMixin",
     "litematica.TextureBindingAccessor",
+    "litematica.WorldPlacingUtilsMixin",
     "litematica.WorldRendererSchematicMixin",
     "litematica.WorldUtilsPickBlockMixin",
     "pickblock.MinecraftPickBlockMixin",

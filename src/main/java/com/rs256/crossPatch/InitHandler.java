@@ -8,11 +8,13 @@ import com.rs256.crossPatch.client.itemscroller.AnvilMassCraftHandler;
 import com.rs256.crossPatch.client.itemscroller.AnvilWorldLoadListener;
 import com.rs256.crossPatch.client.itemscroller.StonecutterMassCraftHandler;
 import com.rs256.crossPatch.client.itemscroller.StonecutterWorldLoadListener;
+import com.rs256.crossPatch.client.litematica.render.SchematicOverlap;
 import fi.dy.masa.malilib.config.ConfigManager;
 import fi.dy.masa.malilib.event.InputEventHandler;
 import fi.dy.masa.malilib.event.TickHandler;
 import fi.dy.masa.malilib.event.WorldLoadHandler;
 import fi.dy.masa.malilib.interfaces.IInitializationHandler;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 
 public class InitHandler implements IInitializationHandler {
@@ -36,5 +38,9 @@ public class InitHandler implements IInitializationHandler {
         TickHandler.getInstance().registerClientTickHandler(BoxLayerRepeatHandler.getInstance());
 
         KeyCallbacks.init(Minecraft.getInstance());
+
+        if (FabricLoader.getInstance().isModLoaded("litematica")) {
+            SchematicOverlap.init();
+        }
     }
 }

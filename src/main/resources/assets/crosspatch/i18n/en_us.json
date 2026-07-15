@@ -60,6 +60,10 @@
           "name": "renderAnimativeBlockTranslucentAlpha",
           "hover": "Opacity of specially-rendered block entities while renderAnimativeBlockAsTranslucent is on. 1.0 is fully opaque, 0.0 is fully invisible. Independent of the entity and Ghost Block opacities."
         },
+        "renderOverlappingSchematics": {
+          "name": "renderOverlappingSchematics",
+          "hover": "When multiple schematic placements overlap, render all of them in the shared area. Normally the air inside one placement's bounds erases the other placements' blocks there, so only one schematic is visible. With this on, air never erases already-placed blocks; if two placements put a block at the very same position, only one of them can be shown."
+        },
         "forceLitematicaLayerAll": {
           "name": "forceLitematicaLayerAll",
           "hover": "Keep Litematica's own render layer mode set to All while CrossPatch Box Layer is active, so Box Layer is the only thing limiting which schematic layers are shown."
