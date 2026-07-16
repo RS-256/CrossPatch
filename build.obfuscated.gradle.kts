@@ -82,7 +82,10 @@ dependencies {
     modImplementation("com.github.sakura-ryoko:malilib:${sc.current.version}-${property("deps.malilib")}")
     modImplementation("com.github.sakura-ryoko:litematica:${sc.current.version}-${property("deps.litematica")}")
     modImplementation("com.github.sakura-ryoko:itemscroller:${sc.current.version}-${property("deps.itemscroller")}")
-    modImplementation("me.fallenbreath:tweakermore:${property("deps.tweakermore")}-mc${sc.current.version}")
+    modImplementation("me.fallenbreath:tweakermore:${property("deps.tweakermore")}-mc${sc.current.version}") {
+        // temporary, newer version should set newer dependency, check tweakermore
+        exclude(group = "fi.dy.masa.litematica")
+    }
     modImplementation("maven.modrinth:flashback:${property("deps.flashback")}")
     modImplementation("maven.modrinth:bobby:${property("deps.bobby")}")
     modImplementation("com.github.bawnorton.mixinsquared:mixinsquared-fabric:${property("deps.mixinsquared")}")
