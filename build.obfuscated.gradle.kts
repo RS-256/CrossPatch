@@ -30,8 +30,7 @@ repositories {
     }
     strictMaven("https://www.cursemaven.com",     "CurseForge", "curse.maven")
     strictMaven("https://api.modrinth.com/maven", "Modrinth",   "maven.modrinth")
-    strictMaven("https://masa.dy.fi/maven/salura-ryoko", "sakura-ryoko", "fi.dy.masa")
-    maven {
+   maven {
         url = uri("https://masa.dy.fi/maven/sakura-ryoko")
         content {
             includeGroupAndSubgroups("fi.dy.masa")
