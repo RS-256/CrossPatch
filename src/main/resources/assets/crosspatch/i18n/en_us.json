@@ -38,7 +38,7 @@
         },
         "layerChangeAmount": {
           "name": "layerChangeAmount",
-          "hover": "How many layers a single Layer Next / Layer Previous press moves. Applies to both Litematica's own layer hotkeys and CrossPatch Box Layer. 1 = normal single-step; higher values treat one press as that many presses."
+          "hover": "How many layers a single Layer Next / Layer Previous press moves. Applies to both Litematica's own layer hotkeys and CrossPatch Box Layer. 1 = normal single-step; higher values treat one press as that many presses. Can also be changed in game by holding the layerChangeAmountModifier hotkey and scrolling."
         },
         "pickBlockShulkerPreferFewer": {
           "name": "pickBlockShulkerPreferFewer",
@@ -118,6 +118,10 @@
           "name": "layerAxisCycle",
           "hover": "Cycle Litematica's layer axis. When Box Layer is enabled, also cycle which Box Layer bounds (X/Y/Z) are enabled."
         },
+        "layerChangeAmountModifier": {
+          "name": "layerChangeAmountModifier",
+          "hover": "Hold this key and scroll the mouse wheel to raise / lower layerChangeAmount by one per notch. The scroll is swallowed, so the hotbar does not move while the key is held."
+        },
         "layerHotkeyCycle": {
           "name": "layerHotkeyCycle",
           "hover": "Cycle which Box Layer bounds (X/Y/Z) are moved by the layer hotkeys, and print the current selection."
@@ -195,7 +199,8 @@
         "too_large": "Download aborted: %s is too large.",
         "directory_failed": "Failed to create the download directory: %s."
       },
-      "box_layer_hotkey_selection": "Box Layer hotkeys: %s"
+      "box_layer_hotkey_selection": "Box Layer hotkeys: %s",
+      "layer_change_amount": "Layer change amount: %s"
     }
   }
 }

@@ -261,7 +261,7 @@ public final class ConfigRegistry {
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,
                     ConfigTag.OPTION
-            ).required("litematica"),
+            ).required("litematica").seeAlso("hotkeys.layerChangeAmountModifier"),
             new TaggedConfig(
                     Configs.Litematica.PICK_BLOCK_SHULKER_PREFER_FEWER,
                     ConfigTag.VIEWABLE,
@@ -322,6 +322,12 @@ public final class ConfigRegistry {
                     ConfigTag.LITEMATICA,
                     ConfigTag.HOTKEY
             ).required("litematica"),
+            new TaggedConfig(
+                    Hotkeys.LAYER_CHANGE_AMOUNT_MODIFIER,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.HOTKEY
+            ).required("litematica").seeAlso("litematica.layerChangeAmount"),
             new TaggedConfig(
                     Hotkeys.LAYER_HOTKEY_CYCLE,
                     ConfigTag.VIEWABLE,

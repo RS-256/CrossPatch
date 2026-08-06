@@ -39,6 +39,7 @@ are also saved through `ConfigRegistry`.
 | `boxLayerPrevious`            | hotkey  | unbound | -                 | Moves the selected Box Layer bounds backward by `layerChangeAmount`.                                                                                                     |
 | `boxLayerSetHere`             | hotkey  | unbound | -                 | Sets the selected Box Layer bounds to the player's current block position.                                                                                               |
 | `layerAxisCycle`              | hotkey  | unbound | -                 | Cycles Litematica's layer axis. When Box Layer is enabled, also cycles which Box Layer bounds are enabled between X/Y/Z.                                                 |
+| `layerChangeAmountModifier`   | hotkey  | unbound | -                 | Modifier key: while held, scrolling the mouse wheel raises/lowers `layerChangeAmount` by one per notch (clamped to its range) and swallows the scroll, so the hotbar does not move. |
 | `layerHotkeyCycle`            | hotkey  | unbound | -                 | Cycles which Box Layer bounds are selected for hotkey movement between X/Y/Z and prints the current selection.                                                           |
 
 ### Litematica Box Layer GUI Options

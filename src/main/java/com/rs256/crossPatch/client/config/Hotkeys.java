@@ -32,6 +32,10 @@ public class Hotkeys {
             new ConfigHotkey("layerAxisCycle", "")
                     .apply(TRANSLATION_PREFIX);
 
+    public static final ConfigHotkey LAYER_CHANGE_AMOUNT_MODIFIER =
+            new ConfigHotkey("layerChangeAmountModifier", "", KeybindSettings.MODIFIER_INGAME)
+                    .apply(TRANSLATION_PREFIX);
+
     public static final ConfigHotkey LAYER_HOTKEY_CYCLE =
             new ConfigHotkey("layerHotkeyCycle", "")
                     .apply(TRANSLATION_PREFIX);
@@ -62,6 +66,7 @@ public class Hotkeys {
             BOX_LAYER_SET_HERE,
             CRAFT_EVERYTHING,
             LAYER_AXIS_CYCLE,
+            LAYER_CHANGE_AMOUNT_MODIFIER,
             LAYER_HOTKEY_CYCLE,
             OPEN_CONFIG_GUI,
             OPEN_LITEMATIC_DOWNLOADER,

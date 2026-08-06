@@ -12,12 +12,14 @@ import com.rs256.crossPatch.client.itemscroller.StonecutterRecipeStorage;
 import com.rs256.crossPatch.client.itemscroller.StonecutterRenderEventHandler;
 import com.rs256.crossPatch.client.mixin.screen.AbstractContainerScreenAccessor;
 import com.rs256.crossPatch.client.mixin.screen.AnvilScreenAccessor;
+import fi.dy.masa.malilib.config.options.ConfigInteger;
 import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.hotkeys.IHotkey;
 import fi.dy.masa.malilib.hotkeys.IKeyboardInputHandler;
 import fi.dy.masa.malilib.hotkeys.IKeybindManager;
 import fi.dy.masa.malilib.hotkeys.IKeybindProvider;
 import fi.dy.masa.malilib.hotkeys.IMouseInputHandler;
+import fi.dy.masa.malilib.util.InfoUtils;
 import fi.dy.masa.malilib.util.KeyCodes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.EditBox;
@@ -131,6 +133,10 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
 
     @Override
     public boolean onMouseScroll(double mouseX, double mouseY, double amount) {
+        if (adjustLayerChangeAmount(amount)) {
+            return true;
+        }
+
         if (StonecutterInputUtils.isRecipeViewOpen()) {
             StonecutterRecipeStorage.getInstance().scrollSelection(amount < 0);
             return true;
@@ -202,6 +208,35 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
 
     @Override
     public void onMouseMove(double mouseX, double mouseY) {
+    }
+
+    /**
+     * Changes the layerChangeAmount option by scrolling while the modifier hotkey is
+     * held. One wheel notch is one step; the value is clamped to the option's range.
+     * The scroll is swallowed so the hotbar does not move along with it.
+     */
+    private static boolean adjustLayerChangeAmount(double amount) {
+        if (!Hotkeys.LAYER_CHANGE_AMOUNT_MODIFIER.getKeybind().isKeybindHeld()) {
+            return false;
+        }
+
+        ConfigInteger config = Configs.Litematica.LAYER_CHANGE_AMOUNT;
+        // malilib hands out whole notches, but never assume a zero-sized step.
+        int change = amount > 0 ? Math.max(1, (int) amount) : Math.min(-1, (int) amount);
+        int oldValue = config.getIntegerValue();
+
+        config.setIntegerValue(oldValue + change);
+
+        if (config.getIntegerValue() != oldValue) {
+            Configs.saveToFile();
+        }
+
+        InfoUtils.printActionbarMessage(
+                Reference.MOD_ID + ".message.layer_change_amount",
+                config.getIntegerValue()
+        );
+
+        return true;
     }
 
     /**
