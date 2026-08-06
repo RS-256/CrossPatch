@@ -9,3 +9,4 @@
 
 - some options metadata are re-considered the actual code 
 - another fix of not working placementRestriction when the boxLayer is enabled
+- pickBlockProPickSlotEnabled no longer moves an item that is already on your hotbar into a listed slot; it is now selected in place like vanilla, and the restriction only applies to items brought in from elsewhere

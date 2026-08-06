@@ -63,15 +63,14 @@ final class HotbarSlotLock {
      *
      * @param sourceSlot the inventory slot the item currently occupies, or
      *                   {@link Inventory#NOT_FOUND_INDEX} if it is not in the inventory
-     * @return an allowed hotbar slot index (0-8)
+     * @return the hotbar slot index (0-8) to select
      */
     static int chooseTargetSlot(Inventory inventory, int sourceSlot) {
-        boolean[] allowed = allowedMask();
-
-        // Keep an allowed hotbar slot the item already sits in (no move needed).
-        if (Inventory.isHotbarSlot(sourceSlot) && allowed[sourceSlot]) {
+        if (Inventory.isHotbarSlot(sourceSlot)) {
             return sourceSlot;
         }
+
+        boolean[] allowed = allowedMask();
 
         // Prefer an empty allowed slot, scanning from the currently selected one.
         int selected = inventory.getSelectedSlot();
