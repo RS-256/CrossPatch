@@ -19,6 +19,7 @@ import fi.dy.masa.malilib.hotkeys.IKeyboardInputHandler;
 import fi.dy.masa.malilib.hotkeys.IKeybindManager;
 import fi.dy.masa.malilib.hotkeys.IKeybindProvider;
 import fi.dy.masa.malilib.hotkeys.IMouseInputHandler;
+import fi.dy.masa.malilib.util.GuiUtils;
 import fi.dy.masa.malilib.util.InfoUtils;
 import fi.dy.masa.malilib.util.KeyCodes;
 import net.minecraft.client.Minecraft;
@@ -168,7 +169,7 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
                 return storeAnvilRecipe(mc);
             }
 
-            if (mc.screen instanceof AnvilScreen gui) {
+            if (GuiUtils.getCurrentScreen() instanceof AnvilScreen gui) {
                 AnvilRecipeStorage recipes = AnvilRecipeStorage.getInstance();
                 int mouseX = fi.dy.masa.malilib.util.InputUtils.getMouseX();
                 int mouseY = fi.dy.masa.malilib.util.InputUtils.getMouseY();
@@ -191,7 +192,7 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
             return storeStonecutterRecipeUnderMouse(mc);
         }
 
-        if (mc.screen instanceof StonecutterScreen gui) {
+        if (GuiUtils.getCurrentScreen() instanceof StonecutterScreen gui) {
             StonecutterRecipeStorage recipes = StonecutterRecipeStorage.getInstance();
             int mouseX = fi.dy.masa.malilib.util.InputUtils.getMouseX();
             int mouseY = fi.dy.masa.malilib.util.InputUtils.getMouseY();
@@ -251,7 +252,7 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
             return false;
         }
 
-        if (Minecraft.getInstance().screen instanceof AnvilScreen anvil) {
+        if (GuiUtils.getCurrentScreen() instanceof AnvilScreen anvil) {
             EditBox name = ((AnvilScreenAccessor) anvil).crosspatch$getNameField();
 
             if (name != null && name.isFocused()) {
@@ -269,7 +270,7 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
      * selected anvil recipe slot.
      */
     public static boolean storeAnvilRecipe(Minecraft mc) {
-        if (mc.screen instanceof AnvilScreen screen) {
+        if (GuiUtils.getCurrentScreen() instanceof AnvilScreen screen) {
             AnvilRecipeStorage.getInstance().storeRecipeToCurrentSelection(screen.getMenu(), true);
             return true;
         }
@@ -278,7 +279,7 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
     }
 
     public static boolean storeStonecutterRecipeUnderMouse(Minecraft mc) {
-        if (mc.screen instanceof StonecutterScreen screen) {
+        if (GuiUtils.getCurrentScreen() instanceof StonecutterScreen screen) {
             Slot slot = ((AbstractContainerScreenAccessor) screen).crosspatch$getHoveredSlot();
 
             if (slot != null && slot.index == 1) {

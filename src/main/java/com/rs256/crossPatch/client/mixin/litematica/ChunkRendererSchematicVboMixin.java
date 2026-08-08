@@ -1,8 +1,13 @@
 package com.rs256.crossPatch.client.mixin.litematica;
 
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
-import fi.dy.masa.malilib.util.IntBoundingBox;
+//? if <=26.1.2 {
+/*import fi.dy.masa.malilib.util.IntBoundingBox;
 import fi.dy.masa.malilib.util.LayerRange;
+*///?} else {
+import fi.dy.masa.malilib.util.position.IntBoundingBox;
+import fi.dy.masa.malilib.util.position.LayerRange;
+//?}
 import fi.dy.masa.litematica.world.WorldSchematic;
 import net.minecraft.core.BlockPos;
 import org.spongepowered.asm.mixin.Final;
@@ -34,7 +39,11 @@ public class ChunkRendererSchematicVboMixin {
             method = "rebuildChunk",
             at = @At(
                     value = "INVOKE",
-                    target = "Lfi/dy/masa/malilib/util/LayerRange;getClampedRenderBoundingBox(Lfi/dy/masa/malilib/util/IntBoundingBox;)Lfi/dy/masa/malilib/util/IntBoundingBox;",
+                    //? if <=26.1.2 {
+                    /*target = "Lfi/dy/masa/malilib/util/LayerRange;getClampedRenderBoundingBox(Lfi/dy/masa/malilib/util/IntBoundingBox;)Lfi/dy/masa/malilib/util/IntBoundingBox;",
+                    *///?} else {
+                    target = "Lfi/dy/masa/malilib/util/position/LayerRange;getClampedRenderBoundingBox(Lfi/dy/masa/malilib/util/position/IntBoundingBox;)Lfi/dy/masa/malilib/util/position/IntBoundingBox;",
+                    //?}
                     remap = false
             ),
             remap = false

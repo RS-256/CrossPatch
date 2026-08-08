@@ -1,7 +1,11 @@
 package com.rs256.crossPatch.client.mixin.litematica;
 
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
-import fi.dy.masa.malilib.util.LayerRange;
+//? if <=26.1.2 {
+/*import fi.dy.masa.malilib.util.LayerRange;
+*///?} else {
+import fi.dy.masa.malilib.util.position.LayerRange;
+//?}
 import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import org.spongepowered.asm.mixin.Mixin;

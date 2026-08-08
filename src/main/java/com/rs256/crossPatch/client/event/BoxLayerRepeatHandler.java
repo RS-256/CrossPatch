@@ -5,6 +5,7 @@ import com.rs256.crossPatch.client.config.Hotkeys;
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
 import com.rs256.crossPatch.client.litematica.layer.LayerRepeatTimer;
 import fi.dy.masa.malilib.interfaces.IClientTickHandler;
+import fi.dy.masa.malilib.util.GuiUtils;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.Minecraft;
 
@@ -34,7 +35,7 @@ public class BoxLayerRepeatHandler implements IClientTickHandler {
             return;
         }
 
-        if (mc.player == null || mc.level == null || mc.screen != null) {
+        if (mc.player == null || mc.level == null || GuiUtils.getCurrentScreen() != null) {
             this.stopRepeat();
             return;
         }

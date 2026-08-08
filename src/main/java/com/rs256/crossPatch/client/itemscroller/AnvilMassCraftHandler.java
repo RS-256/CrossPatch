@@ -2,6 +2,7 @@ package com.rs256.crossPatch.client.itemscroller;
 
 import com.rs256.crossPatch.client.config.Configs;
 import fi.dy.masa.malilib.interfaces.IClientTickHandler;
+import fi.dy.masa.malilib.util.GuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AnvilScreen;
 import net.minecraft.world.inventory.AnvilMenu;
@@ -67,7 +68,7 @@ public class AnvilMassCraftHandler implements IClientTickHandler {
 
         this.ticker = 0;
 
-        if (mc.screen instanceof AnvilScreen screen) {
+        if (GuiUtils.getCurrentScreen() instanceof AnvilScreen screen) {
             this.tryMassCraft(mc, screen);
         }
     }
@@ -79,7 +80,7 @@ public class AnvilMassCraftHandler implements IClientTickHandler {
                 mc.player != null &&
                 mc.level != null &&
                 mc.gameMode != null &&
-                mc.screen instanceof AnvilScreen;
+                GuiUtils.getCurrentScreen() instanceof AnvilScreen;
     }
 
     private void tryMassCraft(Minecraft mc, AnvilScreen screen) {

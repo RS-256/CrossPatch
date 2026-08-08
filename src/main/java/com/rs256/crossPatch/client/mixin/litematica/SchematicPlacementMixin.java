@@ -4,7 +4,11 @@ import com.google.common.collect.ImmutableMap;
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
 import fi.dy.masa.litematica.schematic.placement.SubRegionPlacement;
 import fi.dy.masa.litematica.util.BlockInfoListType;
-import fi.dy.masa.malilib.util.IntBoundingBox;
+//? if <=26.1.2 {
+/*import fi.dy.masa.malilib.util.IntBoundingBox;
+*///?} else {
+import fi.dy.masa.malilib.util.position.IntBoundingBox;
+//?}
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

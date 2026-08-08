@@ -18,7 +18,7 @@ stonecutter {
         // Add or remove MC versions to support.
         // See https://stonecutter.kikugie.dev/wiki/start/#choosing-minecraft-versions
         versions("1.21.11").buildscript("build.obfuscated.gradle.kts")
-        versions("26.1.2").buildscript("build.unobfuscated.gradle.kts")
+        versions("26.1.2", "26.2").buildscript("build.unobfuscated.gradle.kts")
 
 
         // The version whose source tree lives in src/ (also used as VCS HEAD)

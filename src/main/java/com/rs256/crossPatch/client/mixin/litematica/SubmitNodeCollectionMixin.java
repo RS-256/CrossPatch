@@ -21,6 +21,12 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
  * {@code submitModel} render type = 4, color = 7; {@code submitModelPart} render
  * type = 3, color = 9.</p>
  *
+ * <p>From 26.2 on, {@code SubmitNodeCollection} no longer overrides
+ * {@code submitModelPart}: it is a default method on
+ * {@code OrderedSubmitNodeCollector} that wraps the part in a {@code Model.Simple}
+ * and forwards to {@code submitModel}, so the {@code submitModel} handlers below
+ * already cover part submissions and the dedicated ones are dropped.</p>
+ *
  * @see SchematicTranslucency
  */
 @Mixin(SubmitNodeCollection.class)
@@ -35,7 +41,8 @@ public class SubmitNodeCollectionMixin {
         return SchematicTranslucency.isActive() ? SchematicTranslucency.modulateColor(color) : color;
     }
 
-    @ModifyVariable(method = "submitModelPart", at = @At("HEAD"), index = 3, argsOnly = true)
+    //? if <=26.1.2 {
+    /*@ModifyVariable(method = "submitModelPart", at = @At("HEAD"), index = 3, argsOnly = true)
     private RenderType crosspatch$translucentModelPartType(RenderType renderType) {
         return SchematicTranslucency.isActive() ? SchematicTranslucency.translucent(renderType) : renderType;
     }
@@ -44,4 +51,5 @@ public class SubmitNodeCollectionMixin {
     private int crosspatch$translucentModelPartColor(int color) {
         return SchematicTranslucency.isActive() ? SchematicTranslucency.modulateColor(color) : color;
     }
+    *///?}
 }

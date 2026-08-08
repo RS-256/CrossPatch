@@ -2,7 +2,11 @@ package com.rs256.crossPatch.client.mixin.litematica;
 
 import com.rs256.crossPatch.client.litematica.layer.BoxLayerController;
 import com.rs256.crossPatch.client.litematica.render.SchematicTranslucency;
-import fi.dy.masa.malilib.util.LayerRange;
+//? if <=26.1.2 {
+/*import fi.dy.masa.malilib.util.LayerRange;
+*///?} else {
+import fi.dy.masa.malilib.util.position.LayerRange;
+//?}
 import net.minecraft.core.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -46,7 +50,11 @@ public class WorldRendererSchematicMixin {
             method = "prepareEntities",
             at = @At(
                     value = "INVOKE",
-                    target = "Lfi/dy/masa/malilib/util/LayerRange;isPositionWithinRange(III)Z",
+                    //? if <=26.1.2 {
+                    /*target = "Lfi/dy/masa/malilib/util/LayerRange;isPositionWithinRange(III)Z",
+                    *///?} else {
+                    target = "Lfi/dy/masa/malilib/util/position/LayerRange;isPositionWithinRange(III)Z",
+                    //?}
                     remap = false
             ),
             remap = false

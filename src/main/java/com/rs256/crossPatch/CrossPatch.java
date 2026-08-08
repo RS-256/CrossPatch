@@ -19,7 +19,7 @@ public class CrossPatch implements ModInitializer {
             .map(container -> container.getMetadata().getVersion().getFriendlyString())
             .orElse("unknown");
 
-    public static final String MINECRAFT = /*$ minecraft*/ "26.1.2";
+    public static final String MINECRAFT = /*$ minecraft*/ "26.2";
 
     // This logger is used to write text to the console and the log file.
     // It is considered best practice to use your mod id as the logger's name.
