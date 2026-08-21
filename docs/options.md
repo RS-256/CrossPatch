@@ -3,6 +3,8 @@
 CrossPatch saved options are written to `config/crosspatch.json`.
 
 The normal config GUI shows entries tagged as viewable in `ConfigRegistry`.
+Options tagged `EXPERIMENTAL` there are drawn with a red name and carry a red
+warning at the bottom of their hover text; `ADVANCED` is a marker tag only.
 Some Litematica Box Layer values are saved options too, but are edited from the
 Box Layer GUI instead of the normal option list. Hotkeys listed in
 `Hotkeys.HOTKEY_LIST` are available to malilib's keybind manager; most of them
@@ -35,6 +37,7 @@ are also saved through `ConfigRegistry`.
 | `renderEntitiesTranslucentAlpha`     | double  | `0.5`   | `0.0` to `1.0` | Opacity of schematic entities while `renderEntitiesAsTranslucent` is on. `1.0` is fully opaque, `0.0` fully invisible. Independent of Litematica's Ghost Block Alpha. |
 | `renderAnimativeBlockAsTranslucent`  | boolean | `false` | -            | Renders blocks drawn by a special block-entity renderer (chests, shulker boxes, ender chests, the bell's golden body, signs, banners...) translucent. These are not part of the static chunk geometry, so `renderBlocksAsTranslucent` does not ghost them; this option does. |
 | `renderAnimativeBlockTranslucentAlpha` | double | `0.5`  | `0.0` to `1.0` | Opacity of specially-rendered block entities while `renderAnimativeBlockAsTranslucent` is on. `1.0` is fully opaque, `0.0` fully invisible. Independent of the entity and Ghost Block opacities. |
+| `optimizeLitematicLoading` | boolean | `false` | -            | **Experimental, not implemented yet** - the option is saved but nothing reads it. Intended to load placed `.litematic` files lazily: Litematica re-reads, version-checks and data-fixes every placed schematic from disk on every world/dimension change regardless of whether the placement is enabled, rendered, in render distance or inside the render layer. |
 | `boxLayerNext`                | hotkey  | unbound | -                 | Moves the selected Box Layer bounds forward by `layerChangeAmount`.                                                                                                      |
 | `boxLayerPrevious`            | hotkey  | unbound | -                 | Moves the selected Box Layer bounds backward by `layerChangeAmount`.                                                                                                     |
 | `boxLayerSetHere`             | hotkey  | unbound | -                 | Sets the selected Box Layer bounds to the player's current block position.                                                                                               |

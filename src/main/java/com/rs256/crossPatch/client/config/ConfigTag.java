@@ -18,6 +18,18 @@ public enum ConfigTag {
     HOTKEY,
 
     /**
+     * Unfinished or not fully validated. Shown in the config GUI with a red
+     * option name and a red warning appended to the bottom of the hover text.
+     */
+    EXPERIMENTAL,
+
+    /**
+     * Only meaningful to someone who knows what it changes internally. Purely a
+     * marker for now: it carries no rendering or behaviour of its own.
+     */
+    ADVANCED,
+
+    /**
      * Related to Litematica patches.
      */
     LITEMATICA,

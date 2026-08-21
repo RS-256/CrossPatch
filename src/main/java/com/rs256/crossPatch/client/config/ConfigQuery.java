@@ -22,6 +22,17 @@ public final class ConfigQuery {
     }
 
     /**
+     * Whether a config carries {@code tag}. {@code false} for configs CrossPatch
+     * does not own, so this is safe to call from code that also sees other mods'
+     * configs (the malilib widget mixin).
+     */
+    public static boolean hasTag(IConfigBase config, ConfigTag tag) {
+        TaggedConfig entry = entryOf(config);
+
+        return entry != null && entry.has(tag);
+    }
+
+    /**
      * The translation-key group an entry's keys live under, e.g. {@code litematica}
      * or {@code hotkeys}. Hotkeys share a single {@code hotkeys} group regardless of
      * which mod they patch, matching how the i18n keys are laid out.

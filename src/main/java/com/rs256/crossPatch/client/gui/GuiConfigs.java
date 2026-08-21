@@ -105,7 +105,8 @@ public class GuiConfigs extends GuiConfigsBase {
      * Builds each config's hover text: the (white) comment body folded to roughly
      * half the current screen width, followed by grey metadata sections — a
      * "see also" list of related configs and a "required" mod checklist whose
-     * boxes are ticked from the live mod-presence state. Lines are joined with
+     * boxes are ticked from the live mod-presence state, and finally a red
+     * warning line for experimental options. Lines are joined with
      * {@code \n}, which malilib's hover widget renders as separate lines, and the
      * {@code §} colour codes are honoured by the font renderer.
      */
@@ -125,6 +126,7 @@ public class GuiConfigs extends GuiConfigsBase {
                 appendSeeAlso(lines, entry, maxLineWidth);
                 appendRequired(lines, entry, maxLineWidth);
                 appendSuggested(lines, entry, maxLineWidth);
+                appendExperimental(lines, entry, maxLineWidth);
             }
 
             return String.join("\n", lines);
@@ -179,6 +181,19 @@ public class GuiConfigs extends GuiConfigsBase {
                 String box = present ? "[x] " : "[ ] ";
                 addColoredWrapped(lines, box + mod, GuiBase.TXT_GRAY, maxLineWidth);
             }
+        }
+
+        /**
+         * The experimental warning, kept last so it sits at the very bottom of the
+         * hover no matter which other sections an entry has.
+         */
+        private void appendExperimental(List<String> lines, TaggedConfig entry, int maxLineWidth) {
+            if (!entry.has(ConfigTag.EXPERIMENTAL)) {
+                return;
+            }
+
+            addColoredWrapped(lines, StringUtils.translate("crosspatch.gui.hover.experimental"),
+                    GuiBase.TXT_RED, maxLineWidth);
         }
 
         /**

@@ -23,6 +23,7 @@
     "litematica.WorldPlacingUtilsMixin",
     "litematica.WorldRendererSchematicMixin",
     "litematica.WorldUtilsPickBlockMixin",
+    "malilib.WidgetConfigOptionMixin",
     "pickblock.MinecraftPickBlockMixin",
     "screen.AbstractContainerScreenAccessor",
     "screen.AnvilScreenAccessor",
