@@ -22,7 +22,7 @@ stonecutter {
 
 
         // The version whose source tree lives in src/ (also used as VCS HEAD)
-        vcsVersion = "26.1.2"
+        vcsVersion = "26.2"
     }
 }
 
