@@ -107,6 +107,34 @@ public class Configs implements IConfigHandler {
                 new ConfigBoolean("renderOverlappingSchematics", false)
                         .apply(TRANSLATION_PREFIX);
 
+        /**
+         * Stops Litematica re-reading every placed .litematic on every world /
+         * dimension change. It clears its whole {@code SchematicHolder} in
+         * {@code SchematicPlacementManager#clear}, and {@code SchematicPlacement#fromJson}
+         * then re-reads, version-checks and data-fixes each placed schematic
+         * through {@code SchematicHolder#getOrLoad} before it even looks at
+         * whether the placement is enabled or rendered.
+         *
+         * <p>Implemented by {@link com.rs256.crossPatch.client.litematica.cache.LitematicCache},
+         * which holds the parsed schematics behind {@code SchematicHolder} and
+         * hands them back on the next load instead of re-reading the file.
+         *
+         * <p>Still to come, and the reason this stays {@link ConfigTag#EXPERIMENTAL}:
+         * reading only the metadata and sub region positions and sizes up front
+         * and deferring the block states, block entities and entities (and with
+         * them the data fixers and the full-volume post processing pass) until a
+         * placement is actually built into the schematic world. That trigger is
+         * the placement being built, not being visible on screen: the block data
+         * is pulled per file rather than per chunk, and it is read off disk, so
+         * it cannot be produced inside a frame. It costs nothing in practice,
+         * because Litematica only builds a schematic chunk for a placement that
+         * is {@code enabled} anyway - which is why the material list and the
+         * verifier already return nothing for hidden placements.
+         */
+        public static final ConfigBoolean OPTIMIZED_LITEMATIC_LOADING =
+                new ConfigBoolean("optimizedLitematicLoading", false)
+                        .apply(TRANSLATION_PREFIX);
+
         public static final ConfigBoolean BOX_LAYER_X_MIN_ENABLED =
                 new ConfigBoolean("boxLayerXMinEnabled", false)
                         .apply(TRANSLATION_PREFIX);

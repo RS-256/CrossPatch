@@ -67,6 +67,10 @@
         "forceLitematicaLayerAll": {
           "name": "forceLitematicaLayerAll",
           "hover": "Keep Litematica's own render layer mode set to All while CrossPatch Box Layer is active, so Box Layer is the only thing limiting which schematic layers are shown."
+        },
+        "optimizedLitematicLoading": {
+          "name": "optimizedLitematicLoading",
+          "hover": "Stop Litematica re-reading every placed .litematic on every world / dimension change. Litematica drops its whole schematic cache each time the world changes, then re-reads, version-checks and data-fixes every placed schematic from disk before it even looks at whether the placement is enabled, rendered or anywhere near you, so hopping to the Nether and back re-parses large hidden placements twice. With this on, the parsed schematics are kept and handed back instead. They are dropped when you leave the world or join a different server, when Litematica unloads the schematic, and when the file itself changed on disk, so re-saving a schematic is still picked up."
         }
       },
       "itemscroller": {
@@ -179,7 +183,8 @@
         "box_layer": "Enable CrossPatch Box Layer rendering filter.",
         "see_also": "See also:",
         "required": "required:",
-        "suggested": "suggested:"
+        "suggested": "suggested:",
+        "experimental": "Experimental: unfinished and may change or break. Use at your own risk."
       },
       "warning": {
         "invalid_range": "Invalid range: no schematic blocks will be rendered."

@@ -299,6 +299,14 @@ public final class ConfigRegistry {
                     ConfigTag.OPTION
             ).required("litematica"),
             new TaggedConfig(
+                    Configs.Litematica.OPTIMIZED_LITEMATIC_LOADING,
+                    ConfigTag.VIEWABLE,
+                    ConfigTag.LITEMATICA,
+                    ConfigTag.OPTION,
+                    ConfigTag.EXPERIMENTAL,
+                    ConfigTag.ADVANCED
+            ).required("litematica"),
+            new TaggedConfig(
                     Hotkeys.BOX_LAYER_NEXT,
                     ConfigTag.VIEWABLE,
                     ConfigTag.LITEMATICA,

@@ -8,6 +8,7 @@ import com.rs256.crossPatch.client.itemscroller.AnvilMassCraftHandler;
 import com.rs256.crossPatch.client.itemscroller.AnvilWorldLoadListener;
 import com.rs256.crossPatch.client.itemscroller.StonecutterMassCraftHandler;
 import com.rs256.crossPatch.client.itemscroller.StonecutterWorldLoadListener;
+import com.rs256.crossPatch.client.litematica.cache.LitematicCache;
 import com.rs256.crossPatch.client.litematica.render.SchematicOverlap;
 import fi.dy.masa.malilib.config.ConfigManager;
 import fi.dy.masa.malilib.event.InputEventHandler;
@@ -41,6 +42,9 @@ public class InitHandler implements IInitializationHandler {
 
         if (FabricLoader.getInstance().isModLoaded("litematica")) {
             SchematicOverlap.init();
+
+            LitematicCache.init();
+            WorldLoadHandler.getInstance().registerWorldLoadPostHandler(LitematicCache.getInstance());
         }
     }
 }

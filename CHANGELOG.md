@@ -2,11 +2,6 @@
 
 ## Added
 
-- new option renderOverlappingSchematics: render every schematic placement in areas where their bounds overlap, instead of only one of them
-- new hotkey layerChangeAmountModifier: hold it and scroll the mouse wheel to raise/lower layerChangeAmount in game
+- new option optimizedLitematicLoading (experimental): keep parsed .litematic files cached across a dimension change, instead of Litematica re-reading, version-checking and data-fixing every placed schematic from disk every time the world changes
 
 ## Fixed
-
-- some options metadata are re-considered the actual code 
-- another fix of not working placementRestriction when the boxLayer is enabled
-- pickBlockProPickSlotEnabled no longer moves an item that is already on your hotbar into a listed slot; it is now selected in place like vanilla, and the restriction only applies to items brought in from elsewhere
