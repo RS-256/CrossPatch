@@ -52,8 +52,8 @@ public class GuiConfigs extends GuiConfigsBase {
         x += this.createTabButton(x, y, ConfigGuiTab.CROSSPATCH) + 2;
         x += this.createTabButton(x, y, ConfigGuiTab.GENERIC) + 2;
         x += this.createTabButton(x, y, ConfigGuiTab.LITEMATICA) + 2;
-        x += this.createTabButton(x, y, ConfigGuiTab.ITEMSCROLLER) + 2;
-        x += this.createTabButton(x, y, ConfigGuiTab.TWEAKERMORE) + 8;
+        x += this.createTabButton(x, y, ConfigGuiTab.ITEMSCROLLER) + 8;
+        //x += this.createTabButton(x, y, ConfigGuiTab.TWEAKERMORE) + 8;
 
         if (currentTab == ConfigGuiTab.LITEMATICA) {
             this.createOpenLayerGuiButton(x, y);
@@ -217,7 +217,8 @@ public class GuiConfigs extends GuiConfigsBase {
         GENERIC(ConfigTag.GENERIC, "crosspatch.gui.button.tab.generic"),
         LITEMATICA(ConfigTag.LITEMATICA, "crosspatch.gui.button.tab.litematica"),
         ITEMSCROLLER(ConfigTag.ITEMSCROLLER, "crosspatch.gui.button.tab.itemscroller"),
-        TWEAKERMORE(ConfigTag.TWEAKERMORE, "crosspatch.gui.button.tab.tweakermore");
+        //TWEAKERMORE(ConfigTag.TWEAKERMORE, "crosspatch.gui.button.tab.tweakermore"),
+        ;
 
         private final ConfigTag modTag;
         private final String translationKey;

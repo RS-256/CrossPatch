@@ -87,20 +87,6 @@
           "hover": "When ItemScroller is installed, reuse its recipe view, store recipe, craft everything and mass craft hotkeys/settings. When disabled or ItemScroller is absent, CrossPatch's own fallback hotkeys are used where available."
         }
       },
-      "tweakermore": {
-        "autoCollectStackRoundUp": {
-          "name": "autoCollectStackRoundUp",
-          "hover": "When TweakerMore's \"auto collect material list item\" feature runs, collect each material rounded up to the next full stack instead of the exact missing amount. Example: 14 missing with a stack size of 64 collects 64; with a stack size of 16 collects 16."
-        },
-        "autoCollectWithShulker": {
-          "name": "autoCollectWithShulker",
-          "hover": "When TweakerMore's \"auto collect material list item\" feature runs, also pull whole shulker boxes (any color) from the container whose contents match a missing material. The box is moved into your inventory and Litematica credits its contents against the material list."
-        },
-        "autoCollectWithShulkerSingleItemOnly": {
-          "name": "autoCollectWithShulkerSingleItemOnly",
-          "hover": "Only collect a shulker box when it is filled with a single item type that matches the needed material. When disabled, any shulker box that contains the needed item is collected."
-        }
-      },
       "hotkeys": {
         "boxLayerNext": {
           "name": "boxLayerNext",

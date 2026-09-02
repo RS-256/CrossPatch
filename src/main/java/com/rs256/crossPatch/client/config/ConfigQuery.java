@@ -50,9 +50,9 @@ public final class ConfigQuery {
         if (entry.has(ConfigTag.ITEMSCROLLER)) {
             return "itemscroller";
         }
-        if (entry.has(ConfigTag.TWEAKERMORE)) {
-            return "tweakermore";
-        }
+        //if (entry.has(ConfigTag.TWEAKERMORE)) {
+        //    return "tweakermore";
+        //}
 
         return "";
     }

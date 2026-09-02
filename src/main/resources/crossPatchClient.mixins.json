@@ -29,8 +29,7 @@
     "screen.AbstractContainerScreenAccessor",
     "screen.AnvilScreenAccessor",
     "screen.AnvilScreenMixin",
-    "screen.ScreenMixin",
-    "tweakermore.ContainerMaterialListItemCollectorMixin"
+    "screen.ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

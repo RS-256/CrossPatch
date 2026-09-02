@@ -106,28 +106,6 @@ public final class ConfigRegistry {
             ).suggested("itemscroller"),
 
             /*
-             * TweakerMore - patches
-             */
-            new TaggedConfig(
-                    Configs.TweakerMore.AUTO_COLLECT_STACK_ROUND_UP,
-                    ConfigTag.VIEWABLE,
-                    ConfigTag.TWEAKERMORE,
-                    ConfigTag.OPTION
-            ).required("tweakermore", "litematica"),
-            new TaggedConfig(
-                    Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER,
-                    ConfigTag.VIEWABLE,
-                    ConfigTag.TWEAKERMORE,
-                    ConfigTag.OPTION
-            ).required("tweakermore", "litematica").seeAlso("autoCollectWithShulkerSingleItemOnly"),
-            new TaggedConfig(
-                    Configs.TweakerMore.AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY,
-                    ConfigTag.VIEWABLE,
-                    ConfigTag.TWEAKERMORE,
-                    ConfigTag.OPTION
-            ).required("tweakermore", "litematica").seeAlso("autoCollectWithShulker"),
-
-            /*
              * Litematica - Box Layer options
              *
              * These are saved to the config file, but not shown in the normal config list.

@@ -273,40 +273,6 @@ public class Configs implements IConfigHandler {
                         .apply(TRANSLATION_PREFIX);
     }
 
-    public static class TweakerMore {
-        private static final String TRANSLATION_PREFIX = Reference.MOD_ID + ".config.tweakermore";
-
-        /**
-         * When enabled, TweakerMore's "auto collect material list item" feature
-         * collects each material rounded up to the next full stack instead of the
-         * exact missing amount. For example, if 14 items are missing and the stack
-         * size is 64, it collects 64; if the stack size is 16, it collects 16.
-         */
-        public static final ConfigBoolean AUTO_COLLECT_STACK_ROUND_UP =
-                new ConfigBoolean("autoCollectStackRoundUp", false)
-                        .apply(TRANSLATION_PREFIX);
-
-        /**
-         * When enabled, TweakerMore's "auto collect material list item" feature also
-         * pulls whole shulker boxes (any color) out of the container when their
-         * contents match a missing material. Litematica counts the contents of
-         * shulker boxes carried in the player inventory, so the collected box is
-         * automatically credited against the material list.
-         */
-        public static final ConfigBoolean AUTO_COLLECT_WITH_SHULKER =
-                new ConfigBoolean("autoCollectWithShulker", false)
-                        .apply(TRANSLATION_PREFIX);
-
-        /**
-         * Restricts {@link #AUTO_COLLECT_WITH_SHULKER} to shulker boxes that are filled
-         * with a single item type (matching the needed material). When disabled, any
-         * shulker box that merely contains the needed item is collected.
-         */
-        public static final ConfigBoolean AUTO_COLLECT_WITH_SHULKER_SINGLE_ITEM_ONLY =
-                new ConfigBoolean("autoCollectWithShulkerSingleItemOnly", true)
-                        .apply(TRANSLATION_PREFIX);
-    }
-
     public static void loadFromFile() {
         //? if <=1.21.11 {
         /*Path configFile = FileUtils.getConfigDirectoryAsPath().resolve(CONFIG_FILE_NAME);
@@ -327,7 +293,7 @@ public class Configs implements IConfigHandler {
                 ConfigUtils.readConfigBase(root, "Litematica", ConfigQuery.optionsFor(ConfigTag.LITEMATICA));
                 ConfigUtils.readConfigBase(root, "PickBlock", ConfigQuery.optionsFor(ConfigTag.CROSSPATCH));
                 ConfigUtils.readConfigBase(root, "ItemScroller", ConfigQuery.optionsFor(ConfigTag.ITEMSCROLLER));
-                ConfigUtils.readConfigBase(root, "TweakerMore", ConfigQuery.optionsFor(ConfigTag.TWEAKERMORE));
+                //ConfigUtils.readConfigBase(root, "TweakerMore", ConfigQuery.optionsFor(ConfigTag.TWEAKERMORE));
                 ConfigUtils.readConfigBase(root, "Hotkeys", ConfigQuery.allHotkeys());
 
                 CrossPatch.LOGGER.info(
@@ -365,7 +331,7 @@ public class Configs implements IConfigHandler {
             ConfigUtils.writeConfigBase(root, "Litematica", ConfigQuery.optionsFor(ConfigTag.LITEMATICA));
             ConfigUtils.writeConfigBase(root, "PickBlock", ConfigQuery.optionsFor(ConfigTag.CROSSPATCH));
             ConfigUtils.writeConfigBase(root, "ItemScroller", ConfigQuery.optionsFor(ConfigTag.ITEMSCROLLER));
-            ConfigUtils.writeConfigBase(root, "TweakerMore", ConfigQuery.optionsFor(ConfigTag.TWEAKERMORE));
+            //ConfigUtils.writeConfigBase(root, "TweakerMore", ConfigQuery.optionsFor(ConfigTag.TWEAKERMORE));
             ConfigUtils.writeConfigBase(root, "Hotkeys", ConfigQuery.allHotkeys());
 
             JsonUtils.writeJsonToFile(root, dir.resolve(CONFIG_FILE_NAME));

@@ -50,9 +50,9 @@ public enum ConfigTag {
     CROSSPATCH,
 
     /**
-     * Related to TweakerMore patches.
+     * Reserved for future TweakerMore patches.
      */
-    TWEAKERMORE,
+    //TWEAKERMORE,
 
     /**
      * Reserved for future Tweakeroo patches.
