@@ -69,3 +69,16 @@ deps.itemscroller  = "0.32.1"
 deps.tweakermore = "3.33.2"
 deps.flashback = "fZW00XaD"  # 0.43.3 for MC26.2
 deps.bobby = "5.2.15+mc26.2"
+
+["26.3"]
+deps.fabric_api = "0.161.0+26.3"
+mod.mc_dep      = "26.3"
+mod.mc_title    = "26.3"
+mod.mc_targets  = "26.3"
+
+deps.modmenu = "21.0.0"
+deps.malilib  = "0.30.1"
+deps.litematica  = "0.29.0"
+deps.itemscroller  = "0.33.0"
+deps.tweakermore = "3.33.3-beta.1"
+deps.flashback = "cV1pa0YV"  # 0.43.6 for MC26.3

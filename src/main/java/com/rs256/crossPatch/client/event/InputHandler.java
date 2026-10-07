@@ -21,7 +21,13 @@ import fi.dy.masa.malilib.hotkeys.IKeybindProvider;
 import fi.dy.masa.malilib.hotkeys.IMouseInputHandler;
 import fi.dy.masa.malilib.util.GuiUtils;
 import fi.dy.masa.malilib.util.InfoUtils;
+//? if <=26.2 {
+/*import fi.dy.masa.malilib.util.InputUtils;
 import fi.dy.masa.malilib.util.KeyCodes;
+*///?} else {
+import fi.dy.masa.malilib.util.input.InputUtils;
+import fi.dy.masa.malilib.util.input.KeyCodes;
+//?}
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AnvilScreen;
@@ -30,7 +36,6 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.inventory.Slot;
-import org.lwjgl.glfw.GLFW;
 
 public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IMouseInputHandler {
     private static final InputHandler INSTANCE = new InputHandler();
@@ -82,7 +87,7 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
             int recipeIndexChange = (input.hasShiftDown() || GuiBase.isShiftDown()) ? recipesPerPage : recipesPerPage / 2;
 
             if (input.key() >= KeyCodes.KEY_1 && input.key() <= KeyCodes.KEY_9) {
-                index = Mth.clamp(input.key() - GLFW.GLFW_KEY_1, 0, 8);
+                index = Mth.clamp(input.key() - KeyCodes.KEY_1, 0, 8);
             } else if (input.key() == KeyCodes.KEY_UP && oldIndex > 0) {
                 index = oldIndex - 1;
             } else if (input.key() == KeyCodes.KEY_DOWN && oldIndex < recipes.getTotalRecipeCount() - 1) {
@@ -112,7 +117,7 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
             int recipeIndexChange = (input.hasShiftDown() || GuiBase.isShiftDown()) ? recipesPerPage : recipesPerPage / 2;
 
             if (input.key() >= KeyCodes.KEY_1 && input.key() <= KeyCodes.KEY_9) {
-                index = Mth.clamp(input.key() - GLFW.GLFW_KEY_1, 0, 8);
+                index = Mth.clamp(input.key() - KeyCodes.KEY_1, 0, 8);
             } else if (input.key() == KeyCodes.KEY_UP && oldIndex > 0) {
                 index = oldIndex - 1;
             } else if (input.key() == KeyCodes.KEY_DOWN && oldIndex < recipes.getTotalRecipeCount() - 1) {
@@ -171,8 +176,8 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
 
             if (GuiUtils.getCurrentScreen() instanceof AnvilScreen gui) {
                 AnvilRecipeStorage recipes = AnvilRecipeStorage.getInstance();
-                int mouseX = fi.dy.masa.malilib.util.InputUtils.getMouseX();
-                int mouseY = fi.dy.masa.malilib.util.InputUtils.getMouseY();
+                int mouseX = InputUtils.getMouseX();
+                int mouseY = InputUtils.getMouseY();
                 int hoveredRecipeId = AnvilRenderEventHandler.instance().getHoveredRecipeId(mouseX, mouseY, recipes, gui);
 
                 if (hoveredRecipeId >= 0) {
@@ -194,8 +199,8 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
 
         if (GuiUtils.getCurrentScreen() instanceof StonecutterScreen gui) {
             StonecutterRecipeStorage recipes = StonecutterRecipeStorage.getInstance();
-            int mouseX = fi.dy.masa.malilib.util.InputUtils.getMouseX();
-            int mouseY = fi.dy.masa.malilib.util.InputUtils.getMouseY();
+            int mouseX = InputUtils.getMouseX();
+            int mouseY = InputUtils.getMouseY();
             int hoveredRecipeId = StonecutterRenderEventHandler.instance().getHoveredRecipeId(mouseX, mouseY, recipes, gui);
 
             if (hoveredRecipeId >= 0) {
@@ -247,8 +252,14 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
      * keyboard back to the mass-craft hotkeys.
      */
     private static boolean releaseAnvilNameFocus(int keyCode) {
+        //? if <=26.2 {
+        /*int enterKey = KeyCodes.KEY_ENTER;
+        *///?} else {
+        int enterKey = KeyCodes.KEY_RETURN;
+        //?}
+
         if (!Configs.ItemScroller.MASS_CRAFT_ANVIL.getBooleanValue() ||
-                (keyCode != KeyCodes.KEY_ENTER && keyCode != KeyCodes.KEY_KP_ENTER)) {
+                (keyCode != enterKey && keyCode != KeyCodes.KEY_KP_ENTER)) {
             return false;
         }
 

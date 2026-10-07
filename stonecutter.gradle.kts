@@ -10,7 +10,7 @@ plugins {
     id("me.modmuss50.mod-publish-plugin") version "1.1.0" apply false  // uncomment to enable publishing
 }
 
-stonecutter active "26.2"
+stonecutter active "26.3"
 
 // ---------------------------------------------------------------
 // Stonecutter parameters - available in every versioned subproject
@@ -52,7 +52,8 @@ tasks.register("runServerCurrentVersion") {
 val releaseVersions = listOf(
     "1.21.11",
     "26.1.2",
-    "26.2"
+    "26.2",
+    "26.3"
 )
 
 extra["publish.changelogReleaseVersion"] = releaseVersions.last()

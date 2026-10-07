@@ -78,7 +78,7 @@ dependencies {
     implementation("com.github.sakura-ryoko:itemscroller:${sc.current.version}-${property("deps.itemscroller")}")
     implementation("me.fallenbreath:tweakermore:${property("deps.tweakermore")}-mc${sc.current.version}")
     implementation("maven.modrinth:flashback:${property("deps.flashback")}")
-    implementation("maven.modrinth:bobby:${property("deps.bobby")}")
+    findProperty("deps.bobby")?.let { implementation("maven.modrinth:bobby:$it") }
 }
 
 // ---------------------------------------------------------------
