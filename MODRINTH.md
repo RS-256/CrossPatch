@@ -54,8 +54,6 @@ integrate with them:
 - ItemScroller: enables shared hotkey behavior and supports ItemScroller-style
   stonecutter crafting workflows.
 - TweakerMore: enables the material-list auto-collect patches.
-- Flashback: supported as an optional compatibility target.
-- Bobby: supported as an optional compatibility target.
 
 ## License
 

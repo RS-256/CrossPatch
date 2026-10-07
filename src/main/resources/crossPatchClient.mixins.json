@@ -4,7 +4,6 @@
   "compatibilityLevel": "${java}",
   "plugin": "com.rs256.crossPatch.client.mixin.CrossPatchMixinPlugin",
   "client": [
-    "flashback.ReplayServerViewDistanceMixin",
     "lang.ClientLanguageMixin",
     "litematica.ChunkCacheSchematicMixin",
     "litematica.ChunkRendererSchematicVboMixin",

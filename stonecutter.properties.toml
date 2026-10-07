@@ -6,10 +6,6 @@ mod.group   = "com.rs256.crossPatch"
 
 # deps. is used dependency resolving,
 # build. is used build jar resource prosessing
-#
-# maven.modrinth accepts either a version number or a version id. Prefer the
-# readable number, but flashback reuses one number across several MC builds
-# (0.39.8 exists for 1.21 through 1.21.11), so it has to stay pinned by id.
 deps.fabric_loader  = "0.19.5"
 build.fabric_loader = ">=0.19.5"
 
@@ -19,8 +15,6 @@ build.malilib       = "*"
 build.litematica    = "*"
 build.itemscroller  = "*"
 build.tweakermore   = "*"
-build.flashback     = "*"
-build.bobby         = "*"
 
 publish.modrinth   = "BVBbOmXq"
 publish.curseforge = "XXXXXXXX"
@@ -39,8 +33,6 @@ deps.malilib  = "0.27.19"
 deps.litematica  = "0.26.14"
 deps.itemscroller  = "0.30.5"  # 0.30.6 tag fails to build on JitPack
 deps.tweakermore = "3.33.2"
-deps.flashback = "Km7BHQo4"  # 0.39.8 for MC1.21.11
-deps.bobby = "5.2.11.1+mc1.21.11"
 
 ["26.1.2"]
 deps.fabric_api = "0.155.2+26.1.2"
@@ -53,8 +45,6 @@ deps.malilib  = "0.28.11"
 deps.litematica  = "0.27.12"
 deps.itemscroller  = "0.31.5"
 deps.tweakermore = "3.33.2"
-deps.flashback = "2obIELyD"  # 0.43.3 for MC26.1
-deps.bobby = "5.2.13+mc26.1"
 
 ["26.2"]
 deps.fabric_api = "0.159.0+26.2"
@@ -67,8 +57,6 @@ deps.malilib  = "0.29.5"
 deps.litematica  = "0.28.6"
 deps.itemscroller  = "0.32.1"
 deps.tweakermore = "3.33.2"
-deps.flashback = "fZW00XaD"  # 0.43.3 for MC26.2
-deps.bobby = "5.2.15+mc26.2"
 
 ["26.3"]
 deps.fabric_api = "0.161.0+26.3"
@@ -81,4 +69,3 @@ deps.malilib  = "0.30.1"
 deps.litematica  = "0.29.0"
 deps.itemscroller  = "0.33.0"
 deps.tweakermore = "3.33.3-beta.1"
-deps.flashback = "cV1pa0YV"  # 0.43.6 for MC26.3
